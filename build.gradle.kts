@@ -4,7 +4,10 @@ group = "org.geepawhill"
 version = "1.0"
 
 plugins {
-    kotlin("jvm") version "1.7.22"
+    kotlin("jvm") version "1.8.0"
+
+    // Check for updates with ./gradlew dependencyUpdates
+    id("com.github.ben-manes.versions") version "0.44.0"
 }
 
 repositories {
@@ -12,12 +15,11 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jsoup:jsoup:1.15.3")
 
-    testImplementation("org.assertj:assertj-core:3.23.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation("org.assertj:assertj-core:3.24.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 }
 
 val jvmVersion: JavaLanguageVersion = JavaLanguageVersion.of(17)
