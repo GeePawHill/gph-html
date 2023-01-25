@@ -1,6 +1,3 @@
 .gradle/
-gradle/
 build/
 transient/
-.idea/
-
