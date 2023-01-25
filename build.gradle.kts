@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "org.geepawhill"
-version = "1.0"
+version = "0.0.1"
 
 plugins {
     kotlin("jvm") version "1.8.0"
