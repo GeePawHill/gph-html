@@ -29,8 +29,14 @@ jobs:
       - name: clean
         run: ./gradlew clean
         
-      - name: linting
+      - name: lint
         run: ./gradlew detekt
+
+      - name: compile main
+        run: ./gradlew classes
+        
+      - name: compile test
+        run: ./gradlew testClasses
 
       - name: microtest
         run: ./gradlew check
