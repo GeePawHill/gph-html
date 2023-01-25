@@ -1,9 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.ContainerTag
-import org.geepawhill.html.model.HeadTag
-import org.geepawhill.html.model.HtmlPage
-import org.geepawhill.html.model.InternalTag
+import org.geepawhill.html.model.*
 
 class BasicHtmlPage(
     val maker: BasicContainerTag = BasicContainerTag("html"),
@@ -22,7 +19,7 @@ class BasicHtmlPage(
         elements.add(head)
     }
 
-    override fun emit(builder: StringBuilder): String {
+    override fun emit(builder: StringBuilder, emitter: HtmlEmitter): String {
         builder.append("<!DOCTYPE html>\n")
         elements.forEach { element ->
             element.emit(builder)

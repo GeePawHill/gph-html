@@ -1,10 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.AttributeTag
-import org.geepawhill.html.model.ContainerTag
-import org.geepawhill.html.model.Element
-import org.geepawhill.html.model.EncodedTextElement
-import org.geepawhill.html.model.TextElement
+import org.geepawhill.html.model.*
 
 class BasicContainerTag(tag: String, private val maker: BasicAttributeTag = BasicAttributeTag(tag)) :
     ContainerTag, AttributeTag by maker {
@@ -23,7 +19,7 @@ class BasicContainerTag(tag: String, private val maker: BasicAttributeTag = Basi
         elements.add(EncodedTextElement(this))
     }
 
-    override fun emit(builder: StringBuilder): String {
+    override fun emit(builder: StringBuilder, emitter: HtmlEmitter): String {
         builder.append("<$tag")
         builder.append(attributes.toString())
         builder.append(">")
