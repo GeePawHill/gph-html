@@ -1,6 +1,10 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.*
+import org.geepawhill.html.model.ContainerTag
+import org.geepawhill.html.model.HeadTag
+import org.geepawhill.html.model.HtmlEmitter
+import org.geepawhill.html.model.HtmlPage
+import org.geepawhill.html.model.InternalTag
 
 class BasicHtmlPage(
     val maker: BasicContainerTag = BasicContainerTag("html"),
