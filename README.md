@@ -38,7 +38,7 @@ val page = BasicHtmlPage.page {
         +"This is raw output."
 
         // safe direct text
-        -"This is uuencoded output."
+        -"This is urlencoded output."
 
         // basic tags already present
         div("blog-text") {
