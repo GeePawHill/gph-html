@@ -36,15 +36,6 @@ class BasicTagAttributes(private val map: MutableMap<String, String> = mutableMa
         return result.toString()
     }
 
-    override val entries: MutableSet<MutableMap.MutableEntry<String, String>>
-        get() = map.entries
-    override val keys: MutableSet<String>
-        get() = map.keys
-    override val size: Int
-        get() = map.size
-    override val values: MutableCollection<String>
-        get() = map.values
-
     override fun clear() {
         map.clear()
         keysAdded.clear()

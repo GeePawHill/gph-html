@@ -21,7 +21,7 @@ class BasicAttributeTagTest {
     }
 
     @Test
-    fun `add by field`() {
+    fun `add by field assignment`() {
         val tag = TestingTag("href")
         tag.href = "trythis"
         tag["second"] = "secondValue"
