@@ -26,5 +26,17 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Execute Gradle Build
-        run: ./gradlew clean build
+      - name: clean
+        run: ./gradlew clean
+        
+      - name: linting
+        run: ./gradlew detekt
+
+      - name: microtest
+        run: ./gradlew check
+      
+      - name: package
+        run: ./gradlew assemble
+        
+      - name: release
+        run: echo "*** RELEASING TO SONATYPE (coming soon!) ***"
