@@ -1,11 +1,9 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.basic.BasicInternalTag
-import org.geepawhill.html.basic.BasicLink
 import org.junit.jupiter.api.Test
 
-class LinkMakerTest {
+class BasicLinkTest {
     @Test
     fun `constructor sets fields if present`() {
         val link = BasicLink("class", "href", "target")

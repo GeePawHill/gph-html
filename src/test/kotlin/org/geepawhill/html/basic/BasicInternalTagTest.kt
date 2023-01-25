@@ -3,7 +3,7 @@ package org.geepawhill.html.basic
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class InternalTagTest {
+class BasicInternalTagTest {
 
     @Test
     fun `nested tags work`() {

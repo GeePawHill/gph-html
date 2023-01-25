@@ -1,9 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.AttributeTag
-import org.geepawhill.html.model.ContainerTag
-import org.geepawhill.html.model.Element
-import org.geepawhill.html.model.TextElement
+import org.geepawhill.html.model.*
 
 class BasicContainerTag(tag: String, val maker: BasicAttributeTag = BasicAttributeTag(tag)) : ContainerTag,
     AttributeTag by maker {
@@ -16,6 +13,10 @@ class BasicContainerTag(tag: String, val maker: BasicAttributeTag = BasicAttribu
 
     override operator fun String.unaryPlus() {
         elements.add(TextElement(this))
+    }
+
+    override fun String.unaryMinus() {
+        elements.add(EncodedTextElement(this))
     }
 
     override fun emit(builder: StringBuilder): String {
