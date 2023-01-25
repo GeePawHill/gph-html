@@ -5,6 +5,7 @@ import org.geepawhill.html.basic.BasicTagAttributes
 
 typealias Details = InternalTag.() -> Unit
 
+@Suppress("TooManyFunctions")
 interface InternalTag : ContainerTag {
 
     fun div(
@@ -63,7 +64,6 @@ interface InternalTag : ContainerTag {
         target: String = BasicTagAttributes.NO_VALUE,
         details: Details = NO_DETAILS
     )
-
 
     fun ul(
         classes: String = BasicTagAttributes.NO_VALUE,

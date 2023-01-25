@@ -1,8 +1,8 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.basic.BasicTagAttributes.Companion.NO_VALUE
 import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.Link
-import org.geepawhill.html.basic.BasicTagAttributes.Companion.NO_VALUE
 
 class BasicLink(
     classes: String = NO_VALUE,
@@ -22,8 +22,5 @@ class BasicLink(
         this.href = href
         this.target = target
         details()
-    }
-
-    companion object {
     }
 }

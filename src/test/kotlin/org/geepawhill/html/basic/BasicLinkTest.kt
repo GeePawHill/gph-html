@@ -48,5 +48,4 @@ class BasicLinkTest {
         val expected = """<a><div></div></a>"""
         assertThat(link.emit()).isEqualTo(expected)
     }
-
 }

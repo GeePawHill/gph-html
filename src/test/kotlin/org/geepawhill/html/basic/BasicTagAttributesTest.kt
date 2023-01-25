@@ -1,9 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.basic.BasicTagAttributes
 import org.junit.jupiter.api.Test
-
 
 class BasicTagAttributesTest {
     val attributes = BasicTagAttributes()
@@ -54,5 +52,4 @@ class BasicTagAttributesTest {
         attributes["classes"] = "other"
         assertThat(attributes.toString()).isEqualTo(" class=\"other\"")
     }
-
 }

@@ -1,9 +1,13 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.*
+import org.geepawhill.html.model.AttributeTag
+import org.geepawhill.html.model.ContainerTag
+import org.geepawhill.html.model.Element
+import org.geepawhill.html.model.EncodedTextElement
+import org.geepawhill.html.model.TextElement
 
-class BasicContainerTag(tag: String, val maker: BasicAttributeTag = BasicAttributeTag(tag)) : ContainerTag,
-    AttributeTag by maker {
+class BasicContainerTag(tag: String, private val maker: BasicAttributeTag = BasicAttributeTag(tag)) :
+    ContainerTag, AttributeTag by maker {
 
     override val elements = mutableListOf<Element>()
 

@@ -1,7 +1,6 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.basic.BasicTagAttributes
 import org.geepawhill.html.model.TagAttributes
 import org.junit.jupiter.api.Test
 

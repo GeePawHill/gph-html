@@ -1,11 +1,12 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.basic.BasicTagAttributes.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
+import org.geepawhill.html.model.Details
 import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
-import org.geepawhill.html.basic.BasicTagAttributes.Companion.NO_VALUE
-import org.geepawhill.html.model.Details
 
+@Suppress("TooManyFunctions")
 class BasicInternalTag(
     tag: String,
     classes: String = NO_VALUE,

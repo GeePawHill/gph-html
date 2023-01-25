@@ -34,5 +34,4 @@ class BasicInternalTagTest {
         assertThat(tag.elements).hasSize(1)
         assertThat(tag.emit()).isEqualTo("<div>hello</div>")
     }
-
 }

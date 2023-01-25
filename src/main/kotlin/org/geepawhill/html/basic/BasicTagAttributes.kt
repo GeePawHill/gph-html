@@ -2,8 +2,8 @@ package org.geepawhill.html.basic
 
 import org.geepawhill.html.model.TagAttributes
 
-class BasicTagAttributes(private val map: MutableMap<String, String> = mutableMapOf()) : TagAttributes,
-    MutableMap<String, String> by map {
+class BasicTagAttributes(private val map: MutableMap<String, String> = mutableMapOf()) :
+    TagAttributes, MutableMap<String, String> by map {
     private val keysAdded = mutableListOf<String>()
 
     override fun put(key: String, value: String): String? {
@@ -26,8 +26,11 @@ class BasicTagAttributes(private val map: MutableMap<String, String> = mutableMa
         for (key in keysAdded) {
             val value = this[key]
             if (value != null && value != NO_VALUE) {
-                if (key == "classes") result.append(" class=\"$value\"")
-                else result.append(" $key=\"$value\"")
+                if (key == "classes") {
+                    result.append(" class=\"$value\"")
+                } else {
+                    result.append(" $key=\"$value\"")
+                }
             }
         }
         return result.toString()
@@ -48,6 +51,6 @@ class BasicTagAttributes(private val map: MutableMap<String, String> = mutableMa
     }
 
     companion object {
-        val NO_VALUE = "NO-VALUE-SET-HERE"
+        const val NO_VALUE = "NO-VALUE-SET-HERE"
     }
 }
