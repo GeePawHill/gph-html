@@ -45,4 +45,7 @@ jobs:
         run: ./gradlew assemble
         
       - name: release
-        run: echo "*** RELEASING TO SONATYPE (coming soon!) ***"
+        env:
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SonatypeUsername }}
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SonatypePassword }}
+        run: echo "./gradlew -Dversion=0.0.${{ github.run_number }} publishToSonatype closeAndReleaseSonatypeStagingRepository"
