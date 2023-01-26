@@ -24,14 +24,18 @@ class BasicContainerTag(tag: String, private val maker: BasicAttributeTag = Basi
         elements.add(EncodedTextElement(this))
     }
 
-    override fun emit(builder: StringBuilder, emitter: HtmlEmitter): String {
-        builder.append("<$tag")
-        builder.append(attributes.toString())
-        builder.append(">")
+    override fun emit(emitter: HtmlEmitter): String {
+        emitter.startLine()
+        emitter.append("<$tag")
+        emitter.append(attributes.toString())
+        emitter.append(">")
+        emitter.indent()
         elements.forEach { element ->
-            element.emit(builder)
+            element.emit(emitter)
         }
-        builder.append("</$tag>")
-        return builder.toString()
+        emitter.undent()
+        emitter.startLine()
+        emitter.append("</$tag>")
+        return emitter.toString()
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 class PrettyHtmlEmitterTest {
 
-    val emitter = PrettyHtmlEmitter()
+    private val emitter = PrettyHtmlEmitter()
 
     @Test
     fun `startLine adds`() {

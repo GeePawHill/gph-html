@@ -10,7 +10,7 @@ import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 class BasicInternalTag(
     tag: String,
     classes: String = NO_VALUE,
-    val maker: BasicContainerTag = BasicContainerTag(tag)
+    private val maker: BasicContainerTag = BasicContainerTag(tag)
 ) :
     InternalTag, ContainerTag by maker {
     override var classes: String by attributes

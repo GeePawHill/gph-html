@@ -10,7 +10,7 @@ class PrettyHtmlEmitter(
 
     override fun startLine() {
         appendable.append("\n")
-        (1..depth).forEach {
+        (1..depth).forEach { _ ->
             appendable.append(" ")
         }
     }

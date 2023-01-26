@@ -23,12 +23,12 @@ class BasicHtmlPage(
         elements.add(head)
     }
 
-    override fun emit(builder: StringBuilder, emitter: HtmlEmitter): String {
-        builder.append("<!DOCTYPE html>\n")
+    override fun emit(emitter: HtmlEmitter): String {
+        emitter.append("<!DOCTYPE html>\n")
         elements.forEach { element ->
-            element.emit(builder)
+            element.emit()
         }
-        return builder.toString()
+        return emitter.toString()
     }
 
     companion object {
