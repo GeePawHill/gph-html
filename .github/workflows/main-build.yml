@@ -42,7 +42,7 @@ jobs:
         run: ./gradlew check
       
       - name: package
-        run: ./gradlew assemble
+        run: ./gradlew -Dversion=0.0.${{ github.run_number }} assemble
         
       - name: release
         env:
