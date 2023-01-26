@@ -5,6 +5,7 @@ plugins {
 
     // publishing
     `maven-publish`
+    signing
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 
     // Check for updates with ./gradlew dependencyUpdates
@@ -45,10 +46,43 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+/**
+ * Publishing support
+ */
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+            pom {
+                name.set("gph-html")
+                description.set("An ultra-light change-friendly dsl for generating html output.")
+                url.set("https://github.com/GeePawHill/gph-html")
+                licenses {
+                    license {
+                        name.set("The MIT License")
+                        url.set("https://github.com/GeePawHill/gph-html/blob/main/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("GeePawHill")
+                        name.set("GeePaw Hill")
+                        email.set("GeePawHill@geepawhill.org")
+                    }
+                }
+                scm {
+                    connection.set("git@github.com:GeePawHill/gph-html.git")
+                    developerConnection.set("git@github.com:GeePawHill/gph-html.git")
+                    url.set("https://github.com/GeePawHill/gph-html.git")
+                }
+            }
+
         }
     }
 }
@@ -62,3 +96,6 @@ nexusPublishing {
     }
 }
 
+signing {
+    sign(publishing.publications["mavenJava"])
+}
