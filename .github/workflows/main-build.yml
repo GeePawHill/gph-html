@@ -22,30 +22,32 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
       - name: clean
         run: ./gradlew clean
-        
+
       - name: lint
         run: ./gradlew detekt
 
       - name: compile main
         run: ./gradlew classes
-        
+
       - name: compile test
         run: ./gradlew testClasses
 
       - name: microtest
         run: ./gradlew check
-      
+
       - name: package
         run: ./gradlew -Dversion=0.0.${{ github.run_number }} assemble
-        
+
       - name: release
         env:
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SonatypeUsername }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SonatypePassword }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SigningKey }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SigningPassword }}
         run: ./gradlew -Dversion=0.0.${{ github.run_number }} publishToSonatype closeAndReleaseSonatypeStagingRepository
