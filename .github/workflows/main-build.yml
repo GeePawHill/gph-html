@@ -42,7 +42,7 @@ jobs:
         run: ./gradlew check
 
       - name: package
-        run: ./gradlew -Dversion=0.0.${{ github.run_number }} assemble
+        run: ./gradlew -Pversion=0.0.${{ github.run_number }} assemble
 
       - name: release
         env:
@@ -50,4 +50,4 @@ jobs:
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SonatypePassword }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SigningKey }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SigningPassword }}
-        run: ./gradlew -Dversion=0.0.${{ github.run_number }} publishToSonatype closeAndReleaseSonatypeStagingRepository
+        run: ./gradlew -Pversion=0.0.${{ github.run_number }} publishToSonatype closeAndReleaseSonatypeStagingRepository
