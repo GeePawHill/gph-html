@@ -3,8 +3,8 @@ package org.geepawhill.html.basic
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class BasicTagAttributesTest {
-    val attributes = BasicTagAttributes()
+class BasicOrderedMapTest {
+    val attributes = BasicOrderedMap()
 
     @Test
     fun `basic add works`() {

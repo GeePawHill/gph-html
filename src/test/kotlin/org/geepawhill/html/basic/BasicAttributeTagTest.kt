@@ -1,16 +1,16 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.model.TagAttributes
+import org.geepawhill.html.model.OrderedMap
 import org.junit.jupiter.api.Test
 
 class BasicAttributeTagTest {
 
     class TestingTag(
-        href: String = BasicTagAttributes.NO_VALUE,
-        val attributes: TagAttributes = BasicTagAttributes()
+        href: String = BasicOrderedMap.NO_VALUE,
+        val attributes: OrderedMap = BasicOrderedMap()
     ) :
-        TagAttributes by attributes {
+        OrderedMap by attributes {
         var href: String by attributes
 
         init {

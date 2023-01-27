@@ -1,6 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.basic.BasicTagAttributes.Companion.NO_VALUE
+import org.geepawhill.html.basic.BasicOrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Details
 import org.geepawhill.html.model.InternalTag
