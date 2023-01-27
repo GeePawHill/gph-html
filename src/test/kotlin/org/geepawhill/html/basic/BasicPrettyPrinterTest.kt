@@ -28,10 +28,11 @@ class BasicPrettyPrinterTest {
             +BasicAttributeOnlyTag("child")
         }
         tag.accept(printer)
-        val expected = """
-<parent>
-  <child>
-</parent>"""
+        val expected = "\n" + """
+            <parent>
+              <child>
+            </parent>
+        """.trimIndent()
         assertThat(printer.toString()).isEqualTo(expected)
     }
 }
