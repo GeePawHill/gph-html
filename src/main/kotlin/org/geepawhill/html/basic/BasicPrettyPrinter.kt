@@ -2,6 +2,7 @@ package org.geepawhill.html.basic
 
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
+import org.geepawhill.html.model.CssSelector
 import org.geepawhill.html.model.HtmlVisitor
 
 class BasicPrettyPrinter(
@@ -13,6 +14,20 @@ class BasicPrettyPrinter(
 
     override fun visit(text: String) {
         append(text)
+    }
+
+    override fun visit(selector: CssSelector) {
+        newline()
+        append(selector.tag)
+        append(" { ")
+        depth += 1
+        selector.attributes.ordered.forEach { css ->
+            newline()
+            append("${css.key}: ${css.value};")
+        }
+        depth -= 1
+        newline()
+        append("}")
     }
 
     override fun visit(tag: ContainerTag) {
