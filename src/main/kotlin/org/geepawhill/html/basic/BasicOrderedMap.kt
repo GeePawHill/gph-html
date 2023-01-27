@@ -1,22 +1,22 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.KeyValuePair
+import org.geepawhill.html.model.KeyAndValue
 import org.geepawhill.html.model.OrderedMap
 
 class BasicOrderedMap(private val map: MutableMap<String, String> = mutableMapOf()) :
     OrderedMap, MutableMap<String, String> by map {
     private val keysAdded = mutableListOf<String>()
 
-    override val ordered: Collection<KeyValuePair>
+    override val ordered: Collection<KeyAndValue>
         get() {
-            val result = mutableListOf<KeyValuePair>()
+            val result = mutableListOf<KeyAndValue>()
             keysAdded.forEach { key ->
                 val value = this[key]
                 if (value != null && value != NO_VALUE) {
                     if (key == "classes") {
-                        result.add(KeyValuePair("class", value))
+                        result.add(KeyAndValue("class", value))
                     } else {
-                        result.add(KeyValuePair(key, value))
+                        result.add(KeyAndValue(key, value))
                     }
                 }
             }

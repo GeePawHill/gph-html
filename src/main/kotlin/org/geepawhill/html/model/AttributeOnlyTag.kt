@@ -1,6 +1,8 @@
 package org.geepawhill.html.model
 
-interface AttributeTag : Element {
+interface AttributeOnlyTag : Element {
     val attributes: OrderedMap
     val tag: String
+
+    override fun accept(visitor: HtmlVisitor)
 }

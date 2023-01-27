@@ -1,6 +1,6 @@
 package org.geepawhill.html.model
 
-interface ContainerTag : AttributeTag {
+interface ContainerTag : AttributeOnlyTag {
     val elements: MutableList<Element>
     operator fun Element.unaryPlus()
     operator fun String.unaryPlus()

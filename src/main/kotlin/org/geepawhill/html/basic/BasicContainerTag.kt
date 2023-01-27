@@ -1,14 +1,15 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.AttributeTag
+import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
 import org.geepawhill.html.model.EncodedTextElement
 import org.geepawhill.html.model.HtmlEmitter
+import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.TextElement
 
-class BasicContainerTag(tag: String, private val maker: BasicAttributeTag = BasicAttributeTag(tag)) :
-    ContainerTag, AttributeTag by maker {
+class BasicContainerTag(tag: String, private val maker: BasicAttributeOnlyTag = BasicAttributeOnlyTag(tag)) :
+    ContainerTag, AttributeOnlyTag by maker {
 
     override val elements = mutableListOf<Element>()
 
@@ -37,5 +38,9 @@ class BasicContainerTag(tag: String, private val maker: BasicAttributeTag = Basi
         emitter.startLine()
         emitter.append("</$tag>")
         return emitter.toString()
+    }
+
+    override fun accept(visitor: HtmlVisitor) {
+        visitor.visit(this)
     }
 }

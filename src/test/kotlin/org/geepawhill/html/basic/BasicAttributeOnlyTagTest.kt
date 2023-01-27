@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.model.OrderedMap
 import org.junit.jupiter.api.Test
 
-class BasicAttributeTagTest {
+class BasicAttributeOnlyTagTest {
 
     class TestingTag(
         href: String = BasicOrderedMap.NO_VALUE,

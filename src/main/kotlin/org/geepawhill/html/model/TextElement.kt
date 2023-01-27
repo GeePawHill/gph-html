@@ -5,4 +5,8 @@ class TextElement(val text: String) : Element {
         emitter.append(text)
         return emitter.toString()
     }
+
+    override fun accept(visitor: HtmlVisitor) {
+        visitor.visit(text)
+    }
 }
