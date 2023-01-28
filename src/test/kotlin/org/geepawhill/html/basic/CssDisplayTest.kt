@@ -2,26 +2,11 @@ package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.basic.BasicOrderedMap.Companion.NO_VALUE
+import org.geepawhill.html.css.CssDisplay
 import org.geepawhill.html.css.CssSelector
-import org.geepawhill.html.map.MapVal
-import org.geepawhill.html.map.MapVar
-import org.geepawhill.html.map.OrderedMap
-import org.geepawhill.html.model.CssField
 import org.junit.jupiter.api.Test
 
-class CssDisplay(override val map: OrderedMap) : CssField {
-    override var value: String by MapVar("display")
-    val none: String by MapVal("display", "none")
-    val inline: String by MapVal("display", "inline")
-
-    init {
-        value = NO_VALUE
-    }
-}
-
-class TestingDisplay : CssSelector by BasicCssSelector("*") {
-    val display = CssDisplay(attributes)
-}
+class TestingDisplay : CssSelector by BasicCssSelector("*")
 
 class CssDisplayTest {
     val map = BasicOrderedMap()

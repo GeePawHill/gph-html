@@ -20,4 +20,13 @@ class BasicCssSelectorTest {
         selector.accept(printer)
         println(printer.toString())
     }
+
+    @Test
+    fun `display field works`() {
+        selector.apply {
+            display.none
+        }
+        selector.accept(printer)
+        println(printer.toString())
+    }
 }
