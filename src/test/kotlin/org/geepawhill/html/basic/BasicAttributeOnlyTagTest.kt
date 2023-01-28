@@ -1,7 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.model.OrderedMap
+import org.geepawhill.html.map.OrderedMap
 import org.junit.jupiter.api.Test
 
 class BasicAttributeOnlyTagTest {

@@ -1,7 +1,7 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.model.KeyAndValue
-import org.geepawhill.html.model.OrderedMap
+import org.geepawhill.html.map.KeyAndValue
+import org.geepawhill.html.map.OrderedMap
 
 class BasicOrderedMap(private val map: MutableMap<String, String> = mutableMapOf()) :
     OrderedMap, MutableMap<String, String> by map {

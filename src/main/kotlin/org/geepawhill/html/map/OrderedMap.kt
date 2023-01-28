@@ -1,6 +1,4 @@
-package org.geepawhill.html.model
-
-data class KeyAndValue(val key: String, val value: String)
+package org.geepawhill.html.map
 
 interface OrderedMap : MutableMap<String, String> {
     val ordered: Collection<KeyAndValue>

@@ -1,8 +1,8 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.css.CssSelector
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
-import org.geepawhill.html.model.CssSelector
 import org.geepawhill.html.model.HtmlVisitor
 
 class BasicPrettyPrinter(
