@@ -1,9 +1,9 @@
 package org.geepawhill.html.css
 
-import org.geepawhill.html.basic.BasicOrderedMap
 import org.geepawhill.html.map.MapVal
 import org.geepawhill.html.map.MapVar
 import org.geepawhill.html.map.OrderedMap
+import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.CssField
 
 class CssDisplay(override val map: OrderedMap) : CssField {
@@ -12,6 +12,6 @@ class CssDisplay(override val map: OrderedMap) : CssField {
     val inline: String by MapVal("display", "inline")
 
     init {
-        value = BasicOrderedMap.NO_VALUE
+        value = NO_VALUE
     }
 }

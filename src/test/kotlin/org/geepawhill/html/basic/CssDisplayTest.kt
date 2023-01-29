@@ -1,9 +1,9 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.basic.BasicOrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.css.CssDisplay
 import org.geepawhill.html.css.CssSelector
+import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.junit.jupiter.api.Test
 
 class TestingDisplay : CssSelector by BasicCssSelector("*")

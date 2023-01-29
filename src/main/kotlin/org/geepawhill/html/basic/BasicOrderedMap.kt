@@ -12,7 +12,7 @@ class BasicOrderedMap(private val map: MutableMap<String, String> = mutableMapOf
             val result = mutableListOf<KeyAndValue>()
             keysAdded.forEach { key ->
                 val value = this[key]
-                if (value != null && value != NO_VALUE) {
+                if (value != null && value != OrderedMap.NO_VALUE) {
                     if (key == "classes") {
                         result.add(KeyAndValue("class", value))
                     } else {
@@ -49,9 +49,5 @@ class BasicOrderedMap(private val map: MutableMap<String, String> = mutableMapOf
     override fun clear() {
         map.clear()
         keysAdded.clear()
-    }
-
-    companion object {
-        const val NO_VALUE = "NO-VALUE-SET-HERE"
     }
 }

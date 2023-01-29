@@ -2,12 +2,13 @@ package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.map.OrderedMap
+import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.junit.jupiter.api.Test
 
 class BasicAttributeOnlyTagTest {
 
     class TestingTag(
-        href: String = BasicOrderedMap.NO_VALUE,
+        href: String = NO_VALUE,
         val attributes: OrderedMap = BasicOrderedMap()
     ) :
         OrderedMap by attributes {
