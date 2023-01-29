@@ -1,15 +1,16 @@
 package org.geepawhill.html.basic
 
+import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
 class BasicCssSelectorTest {
-    val printer = BasicPrettyPrinter()
+    val printer = FlatPrinter()
     val selector = BasicCssSelector("*")
 
     @Test
     fun `empty selector works`() {
-        selector.accept(printer)
-        println(printer.toString())
+        assertThat(printer.print(selector)).isEqualTo("*{}")
     }
 
     @Test
@@ -17,8 +18,7 @@ class BasicCssSelectorTest {
         selector.apply {
             attributes["width"] = "10px"
         }
-        selector.accept(printer)
-        println(printer.toString())
+        assertThat(printer.print(selector)).isEqualTo("*{width: 10px;}")
     }
 
     @Test
@@ -26,7 +26,6 @@ class BasicCssSelectorTest {
         selector.apply {
             display.none
         }
-        selector.accept(printer)
-        println(printer.toString())
+        assertThat(printer.print(selector)).isEqualTo("*{display: none;}")
     }
 }

@@ -1,9 +1,12 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
 class BasicInternalTagTest {
+
+    val printer = FlatPrinter()
 
     @Test
     fun `nested tags with construction`() {
@@ -11,7 +14,7 @@ class BasicInternalTagTest {
             +BasicInternalTag("li")
         }
         assertThat(tag.elements).hasSize(1)
-        assertThat(tag.emit()).isEqualTo("<div><li></li></div>")
+        assertThat(printer.print(tag)).isEqualTo("<div><li></li></div>")
     }
 
     @Test
@@ -22,8 +25,7 @@ class BasicInternalTagTest {
                 +"Hello"
             }
         }
-        assertThat(tag.elements).hasSize(1)
-        assertThat(tag.emit()).isEqualTo("<div><ul><li></li>Hello</ul></div>")
+        assertThat(printer.print(tag)).isEqualTo("<div><ul><li></li>Hello</ul></div>")
     }
 
     @Test
@@ -31,8 +33,7 @@ class BasicInternalTagTest {
         val tag = BasicInternalTag("div").apply {
             +"hello"
         }
-        assertThat(tag.elements).hasSize(1)
-        assertThat(tag.emit()).isEqualTo("<div>hello</div>")
+        assertThat(printer.print(tag)).isEqualTo("<div>hello</div>")
     }
 
     @Test
@@ -40,7 +41,6 @@ class BasicInternalTagTest {
         val tag = BasicInternalTag("div").apply {
             -"&"
         }
-        assertThat(tag.elements).hasSize(1)
-        assertThat(tag.emit()).isEqualTo("<div>%26</div>")
+        assertThat(printer.print(tag)).isEqualTo("<div>%26</div>")
     }
 }
