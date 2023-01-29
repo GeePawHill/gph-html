@@ -1,14 +1,17 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
 class BasicLinkTest {
+    val printer = FlatPrinter()
+
     @Test
     fun `constructor sets fields if present`() {
         val link = BasicLink("class", "href", "target")
         val expected = """<a class="class" href="href" target="target"></a>"""
-        assertThat(link.emit()).isEqualTo(expected)
+        assertThat(printer.print(link)).isEqualTo(expected)
     }
 
     @Test
@@ -19,7 +22,7 @@ class BasicLinkTest {
             target = "target"
         }
         val expected = """<a class="class" href="href" target="target"></a>"""
-        assertThat(link.emit()).isEqualTo(expected)
+        assertThat(printer.print(link)).isEqualTo(expected)
     }
 
     @Test
@@ -28,7 +31,7 @@ class BasicLinkTest {
             a("class", "href", "target")
         }
         val expected = """<div><a class="class" href="href" target="target"></a></div>"""
-        assertThat(container.emit()).isEqualTo(expected)
+        assertThat(printer.print(container)).isEqualTo(expected)
     }
 
     @Test
@@ -37,7 +40,7 @@ class BasicLinkTest {
             +"This is text."
         }
         val expected = """<a>This is text.</a>"""
-        assertThat(link.emit()).isEqualTo(expected)
+        assertThat(printer.print(link)).isEqualTo(expected)
     }
 
     @Test
@@ -46,6 +49,6 @@ class BasicLinkTest {
             +BasicInternalTag("div")
         }
         val expected = """<a><div></div></a>"""
-        assertThat(link.emit()).isEqualTo(expected)
+        assertThat(printer.print(link)).isEqualTo(expected)
     }
 }
