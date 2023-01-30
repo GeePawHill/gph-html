@@ -1,6 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.map.MapVar
+import org.geepawhill.html.map.MappedField
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.Link
@@ -14,9 +14,9 @@ class BasicLink(
 ) : Link,
     InternalTag by maker {
 
-    override var classes: String by MapVar("class", attributes)
-    override var href: String by MapVar("href", attributes)
-    var target: String by MapVar("target", attributes)
+    override var classes: String by MappedField("class", attributes)
+    override var href: String by MappedField("href", attributes)
+    var target: String by MappedField("target", attributes)
 
     init {
         this.classes = classes

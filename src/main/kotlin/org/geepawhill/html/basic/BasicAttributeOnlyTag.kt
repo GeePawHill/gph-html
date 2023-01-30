@@ -1,5 +1,6 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.map.BasicOrderedMap
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.HtmlVisitor

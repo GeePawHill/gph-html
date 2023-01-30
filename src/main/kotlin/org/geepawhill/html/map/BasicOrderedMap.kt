@@ -1,7 +1,5 @@
-package org.geepawhill.html.basic
+package org.geepawhill.html.map
 
-import org.geepawhill.html.map.KeyAndValue
-import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 
 class BasicOrderedMap :

@@ -14,6 +14,8 @@ plugins {
     // Formatting & Style
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
 
+    id("org.jetbrains.dokka") version "1.7.20"
+
 }
 
 repositories {
