@@ -3,6 +3,7 @@ package org.geepawhill.html.basic
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 import org.geepawhill.html.model.HtmlPage
+import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.InternalTag
 
 class BasicHtmlPage(
@@ -20,6 +21,10 @@ class BasicHtmlPage(
         val head = BasicHeadTag()
         head.details()
         elements.add(head)
+    }
+
+    override fun accept(visitor: HtmlVisitor) {
+        visitor.visit(this)
     }
 
     companion object {

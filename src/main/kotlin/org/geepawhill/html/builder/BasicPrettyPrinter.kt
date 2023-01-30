@@ -1,8 +1,11 @@
-package org.geepawhill.html.basic
+package org.geepawhill.html.builder
 
 import org.geepawhill.html.css.CssSelector
+import org.geepawhill.html.css.CssStylesheet
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
+import org.geepawhill.html.model.Element
+import org.geepawhill.html.model.HtmlPage
 import org.geepawhill.html.model.HtmlVisitor
 
 class BasicPrettyPrinter(
@@ -11,6 +14,11 @@ class BasicPrettyPrinter(
 ) : HtmlVisitor, Appendable by appendable {
 
     private var depth = 0
+
+    fun print(element: Element): String {
+        element.accept(this)
+        return appendable.toString()
+    }
 
     override fun visit(text: String) {
         append(text)
@@ -42,10 +50,29 @@ class BasicPrettyPrinter(
     override fun visit(tag: AttributeOnlyTag) {
         newline()
         append("<${tag.tag}")
-        tag.attributes.forEach { attribute ->
+        tag.attributes.ordered.forEach { attribute ->
             append(" ${attribute.key}=\"${attribute.value}\"")
         }
         append(">")
+    }
+
+    override fun visit(stylesheet: CssStylesheet) {
+        newline()
+        appendable.append("<stylesheet>")
+        depth += 1
+        stylesheet.selectors.forEach { selector ->
+            selector.accept(this)
+        }
+        depth -= 1
+        newline()
+        appendable.append("</stylesheet>")
+    }
+
+    override fun visit(page: HtmlPage) {
+        appendable.append("<!DOCTYPE html>")
+        page.elements.forEach { element ->
+            element.accept(this)
+        }
     }
 
     private fun newline() {

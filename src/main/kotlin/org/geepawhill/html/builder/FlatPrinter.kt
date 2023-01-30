@@ -1,9 +1,11 @@
 package org.geepawhill.html.builder
 
 import org.geepawhill.html.css.CssSelector
+import org.geepawhill.html.css.CssStylesheet
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
+import org.geepawhill.html.model.HtmlPage
 import org.geepawhill.html.model.HtmlVisitor
 
 class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
@@ -37,5 +39,20 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
         visit(tag as AttributeOnlyTag)
         tag.elements.forEach { element -> element.accept(this) }
         appendable.append("</${tag.tag}>")
+    }
+
+    override fun visit(stylesheet: CssStylesheet) {
+        appendable.append("<stylesheet>")
+        stylesheet.selectors.forEach { selector ->
+            selector.accept(this)
+        }
+        appendable.append("</stylesheet>")
+    }
+
+    override fun visit(page: HtmlPage) {
+        appendable.append("<!DOCTYPE html>")
+        page.elements.forEach { element ->
+            element.accept(this)
+        }
     }
 }

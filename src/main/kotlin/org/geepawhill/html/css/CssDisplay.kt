@@ -10,6 +10,7 @@ class CssDisplay(override val map: OrderedMap) : CssField {
     override var value: String by MapVar("display")
     val none: String by MapVal("display", "none")
     val inline: String by MapVal("display", "inline")
+    val block: String by MapVal("display", "block")
 
     init {
         value = NO_VALUE

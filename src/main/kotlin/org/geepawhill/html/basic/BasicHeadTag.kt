@@ -1,5 +1,6 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.css.CssStylesheet
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
@@ -29,5 +30,11 @@ class BasicHeadTag(maker: BasicContainerTag = BasicContainerTag("head")) : HeadT
         val tag = BasicInternalTag("script")
         tag.details()
         elements.add(tag)
+    }
+
+    override fun stylesheet(details: CssStylesheet.() -> Unit) {
+        val stylesheet = BasicCssStylesheet()
+        stylesheet.details()
+        elements.add(stylesheet)
     }
 }
