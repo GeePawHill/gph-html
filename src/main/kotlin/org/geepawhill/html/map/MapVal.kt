@@ -1,11 +1,10 @@
 package org.geepawhill.html.map
 
-import org.geepawhill.html.model.CssField
 import kotlin.reflect.KProperty
 
-class MapVal(private val key: String, private val value: String) {
-    operator fun <RECEIVER : CssField> getValue(field: RECEIVER, property: KProperty<*>): String {
-        field.map[key] = value
+class MapVal(private val key: String, private val value: String, val map: OrderedMap) {
+    operator fun <RECEIVER> getValue(field: RECEIVER, property: KProperty<*>): String {
+        map[key] = value
         return value
     }
 }

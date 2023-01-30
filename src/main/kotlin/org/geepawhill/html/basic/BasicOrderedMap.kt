@@ -2,52 +2,49 @@ package org.geepawhill.html.basic
 
 import org.geepawhill.html.map.KeyAndValue
 import org.geepawhill.html.map.OrderedMap
+import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 
-class BasicOrderedMap(private val map: MutableMap<String, String> = mutableMapOf()) :
-    OrderedMap, MutableMap<String, String> by map {
-    private val keysAdded = mutableListOf<String>()
+class BasicOrderedMap :
+    OrderedMap {
 
-    override val ordered: Collection<KeyAndValue>
-        get() {
-            val result = mutableListOf<KeyAndValue>()
-            keysAdded.forEach { key ->
-                val value = this[key]
-                if (value != null && value != OrderedMap.NO_VALUE) {
-                    if (key == "classes") {
-                        result.add(KeyAndValue("class", value))
-                    } else {
-                        result.add(KeyAndValue(key, value))
-                    }
-                }
+    private val pairs = mutableListOf<KeyAndValue>()
+
+    override fun get(key: String): String? {
+        val index = findKey(key)
+        return when (index) {
+            -1 -> null
+            else -> pairs[index].value
+        }
+    }
+
+    private fun findKey(key: String): Int {
+        pairs.indices.forEach { index ->
+            if (pairs[index].key == key) return index
+        }
+        return -1
+    }
+
+    override fun set(key: String, value: String) {
+        val index = findKey(key)
+        when (index) {
+            -1 -> pairs.add(KeyAndValue(key, value))
+            else -> pairs[index] = KeyAndValue(key, value)
+        }
+    }
+
+    override fun forEach(action: (entry: KeyAndValue) -> Unit) {
+        pairs.forEach { pair ->
+            if (pair.value != NO_VALUE) {
+                action(pair)
             }
-            return result
         }
-
-    override fun put(key: String, value: String): String? {
-        if (!keysAdded.contains(key)) keysAdded.add(key)
-        return map.put(key, value)
-    }
-
-    override fun putAll(from: Map<out String, String>) {
-        from.forEach { entry ->
-            put(entry.key, entry.value)
-        }
-    }
-
-    override fun remove(key: String): String? {
-        return map.remove(key)
     }
 
     override fun toString(): String {
         val result = StringBuilder()
-        ordered.forEach { entry ->
+        forEach { entry ->
             result.append(" ${entry.key}=\"${entry.value}\"")
         }
         return result.toString()
-    }
-
-    override fun clear() {
-        map.clear()
-        keysAdded.clear()
     }
 }

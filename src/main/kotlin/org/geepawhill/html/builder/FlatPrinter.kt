@@ -21,7 +21,7 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
 
     override fun visit(selector: CssSelector) {
         appendable.append("${selector.tag}{")
-        selector.attributes.ordered.forEach { attribute ->
+        selector.attributes.forEach { attribute ->
             appendable.append("${attribute.key}: ${attribute.value};")
         }
         appendable.append("}")
@@ -29,7 +29,7 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
 
     override fun visit(tag: AttributeOnlyTag) {
         appendable.append("<${tag.tag}")
-        tag.attributes.ordered.forEach { attribute ->
+        tag.attributes.forEach { attribute ->
             appendable.append(" ${attribute.key}=\"${attribute.value}\"")
         }
         appendable.append(">")

@@ -9,5 +9,5 @@ interface HtmlVisitor {
     fun visit(tag: AttributeOnlyTag)
     fun visit(tag: ContainerTag)
     fun visit(stylesheet: CssStylesheet)
-    fun visit(htmlPage: HtmlPage)
+    fun visit(page: HtmlPage)
 }

@@ -1,6 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.map.MapVar
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.junit.jupiter.api.Test
@@ -12,7 +13,7 @@ class BasicAttributeOnlyTagTest {
         val attributes: OrderedMap = BasicOrderedMap()
     ) :
         OrderedMap by attributes {
-        var href: String by attributes
+        var href: String by MapVar("href", attributes)
 
         init {
             this.href = href

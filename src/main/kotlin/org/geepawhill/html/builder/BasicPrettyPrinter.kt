@@ -29,7 +29,7 @@ class BasicPrettyPrinter(
         append(selector.tag)
         append(" { ")
         depth += 1
-        selector.attributes.ordered.forEach { css ->
+        selector.attributes.forEach { css ->
             newline()
             append("${css.key}: ${css.value};")
         }
@@ -50,7 +50,7 @@ class BasicPrettyPrinter(
     override fun visit(tag: AttributeOnlyTag) {
         newline()
         append("<${tag.tag}")
-        tag.attributes.ordered.forEach { attribute ->
+        tag.attributes.forEach { attribute ->
             append(" ${attribute.key}=\"${attribute.value}\"")
         }
         append(">")

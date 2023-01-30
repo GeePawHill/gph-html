@@ -7,6 +7,7 @@ typealias Details = InternalTag.() -> Unit
 
 @Suppress("TooManyFunctions")
 interface InternalTag : ContainerTag {
+    val classes: String
 
     fun div(
         classes: String = NO_VALUE,
@@ -76,8 +77,6 @@ interface InternalTag : ContainerTag {
     ): BasicInternalTag
 
     fun nav(classes: String = NO_VALUE, details: Details = NO_DETAILS)
-
-    var classes: String
 
     companion object {
         val NO_DETAILS: Details = {}

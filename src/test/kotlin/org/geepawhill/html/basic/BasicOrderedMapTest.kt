@@ -1,55 +1,43 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.map.MapVar
 import org.junit.jupiter.api.Test
 
 class BasicOrderedMapTest {
-    val attributes = BasicOrderedMap()
+    val map = BasicOrderedMap()
 
     @Test
     fun `basic add works`() {
-        attributes["something"] = "other"
-        assertThat(attributes.toString()).isEqualTo(" something=\"other\"")
+        map["something"] = "other"
+        assertThat(map.toString()).isEqualTo(" something=\"other\"")
     }
 
     @Test
     fun `multiple adds works`() {
-        attributes["first"] = "firstValue"
-        attributes["second"] = "secondValue"
-        assertThat(attributes.toString()).isEqualTo(" first=\"firstValue\" second=\"secondValue\"")
+        map["first"] = "firstValue"
+        map["second"] = "secondValue"
+        assertThat(map.toString()).isEqualTo(" first=\"firstValue\" second=\"secondValue\"")
     }
 
     @Test
     fun `add order is significant`() {
-        attributes["second"] = "secondValue"
-        attributes["first"] = "firstValue"
-        assertThat(attributes.toString()).isEqualTo(" second=\"secondValue\" first=\"firstValue\"")
+        map["second"] = "secondValue"
+        map["first"] = "firstValue"
+        assertThat(map.toString()).isEqualTo(" second=\"secondValue\" first=\"firstValue\"")
     }
 
     @Test
     fun `add duplicates replaced`() {
-        attributes["second"] = "secondValue"
-        attributes["second"] = "changed my mind"
-        assertThat(attributes.toString()).isEqualTo(" second=\"changed my mind\"")
-    }
-
-    @Test
-    fun `putAll works`() {
-        val all = mapOf("one" to "1", "two" to "2")
-        attributes.putAll(all)
-        assertThat(attributes.toString()).isEqualTo(" one=\"1\" two=\"2\"")
-    }
-
-    @Test
-    fun `remove works`() {
-        attributes["something"] = "other"
-        attributes.remove("something")
-        assertThat(attributes.toString()).isEqualTo("")
+        map["second"] = "secondValue"
+        map["second"] = "changed my mind"
+        assertThat(map.toString()).isEqualTo(" second=\"changed my mind\"")
     }
 
     @Test
     fun `classes becomes class on toString`() {
-        attributes["classes"] = "other"
-        assertThat(attributes.toString()).isEqualTo(" class=\"other\"")
+        var classes: String by MapVar("class", map)
+        classes = "other"
+        assertThat(map.toString()).isEqualTo(" class=\"other\"")
     }
 }

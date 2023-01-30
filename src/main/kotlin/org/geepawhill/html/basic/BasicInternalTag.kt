@@ -1,5 +1,6 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.map.MapVar
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Details
@@ -13,7 +14,7 @@ class BasicInternalTag(
     private val maker: BasicContainerTag = BasicContainerTag(tag)
 ) :
     InternalTag, ContainerTag by maker {
-    override var classes: String by attributes
+    override var classes: String by MapVar("class", attributes)
 
     init {
         this.classes = classes
