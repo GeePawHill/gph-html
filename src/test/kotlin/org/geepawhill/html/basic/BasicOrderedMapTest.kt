@@ -2,7 +2,6 @@ package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.map.BasicOrderedMap
-import org.geepawhill.html.map.MapConstant
 import org.geepawhill.html.map.MappedField
 import org.junit.jupiter.api.Test
 
@@ -34,14 +33,6 @@ class BasicOrderedMapTest {
         map["second"] = "secondValue"
         map["second"] = "changed my mind"
         assertThat(map.toString()).isEqualTo(" second=\"changed my mind\"")
-    }
-
-    @Suppress("UNUSED_VARIABLE")
-    @Test
-    fun `mapval sets on de-reference`() {
-        val access: String by MapConstant("something", "meaning", map)
-        val x = access
-        assertThat(map["something"]).isEqualTo("meaning")
     }
 
     @Test
