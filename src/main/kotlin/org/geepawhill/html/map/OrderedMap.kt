@@ -20,6 +20,11 @@ interface OrderedMap {
      */
     fun forEach(action: (entry: KeyAndValue) -> Unit)
 
+    /**
+     * Supplies a property delegate to store & retrieve a string from the given key
+     */
+    fun field(key: String): MapSetter
+
     companion object {
         /**
          * An arbitrary unusual string. This allows us to add an entry for a key,

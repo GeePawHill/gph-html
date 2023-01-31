@@ -1,6 +1,5 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.map.MappedField
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Details
@@ -11,10 +10,11 @@ import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 class BasicInternalTag(
     tag: String,
     classes: String = NO_VALUE,
-    private val maker: BasicContainerTag = BasicContainerTag(tag)
+    private val delegate: BasicContainerTag = BasicContainerTag(tag)
 ) :
-    InternalTag, ContainerTag by maker {
-    override var classes: String by MappedField("class", attributes)
+    InternalTag, ContainerTag by delegate {
+
+    override var classes: String by attributes.field("class")
 
     init {
         this.classes = classes

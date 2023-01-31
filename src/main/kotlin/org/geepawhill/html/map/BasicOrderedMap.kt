@@ -1,6 +1,7 @@
 package org.geepawhill.html.map
 
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
+import kotlin.reflect.KProperty
 
 class BasicOrderedMap :
     OrderedMap {
@@ -29,6 +30,18 @@ class BasicOrderedMap :
             else -> pairs[index] = KeyAndValue(key, value)
         }
     }
+
+    inner class Setter(private val key: String) : MapSetter {
+        override operator fun <RECEIVER> getValue(field: RECEIVER, property: KProperty<*>): String {
+            return this@BasicOrderedMap[key]!!
+        }
+
+        override operator fun <RECEIVER> setValue(field: RECEIVER, property: KProperty<*>, value: String) {
+            this@BasicOrderedMap[key] = value
+        }
+    }
+
+    override fun field(key: String): MapSetter = Setter(key)
 
     override fun forEach(action: (entry: KeyAndValue) -> Unit) {
         pairs.forEach { pair ->
