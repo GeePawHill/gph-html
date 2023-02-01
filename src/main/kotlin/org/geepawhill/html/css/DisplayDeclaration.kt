@@ -2,8 +2,8 @@ package org.geepawhill.html.css
 
 import org.geepawhill.html.map.OrderedMap
 
-@Suppress("TooManyFunctions", "VariableNaming")
-class CssDisplay(val map: OrderedMap) {
+@Suppress("VariableNaming")
+class DisplayDeclaration(val map: OrderedMap) {
     var value: String by map.field("display")
     val none: String by map.constant("display", "none")
     val inline: String by map.constant("display", "inline")

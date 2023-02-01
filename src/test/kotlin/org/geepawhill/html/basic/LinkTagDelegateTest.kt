@@ -4,19 +4,19 @@ import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
-class BasicLinkTest {
+class LinkTagDelegateTest {
     val printer = FlatPrinter()
 
     @Test
     fun `constructor sets fields if present`() {
-        val link = BasicLink("class", "href", "target")
+        val link = LinkTagDelegate("class", href = "href", target = "target")
         val expected = """<a class="class" href="href" target="target"></a>"""
         assertThat(printer.print(link)).isEqualTo(expected)
     }
 
     @Test
     fun `field overrides in details`() {
-        val link = BasicLink() {
+        val link = LinkTagDelegate() {
             classes = "class"
             href = "href"
             target = "target"
@@ -36,7 +36,7 @@ class BasicLinkTest {
 
     @Test
     fun `Adding text using plus works`() {
-        val link = BasicLink().apply {
+        val link = LinkTagDelegate().apply {
             +"This is text."
         }
         val expected = """<a>This is text.</a>"""
@@ -45,7 +45,7 @@ class BasicLinkTest {
 
     @Test
     fun `Adding tag using plus works`() {
-        val link = BasicLink().apply {
+        val link = LinkTagDelegate().apply {
             +InternalTagDelegate("div")
         }
         val expected = """<a><div></div></a>"""

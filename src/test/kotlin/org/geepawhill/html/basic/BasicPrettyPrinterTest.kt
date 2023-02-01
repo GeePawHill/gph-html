@@ -25,7 +25,7 @@ class BasicPrettyPrinterTest {
 
     @Test
     fun `prints ContainerTag`() {
-        val tag = BasicContainerTag("parent").apply {
+        val tag = ContainerTagDelegate("parent").apply {
             +AttributeOnlyTagDelegate("child")
         }
         tag.accept(printer)

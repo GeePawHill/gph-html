@@ -1,5 +1,5 @@
 package org.geepawhill.html.model
 
-interface Link : InternalTag {
+interface LinkTag : InternalTag {
     var href: String
 }

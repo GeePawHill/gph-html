@@ -4,9 +4,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
-class BasicCssSelectorTest {
+class SelectorDelegateTest {
     val printer = FlatPrinter()
-    val selector = BasicCssSelector("*")
+    val selector = SelectorDelegate("*")
 
     @Test
     fun `empty selector works`() {

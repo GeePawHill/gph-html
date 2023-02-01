@@ -2,8 +2,8 @@ package org.geepawhill.html.builder
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.basic.AttributeOnlyTagDelegate
-import org.geepawhill.html.basic.BasicContainerTag
-import org.geepawhill.html.basic.BasicCssSelector
+import org.geepawhill.html.basic.ContainerTagDelegate
+import org.geepawhill.html.basic.SelectorDelegate
 import org.junit.jupiter.api.Test
 
 class FlatPrinterTest {
@@ -19,7 +19,7 @@ class FlatPrinterTest {
 
     @Test
     fun `prints CssSelector`() {
-        val tag = BasicCssSelector("*").apply {
+        val tag = SelectorDelegate("*").apply {
             attributes["attribute"] = "value"
         }
         assertThat(printer.print(tag)).isEqualTo("*{attribute: value;}")
@@ -27,8 +27,8 @@ class FlatPrinterTest {
 
     @Test
     fun `prints ContainerTag`() {
-        val tag = BasicContainerTag("div").apply {
-            +BasicContainerTag("a")
+        val tag = ContainerTagDelegate("div").apply {
+            +ContainerTagDelegate("a")
         }
         assertThat(printer.print(tag)).isEqualTo("<div><a></a></div>")
     }

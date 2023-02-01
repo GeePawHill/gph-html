@@ -1,7 +1,7 @@
 package org.geepawhill.html.builder
 
-import org.geepawhill.html.css.CssSelector
-import org.geepawhill.html.css.CssStylesheet
+import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.Stylesheet
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
@@ -24,7 +24,7 @@ class BasicPrettyPrinter(
         append(text)
     }
 
-    override fun visit(selector: CssSelector) {
+    override fun visit(selector: Selector) {
         newline()
         append(selector.tag)
         append(" { ")
@@ -56,7 +56,7 @@ class BasicPrettyPrinter(
         append(">")
     }
 
-    override fun visit(stylesheet: CssStylesheet) {
+    override fun visit(stylesheet: Stylesheet) {
         newline()
         appendable.append("<stylesheet>")
         depth += 1

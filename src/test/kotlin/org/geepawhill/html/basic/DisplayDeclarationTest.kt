@@ -1,16 +1,16 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.css.CssDisplay
-import org.geepawhill.html.css.CssSelector
+import org.geepawhill.html.css.DisplayDeclaration
+import org.geepawhill.html.css.Selector
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
-class TestingDisplay : CssSelector by BasicCssSelector("*")
+class TestingDisplay : Selector by SelectorDelegate("*")
 
-class CssDisplayTest {
+class DisplayDeclarationTest {
     val map = OrderedMapDelegate()
-    val display = CssDisplay(map)
+    val display = DisplayDeclaration(map)
 
     @Test
     fun `direct setting works`() {

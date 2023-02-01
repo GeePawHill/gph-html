@@ -1,15 +1,15 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.CssStylesheet
+import org.geepawhill.html.css.Stylesheet
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 import org.geepawhill.html.model.HtmlPage
 import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.InternalTag
 
-class BasicHtmlPage(
-    override val stylesheet: CssStylesheet = BasicCssStylesheet(),
-    val delegate: ContainerTag = BasicContainerTag("html", stylesheet),
+class HtmlPageDelegate(
+    override val stylesheet: Stylesheet = StylesheetDelegate(),
+    val delegate: ContainerTag = ContainerTagDelegate("html", stylesheet),
 ) :
     HtmlPage, ContainerTag by delegate {
 
@@ -20,7 +20,7 @@ class BasicHtmlPage(
     }
 
     override fun head(details: HeadTag.() -> Unit) {
-        val head = BasicHeadTag(stylesheet)
+        val head = HeadTagDelegate(stylesheet)
         head.details()
         elements.add(head)
     }
@@ -30,8 +30,8 @@ class BasicHtmlPage(
     }
 
     companion object {
-        fun page(details: BasicHtmlPage.() -> Unit): HtmlPage {
-            val page = BasicHtmlPage()
+        fun page(details: HtmlPageDelegate.() -> Unit): HtmlPage {
+            val page = HtmlPageDelegate()
             page.details()
             return page
         }

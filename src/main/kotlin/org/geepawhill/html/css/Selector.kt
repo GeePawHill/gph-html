@@ -2,6 +2,6 @@ package org.geepawhill.html.css
 
 import org.geepawhill.html.model.AttributeOnlyTag
 
-interface CssSelector : AttributeOnlyTag {
-    val display: CssDisplay
+interface Selector : AttributeOnlyTag {
+    val display: DisplayDeclaration
 }

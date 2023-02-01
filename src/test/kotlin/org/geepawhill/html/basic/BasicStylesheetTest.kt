@@ -5,13 +5,13 @@ import org.geepawhill.html.builder.BasicPrettyPrinter
 import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
-class BasicCssStylesheetTest {
+class BasicStylesheetTest {
 
     val printer = FlatPrinter()
 
     @Test
     fun `can add selector`() {
-        val stylesheet = BasicCssStylesheet()
+        val stylesheet = StylesheetDelegate()
         stylesheet.apply {
             selector("*") {
                 display.none

@@ -1,7 +1,7 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.CssSelector
-import org.geepawhill.html.css.CssStylesheet
+import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.Stylesheet
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
@@ -9,9 +9,9 @@ import org.geepawhill.html.model.EncodedTextElement
 import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.TextElement
 
-class BasicContainerTag(
+class ContainerTagDelegate(
     tag: String,
-    override val stylesheet: CssStylesheet = BasicCssStylesheet(),
+    override val stylesheet: Stylesheet = StylesheetDelegate(),
     private val delegate: AttributeOnlyTagDelegate = AttributeOnlyTagDelegate(tag)
 ) :
     ContainerTag, AttributeOnlyTag by delegate {
@@ -30,7 +30,7 @@ class BasicContainerTag(
         elements.add(EncodedTextElement(this))
     }
 
-    override fun selector(selector: String, details: CssSelector.() -> Unit) {
+    override fun selector(selector: String, details: Selector.() -> Unit) {
         stylesheet.selector(selector, details)
     }
 

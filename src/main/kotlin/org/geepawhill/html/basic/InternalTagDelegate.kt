@@ -1,6 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.CssStylesheet
+import org.geepawhill.html.css.Stylesheet
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Details
@@ -11,8 +11,8 @@ import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 class InternalTagDelegate(
     tag: String,
     classes: String = NO_VALUE,
-    stylesheet: CssStylesheet = BasicCssStylesheet(),
-    private val delegate: BasicContainerTag = BasicContainerTag(tag, stylesheet)
+    stylesheet: Stylesheet = StylesheetDelegate(),
+    private val delegate: ContainerTagDelegate = ContainerTagDelegate(tag, stylesheet)
 ) :
     InternalTag, ContainerTag by delegate {
 
@@ -76,7 +76,7 @@ class InternalTagDelegate(
         target: String,
         details: Details
     ) {
-        elements.add(BasicLink(classes, href, target).apply(details))
+        elements.add(LinkTagDelegate(classes, stylesheet, href, target).apply(details))
     }
 
     override fun ul(

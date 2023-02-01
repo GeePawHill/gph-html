@@ -1,13 +1,13 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.CssStylesheet
+import org.geepawhill.html.css.Stylesheet
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 
-class BasicHeadTag(
-    stylesheet: CssStylesheet = BasicCssStylesheet(),
-    private val delegate: BasicContainerTag = BasicContainerTag("head", stylesheet)
+class HeadTagDelegate(
+    stylesheet: Stylesheet = StylesheetDelegate(),
+    private val delegate: ContainerTagDelegate = ContainerTagDelegate("head", stylesheet)
 ) : HeadTag, ContainerTag by delegate {
 
     override fun title(contents: String) {
@@ -36,7 +36,7 @@ class BasicHeadTag(
         elements.add(tag)
     }
 
-    override fun stylesheet(details: CssStylesheet.() -> Unit) {
+    override fun stylesheet(details: Stylesheet.() -> Unit) {
         delegate.stylesheet.details()
         elements.add(delegate.stylesheet)
     }
