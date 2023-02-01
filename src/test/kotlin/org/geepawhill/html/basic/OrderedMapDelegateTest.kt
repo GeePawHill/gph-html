@@ -1,12 +1,11 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.map.BasicOrderedMap
-import org.geepawhill.html.map.MappedField
+import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
-class BasicOrderedMapTest {
-    val map = BasicOrderedMap()
+class OrderedMapDelegateTest {
+    val map = OrderedMapDelegate()
 
     @Test
     fun `basic add works`() {
@@ -37,14 +36,14 @@ class BasicOrderedMapTest {
 
     @Test
     fun `mapvar adds to map`() {
-        var access: String by MappedField("something", map)
+        var access: String by map.field("something")
         access = "meaning"
         assertThat(map["something"]).isEqualTo("meaning")
     }
 
     @Test
     fun `classes becomes class on toString`() {
-        var classes: String by MappedField("class", map)
+        var classes: String by map.field("class")
         classes = "other"
         assertThat(map.toString()).isEqualTo(" class=\"other\"")
     }

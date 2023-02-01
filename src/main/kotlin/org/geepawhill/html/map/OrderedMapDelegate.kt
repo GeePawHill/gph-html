@@ -3,8 +3,7 @@ package org.geepawhill.html.map
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import kotlin.reflect.KProperty
 
-class BasicOrderedMap :
-    OrderedMap {
+class OrderedMapDelegate : OrderedMap {
 
     private val pairs = mutableListOf<KeyAndValue>()
 
@@ -31,26 +30,26 @@ class BasicOrderedMap :
         }
     }
 
-    inner class Setter(private val key: String) : MapSetter {
+    inner class Field(private val key: String) : MapField {
         override operator fun <RECEIVER> getValue(field: RECEIVER, property: KProperty<*>): String {
-            return this@BasicOrderedMap[key]!!
+            return this@OrderedMapDelegate[key]!!
         }
 
         override operator fun <RECEIVER> setValue(field: RECEIVER, property: KProperty<*>, value: String) {
-            this@BasicOrderedMap[key] = value
+            this@OrderedMapDelegate[key] = value
         }
     }
 
     inner class Constant(private val key: String, private val constant: String) : MapConstant {
         override operator fun <RECEIVER> getValue(field: RECEIVER, property: KProperty<*>): String {
-            this@BasicOrderedMap[key] = constant
+            this@OrderedMapDelegate[key] = constant
             return constant
         }
     }
 
     override fun constant(key: String, constant: String): MapConstant = Constant(key, constant)
 
-    override fun field(key: String): MapSetter = Setter(key)
+    override fun field(key: String): MapField = Field(key)
 
     override fun forEach(action: (entry: KeyAndValue) -> Unit) {
         pairs.forEach { pair ->

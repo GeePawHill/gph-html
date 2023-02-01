@@ -4,14 +4,14 @@ import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.builder.FlatPrinter
 import org.junit.jupiter.api.Test
 
-class BasicInternalTagTest {
+class InternalTagDelegateTest {
 
     val printer = FlatPrinter()
 
     @Test
     fun `nested tags with construction`() {
-        val tag = BasicInternalTag("div").apply {
-            +BasicInternalTag("li")
+        val tag = InternalTagDelegate("div").apply {
+            +InternalTagDelegate("li")
         }
         assertThat(tag.elements).hasSize(1)
         assertThat(printer.print(tag)).isEqualTo("<div><li></li></div>")
@@ -19,7 +19,7 @@ class BasicInternalTagTest {
 
     @Test
     fun `nested tags with dsl`() {
-        val tag = BasicInternalTag("div").apply {
+        val tag = InternalTagDelegate("div").apply {
             ul {
                 li { }
                 +"Hello"
@@ -30,7 +30,7 @@ class BasicInternalTagTest {
 
     @Test
     fun `nested texts construction`() {
-        val tag = BasicInternalTag("div").apply {
+        val tag = InternalTagDelegate("div").apply {
             +"hello"
         }
         assertThat(printer.print(tag)).isEqualTo("<div>hello</div>")
@@ -38,7 +38,7 @@ class BasicInternalTagTest {
 
     @Test
     fun `nested texts with encoding`() {
-        val tag = BasicInternalTag("div").apply {
+        val tag = InternalTagDelegate("div").apply {
             -"&"
         }
         assertThat(printer.print(tag)).isEqualTo("<div>%26</div>")

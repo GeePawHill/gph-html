@@ -14,7 +14,7 @@ class BasicHtmlPage(
     HtmlPage, ContainerTag by delegate {
 
     override fun body(details: InternalTag.() -> Unit) {
-        val body = BasicInternalTag("body", stylesheet = stylesheet)
+        val body = InternalTagDelegate("body", stylesheet = stylesheet)
         body.details()
         elements.add(body)
     }

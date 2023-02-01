@@ -1,12 +1,14 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.map.BasicOrderedMap
 import org.geepawhill.html.map.OrderedMap
+import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.HtmlVisitor
 
-class BasicAttributeOnlyTag(override val tag: String, override val attributes: OrderedMap = BasicOrderedMap()) :
-    AttributeOnlyTag {
+class AttributeOnlyTagDelegate(
+    override val tag: String,
+    override val attributes: OrderedMap = OrderedMapDelegate()
+) : AttributeOnlyTag {
 
     override fun accept(visitor: HtmlVisitor) {
         visitor.visit(this)

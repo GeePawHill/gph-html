@@ -10,14 +10,14 @@ class BasicPrettyPrinterTest {
 
     @Test
     fun `prints AttributeOnlyTag`() {
-        val tag = BasicAttributeOnlyTag("tag")
+        val tag = AttributeOnlyTagDelegate("tag")
         tag.accept(printer)
         assertThat(printer.toString()).isEqualTo("\n<tag>")
     }
 
     @Test
     fun `prints AttributeOnlyTagWithAttributes`() {
-        val tag = BasicAttributeOnlyTag("tag")
+        val tag = AttributeOnlyTagDelegate("tag")
         tag.attributes["hey"] = "there"
         tag.accept(printer)
         assertThat(printer.toString()).isEqualTo("\n<tag hey=\"there\">")
@@ -26,7 +26,7 @@ class BasicPrettyPrinterTest {
     @Test
     fun `prints ContainerTag`() {
         val tag = BasicContainerTag("parent").apply {
-            +BasicAttributeOnlyTag("child")
+            +AttributeOnlyTagDelegate("child")
         }
         tag.accept(printer)
         val expected = "\n" + """

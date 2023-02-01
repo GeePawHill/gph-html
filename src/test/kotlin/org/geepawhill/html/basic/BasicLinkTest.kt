@@ -27,7 +27,7 @@ class BasicLinkTest {
 
     @Test
     fun `DSL function same arguments as constructor`() {
-        val container = BasicInternalTag("div").apply {
+        val container = InternalTagDelegate("div").apply {
             a("class", "href", "target")
         }
         val expected = """<div><a class="class" href="href" target="target"></a></div>"""
@@ -46,7 +46,7 @@ class BasicLinkTest {
     @Test
     fun `Adding tag using plus works`() {
         val link = BasicLink().apply {
-            +BasicInternalTag("div")
+            +InternalTagDelegate("div")
         }
         val expected = """<a><div></div></a>"""
         assertThat(printer.print(link)).isEqualTo(expected)

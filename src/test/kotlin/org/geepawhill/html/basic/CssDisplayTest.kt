@@ -3,13 +3,13 @@ package org.geepawhill.html.basic
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.css.CssDisplay
 import org.geepawhill.html.css.CssSelector
-import org.geepawhill.html.map.BasicOrderedMap
+import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
 class TestingDisplay : CssSelector by BasicCssSelector("*")
 
 class CssDisplayTest {
-    val map = BasicOrderedMap()
+    val map = OrderedMapDelegate()
     val display = CssDisplay(map)
 
     @Test

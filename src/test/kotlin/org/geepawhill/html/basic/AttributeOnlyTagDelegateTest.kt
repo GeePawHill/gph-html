@@ -1,20 +1,19 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.map.BasicOrderedMap
-import org.geepawhill.html.map.MappedField
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
+import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
-class BasicAttributeOnlyTagTest {
+class AttributeOnlyTagDelegateTest {
 
     class TestingTag(
         href: String = NO_VALUE,
-        val attributes: OrderedMap = BasicOrderedMap()
+        val attributes: OrderedMap = OrderedMapDelegate()
     ) :
         OrderedMap by attributes {
-        var href: String by MappedField("href", attributes)
+        var href: String by attributes.field("href")
 
         init {
             this.href = href

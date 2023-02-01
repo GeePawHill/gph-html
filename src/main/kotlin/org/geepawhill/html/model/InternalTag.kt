@@ -1,6 +1,6 @@
 package org.geepawhill.html.model
 
-import org.geepawhill.html.basic.BasicInternalTag
+import org.geepawhill.html.basic.InternalTagDelegate
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 
 typealias Details = InternalTag.() -> Unit
@@ -69,12 +69,12 @@ interface InternalTag : ContainerTag {
     fun ul(
         classes: String = NO_VALUE,
         details: Details = NO_DETAILS
-    ): BasicInternalTag
+    ): InternalTagDelegate
 
     fun li(
         classes: String = NO_VALUE,
         details: Details = NO_DETAILS
-    ): BasicInternalTag
+    ): InternalTagDelegate
 
     fun nav(classes: String = NO_VALUE, details: Details = NO_DETAILS)
 

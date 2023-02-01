@@ -1,7 +1,7 @@
 package org.geepawhill.html.builder
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.basic.BasicAttributeOnlyTag
+import org.geepawhill.html.basic.AttributeOnlyTagDelegate
 import org.geepawhill.html.basic.BasicContainerTag
 import org.geepawhill.html.basic.BasicCssSelector
 import org.junit.jupiter.api.Test
@@ -11,7 +11,7 @@ class FlatPrinterTest {
 
     @Test
     fun `prints AttributeOnlyTag`() {
-        val tag = BasicAttributeOnlyTag("tag").apply {
+        val tag = AttributeOnlyTagDelegate("tag").apply {
             attributes["attribute"] = "value"
         }
         assertThat(printer.print(tag)).isEqualTo("<tag attribute=\"value\">")

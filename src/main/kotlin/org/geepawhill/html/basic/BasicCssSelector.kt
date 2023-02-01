@@ -7,7 +7,7 @@ import org.geepawhill.html.model.HtmlVisitor
 
 class BasicCssSelector(
     val rule: String,
-    private val maker: AttributeOnlyTag = BasicAttributeOnlyTag(rule)
+    private val maker: AttributeOnlyTag = AttributeOnlyTagDelegate(rule)
 ) : CssSelector, AttributeOnlyTag by maker {
 
     override val display = CssDisplay(maker.attributes)

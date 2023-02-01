@@ -8,7 +8,7 @@ import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 
 @Suppress("TooManyFunctions")
-class BasicInternalTag(
+class InternalTagDelegate(
     tag: String,
     classes: String = NO_VALUE,
     stylesheet: CssStylesheet = BasicCssStylesheet(),
@@ -82,8 +82,8 @@ class BasicInternalTag(
     override fun ul(
         classes: String,
         details: InternalTag.() -> Unit
-    ): BasicInternalTag {
-        val tag = BasicInternalTag("ul", classes)
+    ): InternalTagDelegate {
+        val tag = InternalTagDelegate("ul", classes)
         tag.details()
         elements.add(tag)
         return tag
@@ -92,15 +92,15 @@ class BasicInternalTag(
     override fun li(
         classes: String,
         details: InternalTag.() -> Unit
-    ): BasicInternalTag {
-        val tag = BasicInternalTag("li", classes)
+    ): InternalTagDelegate {
+        val tag = InternalTagDelegate("li", classes)
         tag.details()
         elements.add(tag)
         return tag
     }
 
     private fun runAndAdd(tag: String, classes: String = NO_VALUE, details: Details = NO_DETAILS) {
-        val toAdd = BasicInternalTag(tag, classes, delegate.stylesheet)
+        val toAdd = InternalTagDelegate(tag, classes, delegate.stylesheet)
         toAdd.details()
         elements.add(toAdd)
     }

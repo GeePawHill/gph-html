@@ -11,19 +11,19 @@ class BasicHeadTag(
 ) : HeadTag, ContainerTag by delegate {
 
     override fun title(contents: String) {
-        val tag = BasicInternalTag("title")
+        val tag = InternalTagDelegate("title")
         tag.attributes["contents"] = contents
         elements.add(tag)
     }
 
     override fun meta(details: AttributeOnlyTag.() -> Unit) {
-        val tag = BasicAttributeOnlyTag("meta")
+        val tag = AttributeOnlyTagDelegate("meta")
         tag.details()
         elements.add(tag)
     }
 
     override fun link(href: String, rel: String, details: AttributeOnlyTag.() -> Unit) {
-        val tag = BasicAttributeOnlyTag("link")
+        val tag = AttributeOnlyTagDelegate("link")
         tag.attributes["href"] = href
         tag.attributes["rel"] = rel
         tag.details()
@@ -31,7 +31,7 @@ class BasicHeadTag(
     }
 
     override fun script(details: AttributeOnlyTag.() -> Unit) {
-        val tag = BasicInternalTag("script")
+        val tag = InternalTagDelegate("script")
         tag.details()
         elements.add(tag)
     }
