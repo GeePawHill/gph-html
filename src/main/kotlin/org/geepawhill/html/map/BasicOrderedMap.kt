@@ -41,6 +41,15 @@ class BasicOrderedMap :
         }
     }
 
+    inner class Constant(private val key: String, private val constant: String) : MapConstant {
+        override operator fun <RECEIVER> getValue(field: RECEIVER, property: KProperty<*>): String {
+            this@BasicOrderedMap[key] = constant
+            return constant
+        }
+    }
+
+    override fun constant(key: String, constant: String): MapConstant = Constant(key, constant)
+
     override fun field(key: String): MapSetter = Setter(key)
 
     override fun forEach(action: (entry: KeyAndValue) -> Unit) {

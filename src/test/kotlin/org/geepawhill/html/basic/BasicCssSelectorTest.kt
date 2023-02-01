@@ -24,7 +24,7 @@ class BasicCssSelectorTest {
     @Test
     fun `display field works`() {
         selector.apply {
-            display.none()
+            display.none
         }
         assertThat(printer.print(selector)).isEqualTo("*{display: none;}")
     }

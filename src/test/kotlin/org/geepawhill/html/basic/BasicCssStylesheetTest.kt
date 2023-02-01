@@ -14,7 +14,7 @@ class BasicCssStylesheetTest {
         val stylesheet = BasicCssStylesheet()
         stylesheet.apply {
             selector("*") {
-                display.none()
+                display.none
             }
         }
         assertThat(printer.print(stylesheet)).isEqualTo("<stylesheet>*{display: none;}</stylesheet>")

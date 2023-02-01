@@ -7,9 +7,9 @@ import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.InternalTag
 
 class BasicHtmlPage(
-    val maker: BasicContainerTag = BasicContainerTag("html"),
+    val delegate: ContainerTag = BasicContainerTag("html"),
 ) :
-    HtmlPage, ContainerTag by maker {
+    HtmlPage, ContainerTag by delegate {
 
     override fun body(details: InternalTag.() -> Unit) {
         val body = BasicInternalTag("body")

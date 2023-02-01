@@ -21,7 +21,7 @@ class CssDisplayTest {
 
     @Test
     fun `api setting works`() {
-        display.none()
+        display.none
         assertThat(display.value).isEqualTo("none")
         assertThat(map["display"]).isEqualTo("none")
     }
@@ -30,7 +30,7 @@ class CssDisplayTest {
     fun `dsl works`() {
         val thing = TestingDisplay()
         thing.apply {
-            display.inline()
+            display.inline
         }
         assertThat(thing.attributes["display"]).isEqualTo("inline")
     }

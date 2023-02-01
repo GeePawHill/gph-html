@@ -2,99 +2,30 @@ package org.geepawhill.html.css
 
 import org.geepawhill.html.map.OrderedMap
 
-@Suppress("TooManyFunctions", "FunctionNaming")
+@Suppress("TooManyFunctions", "VariableNaming")
 class CssDisplay(val map: OrderedMap) {
     var value: String by map.field("display")
-
-    fun none() {
-        value = "none"
-    }
-
-    fun inline() {
-        value = "inline"
-    }
-
-    fun block() {
-        value = "block"
-    }
-
-    fun contents() {
-        value = "contents"
-    }
-
-    fun flex() {
-        value = "flex"
-    }
-
-    fun grid() {
-        value = "grid"
-    }
-
-    fun inline_block() {
-        value = "inline-block"
-    }
-
-    fun inline_flex() {
-        value = "inline-flex"
-    }
-
-    fun inline_grid() {
-        value = "inline-grid"
-    }
-
-    fun inline_table() {
-        value = "inline-table"
-    }
-
-    fun list_item() {
-        value = "list-item"
-    }
-
-    fun run_in() {
-        value = "run-in"
-    }
-
-    fun table() {
-        value = "table"
-    }
-
-    fun table_caption() {
-        value = "table-caption"
-    }
-
-    fun table_column_group() {
-        value = "table-column-group"
-    }
-
-    fun table_header_group() {
-        value = "table-header-group"
-    }
-
-    fun table_footer_group() {
-        value = "table-footer-group"
-    }
-
-    fun table_row_group() {
-        value = "table-row-group"
-    }
-
-    fun table_cell() {
-        value = "table-cell"
-    }
-
-    fun table_column() {
-        value = "table-column"
-    }
-
-    fun table_row() {
-        value = "table-row"
-    }
-
-    fun initial() {
-        value = "initial"
-    }
-
-    fun inherit() {
-        value = "inherit"
-    }
+    val none: String by map.constant("display", "none")
+    val inline: String by map.constant("display", "inline")
+    val block: String by map.constant("display", "block")
+    val contents: String by map.constant("display", "contents")
+    val flex: String by map.constant("display", "flex")
+    val grid: String by map.constant("display", "grid")
+    val inline_block by map.constant("display", "inline-block")
+    val inline_flex by map.constant("display", "inline-flex")
+    val inline_grid by map.constant("display", "inline-grid")
+    val inline_table by map.constant("display", "inline-table")
+    val list_item by map.constant("display", "list-item")
+    val run_in by map.constant("display", "run-in")
+    val table by map.constant("display", "table")
+    val table_caption by map.constant("display", "table-caption")
+    val table_column_group by map.constant("display", "table-column-group")
+    val table_header_group by map.constant("display", "table-header-group")
+    val table_footer_group by map.constant("display", "table-footer-group")
+    val table_row_group by map.constant("display", "table-row-group")
+    val table_cell by map.constant("display", "table-cell")
+    val table_column by map.constant("display", "table-column")
+    val table_row by map.constant("display", "table-row")
+    val initial by map.constant("display", "initial")
+    val inherit by map.constant("display", "inherit")
 }

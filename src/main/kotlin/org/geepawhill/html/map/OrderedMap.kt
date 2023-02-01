@@ -24,6 +24,7 @@ interface OrderedMap {
      * Supplies a property delegate to store & retrieve a string from the given key
      */
     fun field(key: String): MapSetter
+    fun constant(key: String, constant: String): MapConstant
 
     companion object {
         /**

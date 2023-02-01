@@ -11,7 +11,7 @@ class Sketchbook {
             head {
                 stylesheet {
                     selector(".stinky") {
-                        display.block()
+                        display.block
                     }
                 }
             }
