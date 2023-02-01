@@ -29,6 +29,7 @@ class DisplayDeclarationTest {
     @Test
     fun `dsl works`() {
         val thing = TestingDisplay()
+        thing.attributes["display"] = "anything"
         thing.apply {
             display.inline
         }

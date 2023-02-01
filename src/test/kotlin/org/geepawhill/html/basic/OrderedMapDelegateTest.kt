@@ -10,41 +10,49 @@ class OrderedMapDelegateTest {
     @Test
     fun `basic add works`() {
         map["something"] = "other"
-        assertThat(map.toString()).isEqualTo(" something=\"other\"")
+        assertThat(map["something"]).isEqualTo("other")
     }
 
     @Test
     fun `multiple adds works`() {
         map["first"] = "firstValue"
         map["second"] = "secondValue"
-        assertThat(map.toString()).isEqualTo(" first=\"firstValue\" second=\"secondValue\"")
+        val keys = mutableListOf<String>()
+        map.forEach { entry -> keys.add(entry.key) }
+        assertThat(keys).containsExactly("first", "second")
     }
 
     @Test
     fun `add order is significant`() {
         map["second"] = "secondValue"
         map["first"] = "firstValue"
-        assertThat(map.toString()).isEqualTo(" second=\"secondValue\" first=\"firstValue\"")
+        val keys = mutableListOf<String>()
+        map.forEach { entry -> keys.add(entry.key) }
+        assertThat(keys).containsExactly("second", "first")
     }
 
     @Test
     fun `add duplicates replaced`() {
         map["second"] = "secondValue"
         map["second"] = "changed my mind"
-        assertThat(map.toString()).isEqualTo(" second=\"changed my mind\"")
+        assertThat(map["second"]).isEqualTo("changed my mind")
     }
 
     @Test
-    fun `mapvar adds to map`() {
-        var access: String by map.field("something")
-        access = "meaning"
-        assertThat(map["something"]).isEqualTo("meaning")
-    }
-
-    @Test
-    fun `classes becomes class on toString`() {
+    fun `key determines map index`() {
         var classes: String by map.field("class")
         classes = "other"
-        assertThat(map.toString()).isEqualTo(" class=\"other\"")
+        assertThat(map["class"]).isEqualTo("other")
+    }
+
+    @Suppress("UNUSED_EXPRESSION")
+    @Test
+    fun `constants work on access`() {
+        var field: String by map.field("field")
+        val constant: String by map.constant("field", "constant")
+        field = "assigned"
+        assertThat(map["field"]).isEqualTo("assigned")
+        constant
+        assertThat(map["field"]).isEqualTo("constant")
     }
 }
