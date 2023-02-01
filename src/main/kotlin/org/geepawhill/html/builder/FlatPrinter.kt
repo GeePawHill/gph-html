@@ -20,9 +20,9 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
     }
 
     override fun visit(selector: Selector) {
-        appendable.append("${selector.tag}{")
-        selector.attributes.forEach { attribute ->
-            appendable.append("${attribute.key}: ${attribute.value};")
+        appendable.append("${selector.rule}{")
+        selector.declarations.forEach { declaration ->
+            appendable.append("${declaration.key}: ${declaration.value};")
         }
         appendable.append("}")
     }

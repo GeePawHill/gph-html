@@ -20,7 +20,7 @@ class FlatPrinterTest {
     @Test
     fun `prints CssSelector`() {
         val tag = SelectorDelegate("*").apply {
-            attributes["attribute"] = "value"
+            declarations["attribute"] = "value"
         }
         assertThat(printer.print(tag)).isEqualTo("*{attribute: value;}")
     }

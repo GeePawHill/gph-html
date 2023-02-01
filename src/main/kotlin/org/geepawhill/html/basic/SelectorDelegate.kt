@@ -2,15 +2,16 @@ package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.model.AttributeOnlyTag
+import org.geepawhill.html.map.OrderedMap
+import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.HtmlVisitor
 
 class SelectorDelegate(
-    val rule: String,
-    private val maker: AttributeOnlyTag = AttributeOnlyTagDelegate(rule)
-) : Selector, AttributeOnlyTag by maker {
+    override val rule: String,
+) : Selector {
 
-    override val display = DisplayDeclaration(maker.attributes)
+    override val declarations: OrderedMap = OrderedMapDelegate()
+    override val display = DisplayDeclaration(declarations)
 
     override fun accept(visitor: HtmlVisitor) {
         visitor.visit(this)

@@ -29,10 +29,10 @@ class DisplayDeclarationTest {
     @Test
     fun `dsl works`() {
         val thing = TestingDisplay()
-        thing.attributes["display"] = "anything"
+        thing.declarations["display"] = "anything"
         thing.apply {
             display.inline
         }
-        assertThat(thing.attributes["display"]).isEqualTo("inline")
+        assertThat(thing.declarations["display"]).isEqualTo("inline")
     }
 }

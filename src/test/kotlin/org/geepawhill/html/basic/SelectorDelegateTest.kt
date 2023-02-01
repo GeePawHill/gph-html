@@ -16,7 +16,7 @@ class SelectorDelegateTest {
     @Test
     fun `direct set works`() {
         selector.apply {
-            attributes["width"] = "10px"
+            declarations["width"] = "10px"
         }
         assertThat(printer.print(selector)).isEqualTo("*{width: 10px;}")
     }

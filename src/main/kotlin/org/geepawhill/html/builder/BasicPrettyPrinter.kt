@@ -26,10 +26,10 @@ class BasicPrettyPrinter(
 
     override fun visit(selector: Selector) {
         newline()
-        append(selector.tag)
+        append(selector.rule)
         append(" { ")
         depth += 1
-        selector.attributes.forEach { css ->
+        selector.declarations.forEach { css ->
             newline()
             append("${css.key}: ${css.value};")
         }
