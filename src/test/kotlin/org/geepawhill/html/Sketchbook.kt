@@ -10,13 +10,21 @@ class Sketchbook {
         val page = BasicHtmlPage.page {
             head {
                 stylesheet {
-                    selector(".stinky") {
+                    selector("*") {
                         display.block
                     }
                 }
             }
             body {
                 div("stinky") {
+                    selector(".stinky") {
+                        display.block
+                    }
+                    nav("silly") {
+                        selector(".silly") {
+                            attributes["width"] = "100px"
+                        }
+                    }
                 }
             }
         }

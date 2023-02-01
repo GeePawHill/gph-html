@@ -1,5 +1,6 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.css.CssStylesheet
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 import org.geepawhill.html.model.HtmlPage
@@ -7,18 +8,19 @@ import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.InternalTag
 
 class BasicHtmlPage(
-    val delegate: ContainerTag = BasicContainerTag("html"),
+    override val stylesheet: CssStylesheet = BasicCssStylesheet(),
+    val delegate: ContainerTag = BasicContainerTag("html", stylesheet),
 ) :
     HtmlPage, ContainerTag by delegate {
 
     override fun body(details: InternalTag.() -> Unit) {
-        val body = BasicInternalTag("body")
+        val body = BasicInternalTag("body", stylesheet = stylesheet)
         body.details()
         elements.add(body)
     }
 
     override fun head(details: HeadTag.() -> Unit) {
-        val head = BasicHeadTag()
+        val head = BasicHeadTag(stylesheet)
         head.details()
         elements.add(head)
     }

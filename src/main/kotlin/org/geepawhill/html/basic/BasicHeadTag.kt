@@ -5,7 +5,11 @@ import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 
-class BasicHeadTag(maker: BasicContainerTag = BasicContainerTag("head")) : HeadTag, ContainerTag by maker {
+class BasicHeadTag(
+    stylesheet: CssStylesheet = BasicCssStylesheet(),
+    private val delegate: BasicContainerTag = BasicContainerTag("head", stylesheet)
+) : HeadTag, ContainerTag by delegate {
+
     override fun title(contents: String) {
         val tag = BasicInternalTag("title")
         tag.attributes["contents"] = contents
@@ -33,8 +37,7 @@ class BasicHeadTag(maker: BasicContainerTag = BasicContainerTag("head")) : HeadT
     }
 
     override fun stylesheet(details: CssStylesheet.() -> Unit) {
-        val stylesheet = BasicCssStylesheet()
-        stylesheet.details()
-        elements.add(stylesheet)
+        delegate.stylesheet.details()
+        elements.add(delegate.stylesheet)
     }
 }
