@@ -2,6 +2,8 @@ package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.css.DisplayDeclaration
+import org.geepawhill.html.css.DisplayEnum.inline
+import org.geepawhill.html.css.DisplayEnum.none
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
@@ -21,7 +23,7 @@ class DisplayDeclarationTest {
 
     @Test
     fun `api setting works`() {
-        display.none
+        display += none
         assertThat(display.value).isEqualTo("none")
         assertThat(map["display"]).isEqualTo("none")
     }
@@ -31,7 +33,7 @@ class DisplayDeclarationTest {
         val thing = TestingDisplay()
         thing.declarations["display"] = "anything"
         thing.apply {
-            display.inline
+            display += inline
         }
         assertThat(thing.declarations["display"]).isEqualTo("inline")
     }

@@ -2,6 +2,7 @@ package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.builder.FlatPrinter
+import org.geepawhill.html.css.DisplayEnum.none
 import org.junit.jupiter.api.Test
 
 class SelectorDelegateTest {
@@ -24,7 +25,7 @@ class SelectorDelegateTest {
     @Test
     fun `display field works`() {
         selector.apply {
-            display.none
+            display += none
         }
         assertThat(printer.print(selector)).isEqualTo("*{display: none;}")
     }

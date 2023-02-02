@@ -42,11 +42,11 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
     }
 
     override fun visit(stylesheet: Stylesheet) {
-        appendable.append("<stylesheet>")
+        appendable.append("<style>")
         stylesheet.selectors.forEach { selector ->
             selector.accept(this)
         }
-        appendable.append("</stylesheet>")
+        appendable.append("</style>")
     }
 
     override fun visit(page: HtmlPage) {

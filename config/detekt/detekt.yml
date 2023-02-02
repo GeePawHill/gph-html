@@ -316,7 +316,7 @@ naming:
     excludeClassPattern: '$^'
     ignoreOverridden: true
   EnumNaming:
-    active: true
+    active: false
     enumEntryPattern: '[A-Z][_a-zA-Z0-9]*'
   ForbiddenClassName:
     active: false
@@ -721,6 +721,7 @@ style:
     active: true
     excludeImports:
       - 'java.util.*'
+      - 'org.geepawhill.html.css'
 
 formatting:
   active: true
@@ -754,7 +755,7 @@ formatting:
     active: false
     autoCorrect: true
   EnumEntryNameCase:
-    active: true
+    active: false
     autoCorrect: true
   Filename:
     active: true
@@ -843,7 +844,7 @@ formatting:
     active: true
     autoCorrect: true
   NoWildcardImports:
-    active: true
+    active: false
     packagesToUseImportOnDemandProperty: 'java.util.*,kotlinx.android.synthetic.**'
   NullableTypeSpacing:
     active: false

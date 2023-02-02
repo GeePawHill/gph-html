@@ -58,14 +58,14 @@ class BasicPrettyPrinter(
 
     override fun visit(stylesheet: Stylesheet) {
         newline()
-        appendable.append("<stylesheet>")
+        appendable.append("<style>")
         depth += 1
         stylesheet.selectors.forEach { selector ->
             selector.accept(this)
         }
         depth -= 1
         newline()
-        appendable.append("</stylesheet>")
+        appendable.append("</style>")
     }
 
     override fun visit(page: HtmlPage) {

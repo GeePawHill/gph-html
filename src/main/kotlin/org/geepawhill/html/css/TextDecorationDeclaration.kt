@@ -2,15 +2,14 @@ package org.geepawhill.html.css
 
 import org.geepawhill.html.map.OrderedMap
 
-@Suppress("VariableNaming")
-class DisplayDeclaration(val map: OrderedMap) {
-    var value: String by map.field("display")
+class TextDecorationDeclaration(val map: OrderedMap) {
+    var value: String by map.field("text-decoration")
 
     operator fun plusAssign(new: String) {
         value = new
     }
 
-    operator fun plusAssign(new: DisplayEnum) {
+    operator fun plusAssign(new: TextDecorationEnum) {
         value = new.value
     }
 }

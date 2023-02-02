@@ -3,6 +3,7 @@ package org.geepawhill.html.basic
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.builder.BasicPrettyPrinter
 import org.geepawhill.html.builder.FlatPrinter
+import org.geepawhill.html.css.DisplayEnum.none
 import org.junit.jupiter.api.Test
 
 class BasicStylesheetTest {
@@ -14,10 +15,10 @@ class BasicStylesheetTest {
         val stylesheet = StylesheetDelegate()
         stylesheet.apply {
             selector("*") {
-                display.none
+                display += none
             }
         }
-        assertThat(printer.print(stylesheet)).isEqualTo("<stylesheet>*{display: none;}</stylesheet>")
+        assertThat(printer.print(stylesheet)).isEqualTo("<style>*{display: none;}</style>")
         println(BasicPrettyPrinter().print(stylesheet))
     }
 }
