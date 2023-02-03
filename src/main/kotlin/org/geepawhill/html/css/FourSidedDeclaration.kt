@@ -4,6 +4,7 @@ import org.geepawhill.html.map.OrderedMap
 
 class FourSidedDeclaration(key: String, map: OrderedMap) {
     var value by map.field(key)
+    val zero by map.constant(key, "0")
     var top by map.field("$key-top")
     var bottom by map.field("$key-bottom")
     var left by map.field("$key-left")
