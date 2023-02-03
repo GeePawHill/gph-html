@@ -1,10 +1,10 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.Stylesheet
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.HtmlVisitor
 
-class StylesheetDelegate : Stylesheet {
+class StylesDelegate : Styles {
     override val selectors = mutableListOf<Selector>()
 
     override fun selector(selector: String, details: Selector.() -> Unit) {

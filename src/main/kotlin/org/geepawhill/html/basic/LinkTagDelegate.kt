@@ -1,16 +1,16 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.Stylesheet
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.LinkTag
 
 class LinkTagDelegate(
     classes: String = NO_VALUE,
-    stylesheet: Stylesheet = StylesheetDelegate(),
+    styles: Styles = StylesDelegate(),
     href: String = NO_VALUE,
     target: String = NO_VALUE,
-    private val delegate: InternalTag = InternalTagDelegate("a", classes, stylesheet),
+    private val delegate: InternalTag = InternalTagDelegate("a", classes, styles),
     details: LinkTagDelegate.() -> Unit = {}
 ) : LinkTag,
     InternalTag by delegate {

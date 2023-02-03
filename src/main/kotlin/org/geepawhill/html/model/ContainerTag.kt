@@ -1,11 +1,11 @@
 package org.geepawhill.html.model
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.Stylesheet
+import org.geepawhill.html.css.Styles
 
 interface ContainerTag : AttributeOnlyTag {
     val elements: MutableList<Element>
-    val stylesheet: Stylesheet
+    val styles: Styles
     operator fun Element.unaryPlus()
     operator fun String.unaryPlus()
     operator fun String.unaryMinus()

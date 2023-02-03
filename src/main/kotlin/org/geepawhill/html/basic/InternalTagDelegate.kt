@@ -1,6 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.Stylesheet
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Details
@@ -11,8 +11,8 @@ import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 class InternalTagDelegate(
     tag: String,
     classes: String = NO_VALUE,
-    stylesheet: Stylesheet = StylesheetDelegate(),
-    private val delegate: ContainerTagDelegate = ContainerTagDelegate(tag, stylesheet)
+    styles: Styles = StylesDelegate(),
+    private val delegate: ContainerTagDelegate = ContainerTagDelegate(tag, styles)
 ) :
     InternalTag, ContainerTag by delegate {
 
@@ -76,7 +76,7 @@ class InternalTagDelegate(
         target: String,
         details: Details
     ) {
-        elements.add(LinkTagDelegate(classes, stylesheet, href, target).apply(details))
+        elements.add(LinkTagDelegate(classes, styles, href, target).apply(details))
     }
 
     override fun ul(
@@ -100,7 +100,7 @@ class InternalTagDelegate(
     }
 
     private fun runAndAdd(tag: String, classes: String = NO_VALUE, details: Details = NO_DETAILS) {
-        val toAdd = InternalTagDelegate(tag, classes, delegate.stylesheet)
+        val toAdd = InternalTagDelegate(tag, classes, delegate.styles)
         toAdd.details()
         elements.add(toAdd)
     }

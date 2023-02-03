@@ -1,7 +1,7 @@
 package org.geepawhill.html.builder
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.Stylesheet
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
@@ -41,9 +41,9 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
         appendable.append("</${tag.tag}>")
     }
 
-    override fun visit(stylesheet: Stylesheet) {
+    override fun visit(styles: Styles) {
         appendable.append("<style>")
-        stylesheet.selectors.forEach { selector ->
+        styles.selectors.forEach { selector ->
             selector.accept(this)
         }
         appendable.append("</style>")

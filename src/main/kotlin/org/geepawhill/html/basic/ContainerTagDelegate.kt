@@ -1,7 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.Stylesheet
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
@@ -11,7 +11,7 @@ import org.geepawhill.html.model.TextElement
 
 class ContainerTagDelegate(
     tag: String,
-    override val stylesheet: Stylesheet = StylesheetDelegate(),
+    override val styles: Styles = StylesDelegate(),
     private val delegate: AttributeOnlyTagDelegate = AttributeOnlyTagDelegate(tag)
 ) :
     ContainerTag, AttributeOnlyTag by delegate {
@@ -31,7 +31,7 @@ class ContainerTagDelegate(
     }
 
     override fun selector(selector: String, details: Selector.() -> Unit) {
-        stylesheet.selector(selector, details)
+        styles.selector(selector, details)
     }
 
     override fun accept(visitor: HtmlVisitor) {

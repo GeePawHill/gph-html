@@ -6,13 +6,13 @@ import org.geepawhill.html.builder.FlatPrinter
 import org.geepawhill.html.css.DisplayEnum.none
 import org.junit.jupiter.api.Test
 
-class BasicStylesheetTest {
+class StylesDelegateTest {
 
     val printer = FlatPrinter()
 
     @Test
     fun `can add selector`() {
-        val stylesheet = StylesheetDelegate()
+        val stylesheet = StylesDelegate()
         stylesheet.apply {
             selector("*") {
                 display += none
