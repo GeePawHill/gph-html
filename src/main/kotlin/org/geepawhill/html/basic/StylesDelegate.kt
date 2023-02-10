@@ -9,7 +9,7 @@ class StylesDelegate : Styles {
     override val selectors = mutableListOf<CssElement>()
 
     override fun selector(selector: String, details: Selector.() -> Unit) {
-        val new = SelectorDelegate(selector)
+        val new = SelectorDelegate(this, selector)
         new.details()
         selectors.add(new)
     }

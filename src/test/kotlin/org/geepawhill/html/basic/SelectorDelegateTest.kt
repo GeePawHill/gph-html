@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test
 
 class SelectorDelegateTest {
     val printer = FlatPrinter()
-    val selector = SelectorDelegate("*")
+    val styles = StylesDelegate()
+    val selector = SelectorDelegate(styles, "*")
 
     @Test
     fun `empty selector works`() {

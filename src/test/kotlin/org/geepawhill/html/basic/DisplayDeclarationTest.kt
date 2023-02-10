@@ -5,10 +5,11 @@ import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.DisplayEnum.inline
 import org.geepawhill.html.css.DisplayEnum.none
 import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
-class TestingDisplay : Selector by SelectorDelegate("*")
+class TestingDisplay(styles: Styles) : Selector by SelectorDelegate(styles, "*")
 
 class DisplayDeclarationTest {
     val map = OrderedMapDelegate()
@@ -30,7 +31,8 @@ class DisplayDeclarationTest {
 
     @Test
     fun `dsl works`() {
-        val thing = TestingDisplay()
+        val styles = StylesDelegate()
+        val thing = TestingDisplay(styles)
         thing.declarations["display"] = "anything"
         thing.apply {
             display += inline

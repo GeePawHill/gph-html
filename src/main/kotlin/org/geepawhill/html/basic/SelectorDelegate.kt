@@ -4,12 +4,14 @@ import org.geepawhill.html.css.BoxSizingDeclaration
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.FourSidedDeclaration
 import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.css.TextDecorationDeclaration
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.HtmlVisitor
 
 class SelectorDelegate(
+    val styles: Styles,
     override val rule: String,
 ) : Selector {
 
