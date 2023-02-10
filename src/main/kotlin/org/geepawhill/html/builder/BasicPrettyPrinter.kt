@@ -1,5 +1,6 @@
 package org.geepawhill.html.builder
 
+import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
@@ -37,6 +38,8 @@ class BasicPrettyPrinter(
         newline()
         append("}")
     }
+
+    override fun visit(mediaQuery: MediaQuery) = Unit
 
     override fun visit(tag: ContainerTag) {
         visit(tag as AttributeOnlyTag)

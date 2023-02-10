@@ -1,6 +1,7 @@
 package org.geepawhill.html.builder
 
 import org.geepawhill.html.css.CssElement
+import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
@@ -32,6 +33,8 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
         }
         appendable.append("}")
     }
+
+    override fun visit(mediaQuery: MediaQuery) = Unit
 
     override fun visit(tag: AttributeOnlyTag) {
         appendable.append("<${tag.tag}")
