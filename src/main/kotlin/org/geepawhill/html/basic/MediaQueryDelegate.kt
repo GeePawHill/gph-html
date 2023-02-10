@@ -9,7 +9,7 @@ class MediaQueryDelegate(
     override val rule: String,
     override val selector: String,
 ) : MediaQuery {
-    
+
     override val declarations: OrderedMap = OrderedMapDelegate()
 
     override fun accept(visitor: HtmlVisitor) {
