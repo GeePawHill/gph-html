@@ -1,33 +1,42 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.builder.FlatPrinter
+import org.geepawhill.html.css.DisplayDeclaration
+import org.geepawhill.html.css.DisplayEnum.inline
 import org.geepawhill.html.css.DisplayEnum.none
+import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.Styles
+import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
+class TestingDisplay(styles: Styles) : Selector by SelectorDelegate(styles, "*")
+
 class SelectorDelegateTest {
-    val printer = FlatPrinter()
-    val styles = StylesDelegate()
-    val selector = SelectorDelegate(styles, "*")
+    val map = OrderedMapDelegate()
+    val display = DisplayDeclaration(map)
 
     @Test
-    fun `empty selector works`() {
-        assertThat(printer.print(selector)).isEqualTo("*{}")
+    fun `direct setting works`() {
+        display.value = "none"
+        assertThat(display.value).isEqualTo("none")
+        assertThat(map["display"]).isEqualTo("none")
     }
 
     @Test
-    fun `direct set works`() {
-        selector.apply {
-            declarations["width"] = "10px"
-        }
-        assertThat(printer.print(selector)).isEqualTo("*{width: 10px;}")
+    fun `api setting works`() {
+        display += none
+        assertThat(display.value).isEqualTo("none")
+        assertThat(map["display"]).isEqualTo("none")
     }
 
     @Test
-    fun `display field works`() {
-        selector.apply {
-            display += none
+    fun `dsl works`() {
+        val styles = StylesDelegate()
+        val thing = TestingDisplay(styles)
+        thing.declarations["display"] = "anything"
+        thing.apply {
+            display += inline
         }
-        assertThat(printer.print(selector)).isEqualTo("*{display: none;}")
+        assertThat(thing.declarations["display"]).isEqualTo("inline")
     }
 }

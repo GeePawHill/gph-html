@@ -8,8 +8,8 @@ import org.geepawhill.html.model.HtmlVisitor
 class StylesDelegate : Styles {
     override val selectors = mutableListOf<CssElement>()
 
-    override fun selector(selector: String, details: Selector.() -> Unit) {
-        val new = SelectorDelegate(this, selector)
+    override fun selector(rule: String, details: Selector.() -> Unit) {
+        val new = SelectorDelegate(this, rule)
         new.details()
         selectors.add(new)
     }

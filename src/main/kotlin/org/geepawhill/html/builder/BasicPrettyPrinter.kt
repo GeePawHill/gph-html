@@ -1,5 +1,6 @@
 package org.geepawhill.html.builder
 
+import org.geepawhill.html.css.Declarations
 import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
@@ -9,6 +10,7 @@ import org.geepawhill.html.model.Element
 import org.geepawhill.html.model.HtmlPage
 import org.geepawhill.html.model.HtmlVisitor
 
+@Suppress("TooManyFunctions")
 class BasicPrettyPrinter(
     val appendable: Appendable = StringBuilder(),
     val indentString: String = DEFAULT_INDENT
@@ -40,6 +42,7 @@ class BasicPrettyPrinter(
     }
 
     override fun visit(mediaQuery: MediaQuery) = Unit
+    override fun visit(declarations: Declarations) = Unit
 
     override fun visit(tag: ContainerTag) {
         visit(tag as AttributeOnlyTag)
