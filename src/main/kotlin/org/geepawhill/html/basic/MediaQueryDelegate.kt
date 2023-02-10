@@ -1,16 +1,18 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.css.Declarations
 import org.geepawhill.html.css.MediaQuery
-import org.geepawhill.html.map.OrderedMap
-import org.geepawhill.html.map.OrderedMapDelegate
+import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.HtmlVisitor
 
 class MediaQueryDelegate(
-    override val rule: String,
-    override val selector: String,
-) : MediaQuery {
+    styles: Styles,
+    override val query: String,
+    rule: String,
+    val delegate: Declarations = DeclarationsDelegate(styles, rule)
 
-    override val declarations: OrderedMap = OrderedMapDelegate()
+) : MediaQuery,
+    Declarations by delegate {
 
     override fun accept(visitor: HtmlVisitor) {
         visitor.visit(this)

@@ -35,7 +35,14 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
         appendable.append("}")
     }
 
-    override fun visit(mediaQuery: MediaQuery) = Unit
+    override fun visit(mediaQuery: MediaQuery) {
+        appendable.append("@media ${mediaQuery.query}")
+        appendable.append(" {")
+        mediaQuery.declarations.forEach { declaration ->
+            appendable.append("${declaration.key}: ${declaration.value};")
+        }
+        appendable.append("}")
+    }
 
     override fun visit(declarations: Declarations) {
         appendable.append("${declarations.rule}{")
