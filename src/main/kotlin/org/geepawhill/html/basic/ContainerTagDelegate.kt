@@ -12,7 +12,7 @@ import org.geepawhill.html.model.TextElement
 class ContainerTagDelegate(
     tag: String,
     override val styles: Styles,
-    private val delegate: AttributeOnlyTagDelegate = AttributeOnlyTagDelegate(tag)
+    private val delegate: AttributeOnlyTag = AttributeOnlyTagDelegate(tag)
 ) :
     ContainerTag, AttributeOnlyTag by delegate {
 

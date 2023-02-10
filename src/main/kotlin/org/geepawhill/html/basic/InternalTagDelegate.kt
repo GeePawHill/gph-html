@@ -12,7 +12,7 @@ class InternalTagDelegate(
     styles: Styles,
     tag: String,
     classes: String = NO_VALUE,
-    private val delegate: ContainerTagDelegate = ContainerTagDelegate(tag, styles)
+    private val delegate: ContainerTag = ContainerTagDelegate(tag, styles)
 ) :
     InternalTag, ContainerTag by delegate {
 

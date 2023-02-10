@@ -7,7 +7,7 @@ import org.geepawhill.html.model.HeadTag
 
 class HeadTagDelegate(
     styles: Styles,
-    private val delegate: ContainerTagDelegate = ContainerTagDelegate("head", styles)
+    private val delegate: ContainerTag = ContainerTagDelegate("head", styles)
 ) : HeadTag, ContainerTag by delegate {
 
     override fun title(contents: String) {
