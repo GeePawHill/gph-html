@@ -4,7 +4,7 @@ import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 
 interface ContainerTag : AttributeOnlyTag {
-    val elements: MutableList<Element>
+    val elements: List<Element>
     val styles: Styles
     operator fun Element.unaryPlus()
     operator fun String.unaryPlus()

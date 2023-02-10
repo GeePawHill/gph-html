@@ -16,13 +16,13 @@ class HtmlPageDelegate(
     override fun body(details: InternalTag.() -> Unit) {
         val body = InternalTagDelegate(styles = styles, "body")
         body.details()
-        elements.add(body)
+        +body
     }
 
     override fun head(details: HeadTag.() -> Unit) {
         val head = HeadTagDelegate(styles)
         head.details()
-        elements.add(head)
+        +head
     }
 
     override fun accept(visitor: HtmlVisitor) {

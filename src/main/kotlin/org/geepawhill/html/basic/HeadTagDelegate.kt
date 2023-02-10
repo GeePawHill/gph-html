@@ -13,13 +13,13 @@ class HeadTagDelegate(
     override fun title(contents: String) {
         val tag = InternalTagDelegate(styles, "title")
         tag.attributes["contents"] = contents
-        elements.add(tag)
+        +tag
     }
 
     override fun meta(details: AttributeOnlyTag.() -> Unit) {
         val tag = AttributeOnlyTagDelegate("meta")
         tag.details()
-        elements.add(tag)
+        +tag
     }
 
     override fun link(href: String, rel: String, details: AttributeOnlyTag.() -> Unit) {
@@ -27,17 +27,17 @@ class HeadTagDelegate(
         tag.attributes["href"] = href
         tag.attributes["rel"] = rel
         tag.details()
-        elements.add(tag)
+        +tag
     }
 
     override fun script(details: AttributeOnlyTag.() -> Unit) {
         val tag = InternalTagDelegate(styles, "script")
         tag.details()
-        elements.add(tag)
+        +tag
     }
 
     override fun stylesheet(details: Styles.() -> Unit) {
-        delegate.styles.details()
-        elements.add(delegate.styles)
+        styles.details()
+        +styles
     }
 }

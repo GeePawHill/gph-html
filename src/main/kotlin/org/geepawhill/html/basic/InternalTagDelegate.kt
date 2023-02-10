@@ -76,32 +76,24 @@ class InternalTagDelegate(
         target: String,
         details: Details
     ) {
-        elements.add(LinkTagDelegate(styles, classes, href, target).apply(details))
+        +LinkTagDelegate(styles, classes, href, target).apply(details)
     }
 
     override fun ul(
         classes: String,
         details: InternalTag.() -> Unit
-    ): InternalTagDelegate {
-        val tag = InternalTagDelegate(styles, "ul", classes)
-        tag.details()
-        elements.add(tag)
-        return tag
+    ) {
+        +InternalTagDelegate(styles, "ul", classes).apply { details() }
     }
 
     override fun li(
         classes: String,
         details: InternalTag.() -> Unit
-    ): InternalTagDelegate {
-        val tag = InternalTagDelegate(styles, "li", classes)
-        tag.details()
-        elements.add(tag)
-        return tag
+    ) {
+        +InternalTagDelegate(styles, "li", classes).apply { details() }
     }
 
     private fun runAndAdd(tag: String, classes: String = NO_VALUE, details: Details = NO_DETAILS) {
-        val toAdd = InternalTagDelegate(styles, tag, classes)
-        toAdd.details()
-        elements.add(toAdd)
+        +InternalTagDelegate(styles, tag, classes).apply { details() }
     }
 }
