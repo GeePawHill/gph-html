@@ -1,3 +1,7 @@
 package org.geepawhill.html.css
 
-interface CssElement
+import org.geepawhill.html.model.HtmlVisitor
+
+interface CssElement {
+    fun accept(visitor: HtmlVisitor)
+}
