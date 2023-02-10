@@ -25,24 +25,3 @@ enum class DisplayEnum(val value: String) {
     initial("initial"),
     inherit("inherit"),
 }
-
-enum class BoxSizingEnum(val value: String) {
-    content_box("content-box"),
-    border_box("border-box"),
-    initial("initial"),
-    inherit("inherit")
-}
-
-enum class TextDecorationEnum(val value: String) {
-    none("none"),
-    overline("overline"),
-    line_through("line-through"),
-    underline("underline"),
-    inherit("inherit"),
-
-    ;
-
-    operator fun plus(other: TextDecorationEnum): String {
-        return this.value + " " + other.value
-    }
-}
