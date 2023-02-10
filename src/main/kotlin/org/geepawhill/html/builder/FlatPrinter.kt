@@ -71,6 +71,9 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
         styles.selectors.forEach { selector ->
             selector.accept(this)
         }
+        styles.queries.forEach { selector ->
+            selector.accept(this)
+        }
         appendable.append("</style>")
     }
 

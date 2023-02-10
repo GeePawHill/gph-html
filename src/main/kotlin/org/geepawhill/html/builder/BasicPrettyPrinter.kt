@@ -41,7 +41,27 @@ class BasicPrettyPrinter(
         append("}")
     }
 
-    override fun visit(mediaQuery: MediaQuery) = Unit
+    override fun visit(mediaQuery: MediaQuery) {
+        newline()
+        appendable.append("@media ${mediaQuery.query}")
+        appendable.append(" {")
+        depth += 1
+        newline()
+        append(mediaQuery.rule)
+        append(" { ")
+        depth += 1
+        mediaQuery.declarations.forEach { declaration ->
+            newline()
+            appendable.append("${declaration.key}: ${declaration.value};")
+        }
+        depth -= 1
+        newline()
+        appendable.append("}")
+        depth -= 1
+        newline()
+        appendable.append("}")
+    }
+
     override fun visit(declarations: Declarations) = Unit
 
     override fun visit(tag: ContainerTag) {
@@ -68,6 +88,9 @@ class BasicPrettyPrinter(
         depth += 1
         styles.selectors.forEach { selector ->
             selector.accept(this)
+        }
+        styles.queries.forEach { query ->
+            query.accept(this)
         }
         depth -= 1
         newline()

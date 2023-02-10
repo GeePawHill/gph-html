@@ -7,12 +7,17 @@ import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.HtmlVisitor
 
 class SelectorDelegate(
-    styles: Styles,
+    val styles: Styles,
     rule: String,
     private val delegate: DeclarationsDelegate = DeclarationsDelegate(styles, rule)
 ) : Selector,
     Declarations by delegate {
-    override fun media(query: String, details: MediaQuery.() -> Unit) = Unit
+
+    override fun media(query: String, details: MediaQuery.() -> Unit) {
+        val new = MediaQueryDelegate(styles, query, rule)
+        new.details()
+        styles.queries.add(new)
+    }
 
     override fun accept(visitor: HtmlVisitor) {
         visitor.visit(this)
