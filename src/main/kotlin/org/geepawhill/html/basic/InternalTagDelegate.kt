@@ -9,9 +9,9 @@ import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 
 @Suppress("TooManyFunctions")
 class InternalTagDelegate(
+    styles: Styles,
     tag: String,
     classes: String = NO_VALUE,
-    styles: Styles = StylesDelegate(),
     private val delegate: ContainerTagDelegate = ContainerTagDelegate(tag, styles)
 ) :
     InternalTag, ContainerTag by delegate {
@@ -76,14 +76,14 @@ class InternalTagDelegate(
         target: String,
         details: Details
     ) {
-        elements.add(LinkTagDelegate(classes, styles, href, target).apply(details))
+        elements.add(LinkTagDelegate(styles, classes, href, target).apply(details))
     }
 
     override fun ul(
         classes: String,
         details: InternalTag.() -> Unit
     ): InternalTagDelegate {
-        val tag = InternalTagDelegate("ul", classes)
+        val tag = InternalTagDelegate(styles, "ul", classes)
         tag.details()
         elements.add(tag)
         return tag
@@ -93,14 +93,14 @@ class InternalTagDelegate(
         classes: String,
         details: InternalTag.() -> Unit
     ): InternalTagDelegate {
-        val tag = InternalTagDelegate("li", classes)
+        val tag = InternalTagDelegate(styles, "li", classes)
         tag.details()
         elements.add(tag)
         return tag
     }
 
     private fun runAndAdd(tag: String, classes: String = NO_VALUE, details: Details = NO_DETAILS) {
-        val toAdd = InternalTagDelegate(tag, classes, delegate.styles)
+        val toAdd = InternalTagDelegate(styles, tag, classes)
         toAdd.details()
         elements.add(toAdd)
     }

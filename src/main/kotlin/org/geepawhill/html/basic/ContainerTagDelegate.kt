@@ -11,7 +11,7 @@ import org.geepawhill.html.model.TextElement
 
 class ContainerTagDelegate(
     tag: String,
-    override val styles: Styles = StylesDelegate(),
+    override val styles: Styles,
     private val delegate: AttributeOnlyTagDelegate = AttributeOnlyTagDelegate(tag)
 ) :
     ContainerTag, AttributeOnlyTag by delegate {

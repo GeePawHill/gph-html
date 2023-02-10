@@ -4,10 +4,12 @@ import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.basic.AttributeOnlyTagDelegate
 import org.geepawhill.html.basic.ContainerTagDelegate
 import org.geepawhill.html.basic.SelectorDelegate
+import org.geepawhill.html.basic.StylesDelegate
 import org.junit.jupiter.api.Test
 
 class FlatPrinterTest {
     val printer = FlatPrinter()
+    val styles = StylesDelegate()
 
     @Test
     fun `prints AttributeOnlyTag`() {
@@ -27,8 +29,8 @@ class FlatPrinterTest {
 
     @Test
     fun `prints ContainerTag`() {
-        val tag = ContainerTagDelegate("div").apply {
-            +ContainerTagDelegate("a")
+        val tag = ContainerTagDelegate("div", styles).apply {
+            +ContainerTagDelegate("a", styles)
         }
         assertThat(printer.print(tag)).isEqualTo("<div><a></a></div>")
     }

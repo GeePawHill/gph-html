@@ -6,12 +6,12 @@ import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 
 class HeadTagDelegate(
-    styles: Styles = StylesDelegate(),
+    styles: Styles,
     private val delegate: ContainerTagDelegate = ContainerTagDelegate("head", styles)
 ) : HeadTag, ContainerTag by delegate {
 
     override fun title(contents: String) {
-        val tag = InternalTagDelegate("title")
+        val tag = InternalTagDelegate(styles, "title")
         tag.attributes["contents"] = contents
         elements.add(tag)
     }
@@ -31,7 +31,7 @@ class HeadTagDelegate(
     }
 
     override fun script(details: AttributeOnlyTag.() -> Unit) {
-        val tag = InternalTagDelegate("script")
+        val tag = InternalTagDelegate(styles, "script")
         tag.details()
         elements.add(tag)
     }

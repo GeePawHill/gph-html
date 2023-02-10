@@ -6,11 +6,11 @@ import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.LinkTag
 
 class LinkTagDelegate(
+    styles: Styles,
     classes: String = NO_VALUE,
-    styles: Styles = StylesDelegate(),
     href: String = NO_VALUE,
     target: String = NO_VALUE,
-    private val delegate: InternalTag = InternalTagDelegate("a", classes, styles),
+    private val delegate: InternalTag = InternalTagDelegate(styles, "a", classes),
     details: LinkTagDelegate.() -> Unit = {}
 ) : LinkTag,
     InternalTag by delegate {

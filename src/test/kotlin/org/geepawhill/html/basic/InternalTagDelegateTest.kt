@@ -7,11 +7,12 @@ import org.junit.jupiter.api.Test
 class InternalTagDelegateTest {
 
     val printer = FlatPrinter()
+    val styles = StylesDelegate()
 
     @Test
     fun `nested tags with construction`() {
-        val tag = InternalTagDelegate("div").apply {
-            +InternalTagDelegate("li")
+        val tag = InternalTagDelegate(styles, "div").apply {
+            +InternalTagDelegate(styles, "li")
         }
         assertThat(tag.elements).hasSize(1)
         assertThat(printer.print(tag)).isEqualTo("<div><li></li></div>")
@@ -19,7 +20,7 @@ class InternalTagDelegateTest {
 
     @Test
     fun `nested tags with dsl`() {
-        val tag = InternalTagDelegate("div").apply {
+        val tag = InternalTagDelegate(styles, "div").apply {
             ul {
                 li { }
                 +"Hello"
@@ -30,7 +31,7 @@ class InternalTagDelegateTest {
 
     @Test
     fun `nested texts construction`() {
-        val tag = InternalTagDelegate("div").apply {
+        val tag = InternalTagDelegate(styles, "div").apply {
             +"hello"
         }
         assertThat(printer.print(tag)).isEqualTo("<div>hello</div>")
@@ -38,7 +39,7 @@ class InternalTagDelegateTest {
 
     @Test
     fun `nested texts with encoding`() {
-        val tag = InternalTagDelegate("div").apply {
+        val tag = InternalTagDelegate(styles, "div").apply {
             -"&"
         }
         assertThat(printer.print(tag)).isEqualTo("<div>%26</div>")

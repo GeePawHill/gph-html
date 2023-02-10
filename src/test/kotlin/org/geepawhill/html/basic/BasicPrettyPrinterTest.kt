@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 class BasicPrettyPrinterTest {
 
     val printer = BasicPrettyPrinter()
+    val styles = StylesDelegate()
 
     @Test
     fun `prints AttributeOnlyTag`() {
@@ -25,7 +26,7 @@ class BasicPrettyPrinterTest {
 
     @Test
     fun `prints ContainerTag`() {
-        val tag = ContainerTagDelegate("parent").apply {
+        val tag = ContainerTagDelegate("parent", styles).apply {
             +AttributeOnlyTagDelegate("child")
         }
         tag.accept(printer)
