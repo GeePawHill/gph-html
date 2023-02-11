@@ -2,6 +2,7 @@ package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
+import org.geepawhill.html.formatter.FlatFormatter
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
@@ -16,6 +17,9 @@ class ContainerTagDelegate(
     private val delegate: AttributeOnlyTag = AttributeOnlyTagDelegate(tag)
 ) :
     ContainerTag, AttributeOnlyTag by delegate {
+
+    override val flat: String
+        get() = FlatFormatter().apply { format(this) }.toString()
 
     override val elements = mutableListOf<Element>()
 
