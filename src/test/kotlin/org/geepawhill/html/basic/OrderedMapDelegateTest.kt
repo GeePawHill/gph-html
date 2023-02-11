@@ -43,7 +43,7 @@ class OrderedMapDelegateTest {
     }
 
     @Test
-    fun `key determines map index`() {
+    fun `field key determines map index`() {
         var classes: String by map.field("class")
         classes = "other"
         assertThat(map["class"]).isEqualTo("other")
@@ -51,7 +51,7 @@ class OrderedMapDelegateTest {
 
     @Suppress("UNUSED_EXPRESSION")
     @Test
-    fun `constants work on access`() {
+    fun `field constants work on access`() {
         var field: String by map.field("field")
         val constant: String by map.constant("field", "constant")
         field = "assigned"
