@@ -6,6 +6,7 @@ import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
 import org.geepawhill.html.model.EncodedTextElement
+import org.geepawhill.html.model.HtmlFormatter
 import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.TextElement
 
@@ -36,5 +37,11 @@ class ContainerTagDelegate(
 
     override fun accept(visitor: HtmlVisitor) {
         visitor.visit(this)
+    }
+
+    override fun format(formatter: HtmlFormatter) {
+        formatter.openContainerTag(tag, attributes.entries)
+        for (element in elements) element.format(formatter)
+        formatter.closeContainerTag(tag)
     }
 }

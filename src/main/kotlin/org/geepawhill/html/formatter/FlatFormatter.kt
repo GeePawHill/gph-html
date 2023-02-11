@@ -20,5 +20,13 @@ class FlatFormatter(private val appendable: Appendable = StringBuilder()) : Html
         appendable.append(text)
     }
 
+    override fun openContainerTag(tag: String, attributes: Collection<KeyAndValue>) {
+        emptyTag(tag, attributes)
+    }
+
+    override fun closeContainerTag(tag: String) {
+        appendable.append("</$tag>")
+    }
+
     override fun toString(): String = appendable.toString()
 }

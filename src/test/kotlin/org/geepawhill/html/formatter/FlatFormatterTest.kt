@@ -12,4 +12,22 @@ class FlatFormatterTest {
         formatter.emptyTag("tag", listOf(KeyAndValue("a", "avalue"), KeyAndValue("b", "bvalue")))
         assertThat(formatter.toString()).isEqualTo("<tag a=\"avalue\" b=\"bvalue\">")
     }
+
+    @Test
+    fun `handles text`() {
+        formatter.text("something")
+        assertThat(formatter.toString()).isEqualTo("something")
+    }
+
+    @Test
+    fun `handles open container tag`() {
+        formatter.openContainerTag("tag", listOf(KeyAndValue("key", "value")))
+        assertThat(formatter.toString()).isEqualTo("<tag key=\"value\">")
+    }
+
+    @Test
+    fun `handles close container tag`() {
+        formatter.closeContainerTag("tag")
+        assertThat(formatter.toString()).isEqualTo("</tag>")
+    }
 }
