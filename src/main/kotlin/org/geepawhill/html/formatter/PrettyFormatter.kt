@@ -4,61 +4,56 @@ import org.geepawhill.html.map.KeyAndValue
 import org.geepawhill.html.model.HtmlFormatter
 
 @Suppress("TooManyFunctions")
-class FlatFormatter(private val appendable: Appendable = StringBuilder()) : HtmlFormatter {
-
+class PrettyFormatter : HtmlFormatter {
     override fun emptyTag(tag: String, attributes: Collection<KeyAndValue>) {
-        appendable.append("<$tag")
-        for (attribute in attributes) appendable.append(" ${attribute.key}=\"${attribute.value}\"")
-        appendable.append(">")
+        TODO("Not yet implemented")
     }
 
     override fun text(text: String) {
-        appendable.append(text)
+        TODO("Not yet implemented")
     }
 
     override fun openContainerTag(tag: String, attributes: Collection<KeyAndValue>) {
-        emptyTag(tag, attributes)
+        TODO("Not yet implemented")
     }
 
     override fun closeContainerTag(tag: String) {
-        appendable.append("</$tag>")
+        TODO("Not yet implemented")
     }
 
     override fun openSelector(rule: String) {
-        appendable.append(" $rule {")
+        TODO("Not yet implemented")
     }
 
     override fun closeSelector() {
-        appendable.append(" }")
+        TODO("Not yet implemented")
     }
 
     override fun declaration(declaration: KeyAndValue) {
-        appendable.append(" ${declaration.key}: ${declaration.value};")
+        TODO("Not yet implemented")
     }
 
     override fun startStyles() {
-        appendable.append("<style>")
+        TODO("Not yet implemented")
     }
 
     override fun endStyles() {
-        appendable.append("</style>")
+        TODO("Not yet implemented")
     }
 
     override fun startRule(rule: String) {
-        appendable.append("$rule {")
+        TODO("Not yet implemented")
     }
 
     override fun endRule() {
-        appendable.append(" }")
+        TODO("Not yet implemented")
     }
 
     override fun startQuery(query: String) {
-        appendable.append("@media $query { ")
+        TODO("Not yet implemented")
     }
 
     override fun endQuery() {
-        appendable.append(" }")
+        TODO("Not yet implemented")
     }
-
-    override fun toString(): String = appendable.toString()
 }

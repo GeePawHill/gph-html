@@ -3,6 +3,7 @@ package org.geepawhill.html.basic
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.builder.FlatPrinter
 import org.geepawhill.html.css.DisplayEnum.none
+import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
 class RuleDelegateTest {

@@ -1,6 +1,5 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.formatter.FlatFormatter
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.AttributeOnlyTag
@@ -12,14 +11,12 @@ class AttributeOnlyTagDelegate(
     override val attributes: OrderedMap = OrderedMapDelegate()
 ) : AttributeOnlyTag {
 
-    override val flat: String
-        get() = FlatFormatter().apply { format(this) }.toString()
-
     override fun accept(visitor: HtmlVisitor) {
         visitor.visit(this)
     }
 
-    override fun format(formatter: HtmlFormatter) {
+    override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.emptyTag(tag, attributes.entries)
+        return formatter
     }
 }

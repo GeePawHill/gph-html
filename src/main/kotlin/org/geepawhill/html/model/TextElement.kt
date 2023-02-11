@@ -1,14 +1,10 @@
 package org.geepawhill.html.model
 
-import org.geepawhill.html.formatter.FlatFormatter
-
 class TextElement(val text: String) : Element {
 
-    override val flat: String
-        get() = FlatFormatter().apply { format(this) }.toString()
-
-    override fun format(formatter: HtmlFormatter) {
+    override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.text(text)
+        return formatter
     }
 
     override fun accept(visitor: HtmlVisitor) {

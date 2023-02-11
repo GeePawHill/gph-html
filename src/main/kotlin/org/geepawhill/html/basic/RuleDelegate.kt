@@ -6,7 +6,6 @@ import org.geepawhill.html.css.FourSidedDeclaration
 import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.css.TextDecorationDeclaration
-import org.geepawhill.html.formatter.FlatFormatter
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.HtmlFormatter
@@ -16,9 +15,6 @@ class RuleDelegate(
     val styles: Styles,
     override val rule: String,
 ) : Rule {
-
-    override val flat: String
-        get() = FlatFormatter().apply { format(this) }.toString()
 
     override val declarations: OrderedMap = OrderedMapDelegate()
     override val display = DisplayDeclaration(declarations)
@@ -31,9 +27,10 @@ class RuleDelegate(
         visitor.visit(this)
     }
 
-    override fun format(formatter: HtmlFormatter) {
+    override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
         for (declaration in declarations.entries) formatter.declaration(declaration)
         formatter.endRule()
+        return formatter
     }
 }

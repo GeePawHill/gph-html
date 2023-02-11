@@ -4,7 +4,6 @@ import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
-import org.geepawhill.html.formatter.FlatFormatter
 import org.geepawhill.html.model.HtmlFormatter
 import org.geepawhill.html.model.HtmlVisitor
 
@@ -14,9 +13,6 @@ class SelectorDelegate(
     private val delegate: RuleDelegate = RuleDelegate(styles, rule)
 ) : Selector,
     Rule by delegate {
-
-    override val flat: String
-        get() = FlatFormatter().apply { format(this) }.toString()
 
     override fun media(query: String, details: MediaQuery.() -> Unit) {
         val new = MediaQueryDelegate(styles, query, rule)
@@ -28,9 +24,10 @@ class SelectorDelegate(
         visitor.visit(this)
     }
 
-    override fun format(formatter: HtmlFormatter) {
+    override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.openSelector(rule)
         for (declaration in declarations.entries) formatter.declaration(declaration)
         formatter.closeSelector()
+        return formatter
     }
 }
