@@ -1,9 +1,9 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.BoxSizingDeclaration
-import org.geepawhill.html.css.Declarations
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.FourSidedDeclaration
+import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.css.TextDecorationDeclaration
 import org.geepawhill.html.formatter.FlatFormatter
@@ -12,10 +12,10 @@ import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.HtmlFormatter
 import org.geepawhill.html.model.HtmlVisitor
 
-class DeclarationsDelegate(
+class RuleDelegate(
     val styles: Styles,
     override val rule: String,
-) : Declarations {
+) : Rule {
 
     override val flat: String
         get() = FlatFormatter().apply { format(this) }.toString()
@@ -32,6 +32,8 @@ class DeclarationsDelegate(
     }
 
     override fun format(formatter: HtmlFormatter) {
-        TODO("Not yet implemented")
+        formatter.startRule(rule)
+        for (declaration in declarations.entries) formatter.declaration(declaration)
+        formatter.endRule()
     }
 }

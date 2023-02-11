@@ -1,5 +1,5 @@
 package org.geepawhill.html.css
 
-interface MediaQuery : Declarations {
+interface MediaQuery : Rule {
     val query: String
 }

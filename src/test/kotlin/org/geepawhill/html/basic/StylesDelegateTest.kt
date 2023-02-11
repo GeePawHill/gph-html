@@ -21,4 +21,15 @@ class StylesDelegateTest {
         assertThat(printer.print(stylesheet)).isEqualTo("<style>*{display: none;}</style>")
         println(BasicPrettyPrinter().print(stylesheet))
     }
+
+    @Test
+    fun `formats flat`() {
+        val stylesheet = StylesDelegate()
+        stylesheet.apply {
+            selector("*") {
+                display += none
+            }
+        }
+        assertThat(stylesheet.flat).isEqualTo("<style> * { display: none; }</style>")
+    }
 }

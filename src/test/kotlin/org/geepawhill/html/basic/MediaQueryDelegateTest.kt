@@ -17,4 +17,13 @@ class MediaQueryDelegateTest {
         }
         assertThat(printer.print(query)).isEqualTo("@media only screen and (min-width: 600px) {display: none;}")
     }
+
+    @Test
+    fun `formats flat correctly`() {
+        val query = MediaQueryDelegate(styles, "only screen and (min-width: 600px)", "rule")
+        with(query) {
+            display += none
+        }
+        assertThat(query.flat).isEqualTo("@media only screen and (min-width: 600px) { rule { display: none; } }")
+    }
 }

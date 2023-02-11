@@ -30,4 +30,34 @@ class FlatFormatterTest {
         formatter.closeContainerTag("tag")
         assertThat(formatter.toString()).isEqualTo("</tag>")
     }
+
+    @Test
+    fun `handles open selector`() {
+        formatter.openSelector("rule")
+        assertThat(formatter.toString()).isEqualTo(" rule {")
+    }
+
+    @Test
+    fun `handles close selector`() {
+        formatter.closeSelector()
+        assertThat(formatter.toString()).isEqualTo(" }")
+    }
+
+    @Test
+    fun `handles declaration`() {
+        formatter.declaration(KeyAndValue("width", "100px"))
+        assertThat(formatter.toString()).isEqualTo(" width: 100px;")
+    }
+
+    @Test
+    fun `handles start styles`() {
+        formatter.startStyles()
+        assertThat(formatter.toString()).isEqualTo("<style>")
+    }
+
+    @Test
+    fun `handles end styles`() {
+        formatter.endStyles()
+        assertThat(formatter.toString()).isEqualTo("</style>")
+    }
 }

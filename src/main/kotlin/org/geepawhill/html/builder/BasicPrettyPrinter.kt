@@ -1,7 +1,7 @@
 package org.geepawhill.html.builder
 
-import org.geepawhill.html.css.Declarations
 import org.geepawhill.html.css.MediaQuery
+import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
@@ -62,7 +62,7 @@ class BasicPrettyPrinter(
         appendable.append("}")
     }
 
-    override fun visit(declarations: Declarations) = Unit
+    override fun visit(rule: Rule) = Unit
 
     override fun visit(tag: ContainerTag) {
         visit(tag as AttributeOnlyTag)

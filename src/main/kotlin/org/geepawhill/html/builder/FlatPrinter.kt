@@ -1,7 +1,7 @@
 package org.geepawhill.html.builder
 
-import org.geepawhill.html.css.Declarations
 import org.geepawhill.html.css.MediaQuery
+import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
@@ -38,9 +38,9 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
         appendable.append("}")
     }
 
-    override fun visit(declarations: Declarations) {
-        appendable.append("${declarations.rule}{")
-        declarations.declarations.entries.forEach { declaration ->
+    override fun visit(rule: Rule) {
+        appendable.append("${rule.rule}{")
+        rule.declarations.entries.forEach { declaration ->
             appendable.append("${declaration.key}: ${declaration.value};")
         }
         appendable.append("}")

@@ -4,16 +4,13 @@ import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.DisplayEnum.inline
 import org.geepawhill.html.css.DisplayEnum.none
-import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
-
-class TestingDisplay(styles: Styles) : Selector by SelectorDelegate(styles, "*")
 
 class SelectorDelegateTest {
     val map = OrderedMapDelegate()
     val display = DisplayDeclaration(map)
+    val styles = StylesDelegate()
 
     @Test
     fun `direct setting works`() {
@@ -31,12 +28,20 @@ class SelectorDelegateTest {
 
     @Test
     fun `dsl works`() {
-        val styles = StylesDelegate()
-        val thing = TestingDisplay(styles)
+        val thing = SelectorDelegate(styles, "*")
         thing.declarations["display"] = "anything"
         thing.apply {
             display += inline
         }
         assertThat(thing.declarations["display"]).isEqualTo("inline")
+    }
+
+    @Test
+    fun `flat format is correct`() {
+        val selector = SelectorDelegate(styles, "*")
+        selector.apply {
+            display += inline
+        }
+        assertThat(selector.flat).isEqualTo(" * { display: inline; }")
     }
 }

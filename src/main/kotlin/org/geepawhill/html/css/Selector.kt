@@ -1,5 +1,5 @@
 package org.geepawhill.html.css
 
-interface Selector : Declarations {
+interface Selector : Rule {
     fun media(query: String, details: MediaQuery.() -> Unit)
 }

@@ -4,6 +4,7 @@ import org.geepawhill.html.map.KeyAndValue
 import org.geepawhill.html.model.Element
 import org.geepawhill.html.model.HtmlFormatter
 
+@Suppress("TooManyFunctions")
 class FlatFormatter(private val appendable: Appendable = StringBuilder()) : HtmlFormatter {
     override fun format(element: Element): String {
         element.format(this)
@@ -26,6 +27,42 @@ class FlatFormatter(private val appendable: Appendable = StringBuilder()) : Html
 
     override fun closeContainerTag(tag: String) {
         appendable.append("</$tag>")
+    }
+
+    override fun openSelector(rule: String) {
+        appendable.append(" $rule {")
+    }
+
+    override fun closeSelector() {
+        appendable.append(" }")
+    }
+
+    override fun declaration(declaration: KeyAndValue) {
+        appendable.append(" ${declaration.key}: ${declaration.value};")
+    }
+
+    override fun startStyles() {
+        appendable.append("<style>")
+    }
+
+    override fun endStyles() {
+        appendable.append("</style>")
+    }
+
+    override fun startRule(rule: String) {
+        appendable.append("$rule {")
+    }
+
+    override fun endRule() {
+        appendable.append(" }")
+    }
+
+    override fun startQuery(query: String) {
+        appendable.append("@media $query { ")
+    }
+
+    override fun endQuery() {
+        appendable.append(" }")
     }
 
     override fun toString(): String = appendable.toString()

@@ -4,7 +4,7 @@ import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.model.Element
 
 @Suppress("VariableNaming")
-interface Declarations : Element {
+interface Rule : Element {
     val rule: String
     val declarations: OrderedMap
     val display: DisplayDeclaration

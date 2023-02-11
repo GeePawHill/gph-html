@@ -28,7 +28,10 @@ class StylesDelegate : Styles {
     }
 
     override fun format(formatter: HtmlFormatter) {
-        TODO("Not yet implemented")
+        formatter.startStyles()
+        for (selector in selectors) selector.format(formatter)
+        for (query in queries) query.format(formatter)
+        formatter.endStyles()
     }
 
     override fun accept(visitor: HtmlVisitor) {
