@@ -5,5 +5,5 @@ import org.geepawhill.html.model.Element
 interface Styles : Element {
     val selectors: MutableList<Selector>
     val queries: MutableList<MediaQuery>
-    fun selector(selector: String, details: Selector.() -> Unit = {})
+    fun selector(rule: String, details: Selector.() -> Unit = {})
 }

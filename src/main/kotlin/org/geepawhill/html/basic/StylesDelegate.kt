@@ -3,6 +3,7 @@ package org.geepawhill.html.basic
 import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
+import org.geepawhill.html.model.HtmlFormatter
 import org.geepawhill.html.model.HtmlVisitor
 
 class StylesDelegate : Styles {
@@ -13,6 +14,10 @@ class StylesDelegate : Styles {
         val new = SelectorDelegate(this, rule)
         new.details()
         selectors.add(new)
+    }
+
+    override fun format(formatter: HtmlFormatter) {
+        TODO("Not yet implemented")
     }
 
     override fun accept(visitor: HtmlVisitor) {
