@@ -4,7 +4,7 @@ import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import kotlin.reflect.KProperty
 
 class OrderedMapDelegate : OrderedMap {
-
+    override val entries: Collection<KeyAndValue> get() = pairs.filter { it.value != NO_VALUE }
     private val pairs = mutableListOf<KeyAndValue>()
 
     override fun get(key: String): String? {
@@ -51,17 +51,9 @@ class OrderedMapDelegate : OrderedMap {
 
     override fun field(key: String): MapField = Field(key)
 
-    override fun forEach(action: (entry: KeyAndValue) -> Unit) {
-        pairs.forEach { pair ->
-            if (pair.value != NO_VALUE) {
-                action(pair)
-            }
-        }
-    }
-
     override fun toString(): String {
         val result = StringBuilder()
-        forEach { entry ->
+        entries.forEach { entry ->
             result.append(" ${entry.key}=\"${entry.value}\"")
         }
         return result.toString()

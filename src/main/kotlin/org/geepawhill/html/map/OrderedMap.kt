@@ -2,9 +2,16 @@ package org.geepawhill.html.map
 
 /**
  * OrderedMap is a light map-like class that keeps the order in which the keys were
- * added, and uses that order in its forEach iterator
+ * added, and uses that order in its forEach iterator.
+ * It is comparable to [java.util.LinkedHashMap], but with a more narrow interface.
  */
 interface OrderedMap {
+    /**
+     * Returns the KeyAndValue pairs, excluding those set to NO_VALUE, in the order in which
+     * they were added.
+     */
+    val entries: Collection<KeyAndValue>
+
     /**
      * Kotlin operator for getting, i.e. @code { val x = map["key"] }
      */
@@ -14,11 +21,6 @@ interface OrderedMap {
      * Kotlin operator for setting, i.e. @code { map["key"] = "value"}
      */
     operator fun set(key: String, value: String)
-
-    /**
-     * Calls the action on each key in the order in which the keys were added.
-     */
-    fun forEach(action: (entry: KeyAndValue) -> Unit)
 
     /**
      * Supplies a property delegate to store & retrieve a string from the given key

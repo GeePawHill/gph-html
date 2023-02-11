@@ -29,7 +29,7 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
 
     override fun visit(selector: Selector) {
         appendable.append("${selector.rule}{")
-        selector.declarations.forEach { declaration ->
+        selector.declarations.entries.forEach { declaration ->
             appendable.append("${declaration.key}: ${declaration.value};")
         }
         appendable.append("}")
@@ -38,7 +38,7 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
     override fun visit(mediaQuery: MediaQuery) {
         appendable.append("@media ${mediaQuery.query}")
         appendable.append(" {")
-        mediaQuery.declarations.forEach { declaration ->
+        mediaQuery.declarations.entries.forEach { declaration ->
             appendable.append("${declaration.key}: ${declaration.value};")
         }
         appendable.append("}")
@@ -46,7 +46,7 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
 
     override fun visit(declarations: Declarations) {
         appendable.append("${declarations.rule}{")
-        declarations.declarations.forEach { declaration ->
+        declarations.declarations.entries.forEach { declaration ->
             appendable.append("${declaration.key}: ${declaration.value};")
         }
         appendable.append("}")
@@ -54,7 +54,7 @@ class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
 
     override fun visit(tag: AttributeOnlyTag) {
         appendable.append("<${tag.tag}")
-        tag.attributes.forEach { attribute ->
+        tag.attributes.entries.forEach { attribute ->
             appendable.append(" ${attribute.key}=\"${attribute.value}\"")
         }
         appendable.append(">")

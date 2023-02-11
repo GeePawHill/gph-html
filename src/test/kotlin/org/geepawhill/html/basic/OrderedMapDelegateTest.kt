@@ -1,6 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.map.KeyAndValue
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
@@ -11,24 +12,27 @@ class OrderedMapDelegateTest {
     fun `basic add works`() {
         map["something"] = "other"
         assertThat(map["something"]).isEqualTo("other")
+        assertThat(map.entries).containsExactly(KeyAndValue("something", "other"))
     }
 
     @Test
     fun `multiple adds works`() {
         map["first"] = "firstValue"
         map["second"] = "secondValue"
-        val keys = mutableListOf<String>()
-        map.forEach { entry -> keys.add(entry.key) }
-        assertThat(keys).containsExactly("first", "second")
+        assertThat(map.entries).containsExactly(
+            KeyAndValue("first", "firstValue"),
+            KeyAndValue("second", "secondValue")
+        )
     }
 
     @Test
     fun `add order is significant`() {
         map["second"] = "secondValue"
         map["first"] = "firstValue"
-        val keys = mutableListOf<String>()
-        map.forEach { entry -> keys.add(entry.key) }
-        assertThat(keys).containsExactly("second", "first")
+        assertThat(map.entries).containsExactly(
+            KeyAndValue("second", "secondValue"),
+            KeyAndValue("first", "firstValue")
+        )
     }
 
     @Test

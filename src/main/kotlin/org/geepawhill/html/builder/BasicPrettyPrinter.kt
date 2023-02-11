@@ -32,7 +32,7 @@ class BasicPrettyPrinter(
         append(selector.rule)
         append(" { ")
         depth += 1
-        selector.declarations.forEach { css ->
+        selector.declarations.entries.forEach { css ->
             newline()
             append("${css.key}: ${css.value};")
         }
@@ -50,7 +50,7 @@ class BasicPrettyPrinter(
         append(mediaQuery.rule)
         append(" { ")
         depth += 1
-        mediaQuery.declarations.forEach { declaration ->
+        mediaQuery.declarations.entries.forEach { declaration ->
             newline()
             appendable.append("${declaration.key}: ${declaration.value};")
         }
@@ -76,7 +76,7 @@ class BasicPrettyPrinter(
     override fun visit(tag: AttributeOnlyTag) {
         newline()
         append("<${tag.tag}")
-        tag.attributes.forEach { attribute ->
+        tag.attributes.entries.forEach { attribute ->
             append(" ${attribute.key}=\"${attribute.value}\"")
         }
         append(">")
