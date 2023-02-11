@@ -1,6 +1,5 @@
 package org.geepawhill.html.builder
 
-import org.geepawhill.html.css.CssElement
 import org.geepawhill.html.css.Declarations
 import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Selector
@@ -14,11 +13,6 @@ import org.geepawhill.html.model.HtmlVisitor
 class FlatPrinter(val appendable: Appendable = StringBuilder()) : HtmlVisitor {
 
     fun print(element: Element): String {
-        element.accept(this)
-        return appendable.toString()
-    }
-
-    fun print(element: CssElement): String {
         element.accept(this)
         return appendable.toString()
     }

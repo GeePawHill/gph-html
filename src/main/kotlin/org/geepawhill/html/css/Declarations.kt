@@ -1,9 +1,10 @@
 package org.geepawhill.html.css
 
 import org.geepawhill.html.map.OrderedMap
+import org.geepawhill.html.model.Element
 
 @Suppress("VariableNaming")
-interface Declarations : CssElement {
+interface Declarations : Element {
     val rule: String
     val declarations: OrderedMap
     val display: DisplayDeclaration
