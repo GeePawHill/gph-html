@@ -16,7 +16,7 @@ class SelectorDelegate(
     override fun media(query: String, details: MediaQuery.() -> Unit) {
         val new = MediaQueryDelegate(styles, query, rule)
         new.details()
-        styles.queries.add(new)
+        styles.apply { +new }
     }
 
     override fun accept(visitor: HtmlVisitor) {

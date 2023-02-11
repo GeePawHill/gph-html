@@ -19,6 +19,14 @@ class StylesDelegate : Styles {
         selectors.add(new)
     }
 
+    override operator fun Selector.unaryPlus() {
+        selectors.add(this)
+    }
+
+    override operator fun MediaQuery.unaryPlus() {
+        queries.add(this)
+    }
+
     override fun format(formatter: HtmlFormatter) {
         TODO("Not yet implemented")
     }
