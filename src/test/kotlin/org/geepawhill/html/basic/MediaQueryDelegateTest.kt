@@ -1,13 +1,11 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.builder.FlatPrinter
 import org.geepawhill.html.css.DisplayEnum.none
 import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
 class MediaQueryDelegateTest {
-    val printer = FlatPrinter()
     val styles = StylesDelegate()
 
     @Test
@@ -16,7 +14,7 @@ class MediaQueryDelegateTest {
         with(query) {
             display += none
         }
-        assertThat(printer.print(query)).isEqualTo("@media only screen and (min-width: 600px) {display: none;}")
+        assertThat(query.flat).isEqualTo("@media only screen and (min-width: 600px) { class { display: none; } }")
     }
 
     @Test

@@ -4,7 +4,6 @@ import org.geepawhill.html.css.MediaQuery
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.HtmlFormatter
-import org.geepawhill.html.model.HtmlVisitor
 
 class StylesDelegate : Styles {
     override val selectors = mutableListOf<Selector>()
@@ -30,9 +29,5 @@ class StylesDelegate : Styles {
         for (query in queries) query.format(formatter)
         formatter.endStyles()
         return formatter
-    }
-
-    override fun accept(visitor: HtmlVisitor) {
-        visitor.visit(this)
     }
 }

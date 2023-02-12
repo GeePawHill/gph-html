@@ -4,7 +4,6 @@ import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.HeadTag
 import org.geepawhill.html.model.HtmlPage
-import org.geepawhill.html.model.HtmlVisitor
 import org.geepawhill.html.model.InternalTag
 
 class HtmlPageDelegate(
@@ -23,10 +22,6 @@ class HtmlPageDelegate(
         val head = HeadTagDelegate(styles)
         head.details()
         +head
-    }
-
-    override fun accept(visitor: HtmlVisitor) {
-        visitor.visit(this)
     }
 
     companion object {

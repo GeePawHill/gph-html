@@ -5,7 +5,6 @@ import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.HtmlFormatter
-import org.geepawhill.html.model.HtmlVisitor
 
 class SelectorDelegate(
     val styles: Styles,
@@ -18,10 +17,6 @@ class SelectorDelegate(
         val new = MediaQueryDelegate(styles, query, rule)
         new.details()
         styles.apply { +new }
-    }
-
-    override fun accept(visitor: HtmlVisitor) {
-        visitor.visit(this)
     }
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {

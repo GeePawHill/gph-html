@@ -1,12 +1,11 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.builder.FlatPrinter
+import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
 class InternalTagDelegateTest {
 
-    val printer = FlatPrinter()
     val styles = StylesDelegate()
 
     @Test
@@ -15,7 +14,7 @@ class InternalTagDelegateTest {
             +InternalTagDelegate(styles, "li")
         }
         assertThat(tag.elements).hasSize(1)
-        assertThat(printer.print(tag)).isEqualTo("<div><li></li></div>")
+        assertThat(tag.flat).isEqualTo("<div><li></li></div>")
     }
 
     @Test
@@ -26,7 +25,7 @@ class InternalTagDelegateTest {
                 +"Hello"
             }
         }
-        assertThat(printer.print(tag)).isEqualTo("<div><ul><li></li>Hello</ul></div>")
+        assertThat(tag.flat).isEqualTo("<div><ul><li></li>Hello</ul></div>")
     }
 
     @Test
@@ -34,7 +33,7 @@ class InternalTagDelegateTest {
         val tag = InternalTagDelegate(styles, "div").apply {
             +"hello"
         }
-        assertThat(printer.print(tag)).isEqualTo("<div>hello</div>")
+        assertThat(tag.flat).isEqualTo("<div>hello</div>")
     }
 
     @Test
@@ -42,6 +41,6 @@ class InternalTagDelegateTest {
         val tag = InternalTagDelegate(styles, "div").apply {
             -"&"
         }
-        assertThat(printer.print(tag)).isEqualTo("<div>%26</div>")
+        assertThat(tag.flat).isEqualTo("<div>%26</div>")
     }
 }

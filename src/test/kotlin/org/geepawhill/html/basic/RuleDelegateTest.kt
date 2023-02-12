@@ -1,7 +1,6 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.builder.FlatPrinter
 import org.geepawhill.html.css.DisplayEnum.none
 import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
@@ -9,11 +8,10 @@ import org.junit.jupiter.api.Test
 class RuleDelegateTest {
     val styles = StylesDelegate()
     val declarations = RuleDelegate(styles, "*")
-    val printer = FlatPrinter()
 
     @Test
     fun `empty selector works`() {
-        assertThat(printer.print(declarations)).isEqualTo("*{}")
+        assertThat(declarations.flat).isEqualTo("* { }")
     }
 
     @Test
@@ -21,7 +19,7 @@ class RuleDelegateTest {
         declarations.apply {
             declarations["width"] = "10px"
         }
-        assertThat(printer.print(declarations)).isEqualTo("*{width: 10px;}")
+        assertThat(declarations.flat).isEqualTo("* { width: 10px; }")
     }
 
     @Test
@@ -29,7 +27,7 @@ class RuleDelegateTest {
         declarations.apply {
             display += none
         }
-        assertThat(printer.print(declarations)).isEqualTo("*{display: none;}")
+        assertThat(declarations.flat).isEqualTo("* { display: none; }")
     }
 
     @Test

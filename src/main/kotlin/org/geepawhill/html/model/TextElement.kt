@@ -6,8 +6,4 @@ class TextElement(val text: String) : Element {
         formatter.text(text)
         return formatter
     }
-
-    override fun accept(visitor: HtmlVisitor) {
-        visitor.visit(text)
-    }
 }

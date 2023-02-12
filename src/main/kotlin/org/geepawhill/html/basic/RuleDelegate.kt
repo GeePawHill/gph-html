@@ -9,7 +9,6 @@ import org.geepawhill.html.css.TextDecorationDeclaration
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.HtmlFormatter
-import org.geepawhill.html.model.HtmlVisitor
 
 class RuleDelegate(
     val styles: Styles,
@@ -22,10 +21,6 @@ class RuleDelegate(
     override val text_decoration = TextDecorationDeclaration(declarations)
     override val margin: FourSidedDeclaration = FourSidedDeclaration("margin", declarations)
     override val padding: FourSidedDeclaration = FourSidedDeclaration("padding", declarations)
-
-    override fun accept(visitor: HtmlVisitor) {
-        visitor.visit(this)
-    }
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
