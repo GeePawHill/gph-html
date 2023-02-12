@@ -1,33 +1,18 @@
 package org.geepawhill.html.basic
 
-import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.css.Rule
+import org.geepawhill.html.css.CssFieldChecker
 import org.geepawhill.html.css.enums.DimensionEnum.auto
 import org.geepawhill.html.css.enums.GenericEnum.inherit
 import org.geepawhill.html.css.enums.GenericEnum.initial
 import org.junit.jupiter.api.Test
 
-class RuleDelegateAssignmentsTest {
+class DimensionDeclationTest {
 
-    val rule = RuleDelegate(StylesDelegate(), "*")
-
-    class Checking(val useRule: Rule, val key: String) {
-        fun shouldGet(expected: String, running: Rule.() -> Unit) {
-            with(useRule) {
-                running()
-                assertThat(declarations[key]).isEqualTo(expected)
-            }
-        }
-    }
-
-    fun checking(key: String, checks: Checking.() -> Unit) {
-        val check = Checking(rule, key)
-        check.checks()
-    }
+    val checker = CssFieldChecker()
 
     @Test
-    fun `width assignments`() {
-        checking("width") {
+    fun `all width assignments`() {
+        checker.checking("width") {
             shouldGet("hi mom!") { width += "hi mom!" }
             shouldGet("hello mother!") { declarations["width"] = "hello mother!" }
 
@@ -51,6 +36,14 @@ class RuleDelegateAssignmentsTest {
             shouldGet("initial") { width += initial }
             shouldGet("inherit") { width += inherit }
             shouldGet("auto") { width += auto }
+        }
+    }
+
+    @Test
+    fun `a couple of height assignments`() {
+        checker.checking("height") {
+            shouldGet("hi mom!") { height += "hi mom!" }
+            shouldGet("hello mother!") { declarations["height"] = "hello mother!" }
         }
     }
 }
