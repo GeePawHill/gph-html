@@ -1,7 +1,6 @@
-package org.geepawhill.html.css
+package org.geepawhill.html.css.enums
 
 enum class DisplayEnum(val value: String) {
-    none("none"),
     `inline`("inline"),
     block("block"),
     contents("contents"),

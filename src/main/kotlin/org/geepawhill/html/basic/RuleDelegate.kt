@@ -1,6 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.BoxSizingDeclaration
+import org.geepawhill.html.css.DimensionDeclaration
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.FourSidedDeclaration
 import org.geepawhill.html.css.Rule
@@ -21,6 +22,8 @@ class RuleDelegate(
     override val text_decoration = TextDecorationDeclaration(declarations)
     override val margin: FourSidedDeclaration = FourSidedDeclaration("margin", declarations)
     override val padding: FourSidedDeclaration = FourSidedDeclaration("padding", declarations)
+    override val height: DimensionDeclaration = DimensionDeclaration(declarations, "height")
+    override val width: DimensionDeclaration = DimensionDeclaration(declarations, "width")
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)

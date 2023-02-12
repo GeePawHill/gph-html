@@ -2,8 +2,8 @@ package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
 import org.geepawhill.html.css.DisplayDeclaration
-import org.geepawhill.html.css.DisplayEnum.inline
-import org.geepawhill.html.css.DisplayEnum.none
+import org.geepawhill.html.css.enums.DisplayEnum.inline
+import org.geepawhill.html.css.enums.GenericEnum.none
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test

@@ -1,5 +1,7 @@
 package org.geepawhill.html.css
 
+import org.geepawhill.html.css.enums.GenericEnum
+import org.geepawhill.html.css.enums.TextDecorationEnum
 import org.geepawhill.html.map.OrderedMap
 
 class TextDecorationDeclaration(val map: OrderedMap) {
@@ -10,6 +12,10 @@ class TextDecorationDeclaration(val map: OrderedMap) {
     }
 
     operator fun plusAssign(new: TextDecorationEnum) {
+        value = new.value
+    }
+
+    operator fun plusAssign(new: GenericEnum) {
         value = new.value
     }
 }

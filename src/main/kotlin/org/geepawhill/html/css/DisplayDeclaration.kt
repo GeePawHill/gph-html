@@ -1,5 +1,7 @@
 package org.geepawhill.html.css
 
+import org.geepawhill.html.css.enums.DisplayEnum
+import org.geepawhill.html.css.enums.GenericEnum
 import org.geepawhill.html.map.OrderedMap
 
 @Suppress("VariableNaming")
@@ -11,6 +13,10 @@ class DisplayDeclaration(val map: OrderedMap) {
     }
 
     operator fun plusAssign(new: DisplayEnum) {
+        value = new.value
+    }
+
+    operator fun plusAssign(new: GenericEnum) {
         value = new.value
     }
 }

@@ -1,5 +1,6 @@
 package org.geepawhill.html.css
 
+import org.geepawhill.html.css.enums.BoxSizingEnum
 import org.geepawhill.html.map.OrderedMap
 
 class BoxSizingDeclaration(val map: OrderedMap) {
