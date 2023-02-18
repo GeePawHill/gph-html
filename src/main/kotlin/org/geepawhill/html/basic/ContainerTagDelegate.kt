@@ -43,7 +43,7 @@ class ContainerTagDelegate(
 
     override fun selectorAs(selector: String, details: Selector.() -> Unit) {
         classes += selector
-        selector(selector, details)
+        selector(".$selector", details)
     }
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
