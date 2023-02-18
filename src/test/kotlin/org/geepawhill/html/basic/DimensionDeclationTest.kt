@@ -44,6 +44,8 @@ class DimensionDeclationTest {
         checker.checking("height") {
             shouldGet("hi mom!") { height += "hi mom!" }
             shouldGet("hello mother!") { declarations["height"] = "hello mother!" }
+            shouldGet("100px") { height += 100.px }
+            shouldGet("auto") { height += auto }
         }
     }
 }
