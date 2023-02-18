@@ -16,10 +16,8 @@ class InternalTagDelegate(
 ) :
     InternalTag, ContainerTag by delegate {
 
-    override var classes: String by attributes.field("class")
-
     init {
-        this.classes = classes
+        this.classes += classes
     }
 
     override fun toString(): String {

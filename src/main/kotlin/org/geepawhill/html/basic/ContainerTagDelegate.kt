@@ -1,5 +1,6 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.css.ClassDeclaration
 import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
@@ -15,6 +16,8 @@ class ContainerTagDelegate(
     private val delegate: AttributeOnlyTag = AttributeOnlyTagDelegate(tag)
 ) :
     ContainerTag, AttributeOnlyTag by delegate {
+
+    override val classes: ClassDeclaration = ClassDeclaration(map = delegate.attributes)
 
     override val elements = mutableListOf<Element>()
 
@@ -32,6 +35,15 @@ class ContainerTagDelegate(
 
     override fun selector(selector: String, details: Selector.() -> Unit) {
         styles.selector(selector, details)
+    }
+
+    override fun selectorAs(selector: String) {
+        classes += selector
+    }
+
+    override fun selectorAs(selector: String, details: Selector.() -> Unit) {
+        classes += selector
+        selector(selector, details)
     }
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {

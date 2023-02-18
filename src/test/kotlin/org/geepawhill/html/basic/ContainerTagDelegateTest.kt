@@ -1,6 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
+import org.geepawhill.html.css.enums.DisplayEnum.inline
 import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
@@ -27,5 +28,31 @@ class ContainerTagDelegateTest {
             +ContainerTagDelegate("child", styles)
         }
         assertThat(tag.flat).isEqualTo("<tag><child></child></tag>")
+    }
+
+    @Test
+    fun `can set classes value`() {
+        tag.apply {
+            classes += "something"
+        }
+        assertThat(tag.classes.value).isEqualTo("something")
+    }
+
+    @Test
+    fun `can set classes value via selectorAs`() {
+        tag.apply {
+            selectorAs("something")
+        }
+        assertThat(tag.classes.value).isEqualTo("something")
+    }
+
+    @Test
+    fun `can define classes value via selectorAs`() {
+        tag.apply {
+            selectorAs("something") {
+                display += inline
+            }
+        }
+        assertThat(tag.classes.value).isEqualTo("something")
     }
 }
