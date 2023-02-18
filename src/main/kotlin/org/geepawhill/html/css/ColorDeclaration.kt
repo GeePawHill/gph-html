@@ -1,5 +1,6 @@
 package org.geepawhill.html.css
 
+import org.geepawhill.html.css.enums.ColorEnum
 import org.geepawhill.html.css.enums.GenericEnum
 import org.geepawhill.html.map.OrderedMap
 import java.util.*
@@ -17,5 +18,9 @@ class ColorDeclaration(key: String, map: OrderedMap) {
 
     operator fun plusAssign(new: Int) {
         value = String.format(Locale.getDefault(), "#%06x", new)
+    }
+
+    operator fun plusAssign(new: ColorEnum) {
+        value = new.value
     }
 }

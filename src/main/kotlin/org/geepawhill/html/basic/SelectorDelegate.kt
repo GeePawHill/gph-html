@@ -19,6 +19,22 @@ class SelectorDelegate(
         styles.apply { +new }
     }
 
+    override fun small(details: MediaQuery.() -> Unit) {
+        media("only screen and (min-width: 600px)", details)
+    }
+
+    override fun medium(details: MediaQuery.() -> Unit) {
+        media("only screen and (min-width: 768px)", details)
+    }
+
+    override fun large(details: MediaQuery.() -> Unit) {
+        media("only screen and (min-width: 992px)", details)
+    }
+
+    override fun huge(details: MediaQuery.() -> Unit) {
+        media("only screen and (min-width: 1200px)", details)
+    }
+
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.openSelector(rule)
         for (declaration in declarations.entries) formatter.declaration(declaration)
