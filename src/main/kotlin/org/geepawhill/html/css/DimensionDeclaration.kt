@@ -4,7 +4,7 @@ import org.geepawhill.html.css.enums.DimensionEnum
 import org.geepawhill.html.css.enums.GenericEnum
 import org.geepawhill.html.map.OrderedMap
 
-class DimensionDeclaration(map: OrderedMap, key: String) {
+class DimensionDeclaration(key: String, map: OrderedMap) {
 
     var value: String by map.field(key)
 

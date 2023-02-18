@@ -14,6 +14,8 @@ interface Rule : Element {
     val padding: FourSidedDeclaration
     val width: DimensionDeclaration
     val height: DimensionDeclaration
+    val color: ColorDeclaration
+    val font_size: DimensionDeclaration
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
     val Number.inch: String get() = "${this}in"
