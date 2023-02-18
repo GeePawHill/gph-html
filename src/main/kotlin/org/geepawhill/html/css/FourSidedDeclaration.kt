@@ -5,10 +5,10 @@ import org.geepawhill.html.map.OrderedMap
 class FourSidedDeclaration(key: String, map: OrderedMap) {
     var value by map.field(key)
     val zero by map.constant(key, "0")
-    var top by map.field("$key-top")
-    var bottom by map.field("$key-bottom")
-    var left by map.field("$key-left")
-    var right by map.field("$key-right")
+    val top = SimpleDeclaration(map, "$key-top")
+    var bottom = SimpleDeclaration(map, "$key-bottom")
+    var left = SimpleDeclaration(map, "$key-left")
+    var right = SimpleDeclaration(map, "$key-right")
 
     fun set(vertical: String, horizontal: String) {
         value = "$vertical $horizontal"
