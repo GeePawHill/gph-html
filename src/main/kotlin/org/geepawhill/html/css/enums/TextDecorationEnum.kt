@@ -1,6 +1,6 @@
 package org.geepawhill.html.css.enums
 
-enum class TextDecorationEnum(val value: String) {
+enum class TextDecorationEnum(val value: String? = null) {
     none("none"),
     overline("overline"),
     line_through("line-through"),

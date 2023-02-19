@@ -15,6 +15,6 @@ class BorderDeclaration(map: OrderedMap) {
     }
 
     operator fun plusAssign(new: GenericEnum) {
-        value = new.value
+        value = new.toString()
     }
 }

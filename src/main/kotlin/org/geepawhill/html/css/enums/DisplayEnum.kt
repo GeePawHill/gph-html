@@ -1,6 +1,7 @@
 package org.geepawhill.html.css.enums
 
-enum class DisplayEnum(val value: String) {
+enum class DisplayEnum(val value: String? = null) {
+
     `inline`("inline"),
     block("block"),
     contents("contents"),
@@ -23,4 +24,7 @@ enum class DisplayEnum(val value: String) {
     table_row("table-row"),
     initial("initial"),
     inherit("inherit"),
+    ;
+
+    override fun toString(): String = value ?: name
 }
