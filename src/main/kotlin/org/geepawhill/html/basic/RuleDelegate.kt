@@ -4,7 +4,9 @@ import org.geepawhill.html.css.BoxSizingDeclaration
 import org.geepawhill.html.css.ColorDeclaration
 import org.geepawhill.html.css.DimensionDeclaration
 import org.geepawhill.html.css.DisplayDeclaration
+import org.geepawhill.html.css.FloatDeclaration
 import org.geepawhill.html.css.FourSidedDeclaration
+import org.geepawhill.html.css.PositionDeclaration
 import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.css.TextDecorationDeclaration
@@ -29,10 +31,8 @@ class RuleDelegate(
     override val width: DimensionDeclaration = DimensionDeclaration("width", declarations)
     override val background_color: ColorDeclaration = ColorDeclaration("background-color", declarations)
     override val line_height: DimensionDeclaration = DimensionDeclaration("line-height", declarations)
-    override val left: DimensionDeclaration = DimensionDeclaration("left", declarations)
-    override val top: DimensionDeclaration = DimensionDeclaration("top", declarations)
-    override val right: DimensionDeclaration = DimensionDeclaration("right", declarations)
-    override val bottom: DimensionDeclaration = DimensionDeclaration("bottom", declarations)
+    override val position: PositionDeclaration = PositionDeclaration(declarations)
+    override val float: FloatDeclaration = FloatDeclaration(declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
