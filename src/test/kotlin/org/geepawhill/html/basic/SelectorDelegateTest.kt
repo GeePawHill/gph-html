@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 
 class SelectorDelegateTest {
     val map = OrderedMapDelegate()
-    val display = DisplayDeclaration(map)
+    val display = DisplayDeclaration("display", map)
     val styles = StylesDelegate()
 
     @Test

@@ -1,14 +1,14 @@
 package org.geepawhill.html.css
 
-import org.geepawhill.html.css.BorderStyleEnum.dashed
-import org.geepawhill.html.css.BorderStyleEnum.dotted
-import org.geepawhill.html.css.BorderStyleEnum.double
-import org.geepawhill.html.css.BorderStyleEnum.groove
-import org.geepawhill.html.css.BorderStyleEnum.hidden
-import org.geepawhill.html.css.BorderStyleEnum.inset
-import org.geepawhill.html.css.BorderStyleEnum.outset
-import org.geepawhill.html.css.BorderStyleEnum.ridge
-import org.geepawhill.html.css.BorderStyleEnum.solid
+import org.geepawhill.html.css.enums.BorderStyleEnum.dashed
+import org.geepawhill.html.css.enums.BorderStyleEnum.dotted
+import org.geepawhill.html.css.enums.BorderStyleEnum.double
+import org.geepawhill.html.css.enums.BorderStyleEnum.groove
+import org.geepawhill.html.css.enums.BorderStyleEnum.hidden
+import org.geepawhill.html.css.enums.BorderStyleEnum.inset
+import org.geepawhill.html.css.enums.BorderStyleEnum.outset
+import org.geepawhill.html.css.enums.BorderStyleEnum.ridge
+import org.geepawhill.html.css.enums.BorderStyleEnum.solid
 import org.geepawhill.html.css.enums.GenericEnum.inherit
 import org.geepawhill.html.css.enums.GenericEnum.initial
 import org.geepawhill.html.css.enums.GenericEnum.none
@@ -43,6 +43,14 @@ class BorderDeclarationTest {
             shouldGet("unset") { border.style += unset }
             shouldGet("initial") { border.style += initial }
             shouldGet("inherit") { border.style += inherit }
+        }
+    }
+
+    @Test
+    fun `border-radius`() {
+        checker.checking("border-radius") {
+            shouldGet("anything") { border.radius += "anything" }
+            shouldGet("25px") { border.radius += 25.px }
         }
     }
 }

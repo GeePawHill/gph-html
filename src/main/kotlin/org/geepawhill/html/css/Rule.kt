@@ -1,5 +1,6 @@
 package org.geepawhill.html.css
 
+import org.geepawhill.html.css.enums.CursorEnum
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.model.Element
 
@@ -21,6 +22,9 @@ interface Rule : Element {
     val position: PositionDeclaration
     val float: FloatDeclaration
     val border: BorderDeclaration
+    val vertical_align: VerticalAlignDeclaration
+    val cursor: CssSafeProperty<CursorEnum>
+
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
     val Number.inch: String get() = "${this}in"

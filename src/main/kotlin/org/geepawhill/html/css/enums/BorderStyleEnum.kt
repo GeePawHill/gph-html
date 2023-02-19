@@ -1,4 +1,4 @@
-package org.geepawhill.html.css
+package org.geepawhill.html.css.enums
 
 enum class BorderStyleEnum(val value: String) {
     hidden("hidden"),

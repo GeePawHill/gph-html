@@ -7,7 +7,8 @@ class BorderDeclaration(map: OrderedMap) {
     var value by map.field("border")
         private set
 
-    val style = BorderStyleDeclaration(map)
+    val style = BorderStyleDeclaration("border-style", map)
+    val radius = DimensionDeclaration("border-radius", map)
 
     operator fun plusAssign(new: String) {
         value = new
