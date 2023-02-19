@@ -8,11 +8,13 @@ import org.geepawhill.html.css.CssSafePropertyDelegate
 import org.geepawhill.html.css.DimensionDeclaration
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.FloatDeclaration
+import org.geepawhill.html.css.FontProperty
 import org.geepawhill.html.css.FourSidedDeclaration
 import org.geepawhill.html.css.PositionDeclaration
 import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.css.TextDecorationDeclaration
+import org.geepawhill.html.css.TransitionDeclaration
 import org.geepawhill.html.css.VerticalAlignDeclaration
 import org.geepawhill.html.css.enums.AlignItemsEnum
 import org.geepawhill.html.css.enums.CursorEnum
@@ -33,6 +35,7 @@ class RuleDelegate(
     override val padding: FourSidedDeclaration = FourSidedDeclaration("padding", declarations)
     override val height: DimensionDeclaration = DimensionDeclaration("height", declarations)
     override val color: ColorDeclaration = ColorDeclaration("color", declarations)
+    override val font: FontProperty = FontProperty(declarations)
     override val font_size: DimensionDeclaration = DimensionDeclaration("font-size", declarations)
     override val width: DimensionDeclaration = DimensionDeclaration("width", declarations)
     override val background_color: ColorDeclaration = ColorDeclaration("background-color", declarations)
@@ -43,6 +46,7 @@ class RuleDelegate(
     override val vertical_align: VerticalAlignDeclaration = VerticalAlignDeclaration(declarations)
     override val cursor: CssSafeProperty<CursorEnum> = CssSafePropertyDelegate("cursor", declarations)
     override val align_items: CssSafeProperty<AlignItemsEnum> = CssSafePropertyDelegate("align-items", declarations)
+    override val transition: TransitionDeclaration = TransitionDeclaration(declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)

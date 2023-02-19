@@ -17,6 +17,8 @@ interface Rule : Element {
     val width: DimensionDeclaration
     val height: DimensionDeclaration
     val color: ColorDeclaration
+
+    val font: FontProperty
     val font_size: DimensionDeclaration
     val background_color: ColorDeclaration
     val line_height: DimensionDeclaration
@@ -26,6 +28,7 @@ interface Rule : Element {
     val vertical_align: VerticalAlignDeclaration
     val cursor: CssSafeProperty<CursorEnum>
     val align_items: CssSafeProperty<AlignItemsEnum>
+    val transition: TransitionDeclaration
 
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
