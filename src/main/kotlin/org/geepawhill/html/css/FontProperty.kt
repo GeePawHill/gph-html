@@ -7,4 +7,5 @@ class FontProperty(
     delegate: CssShorthandPropertyDelegate = CssShorthandPropertyDelegate("font", map)
 ) : CssShorthandProperty by delegate {
     val size = DimensionDeclaration("font-size", map)
+    val weight = FontWeightProperty(map)
 }

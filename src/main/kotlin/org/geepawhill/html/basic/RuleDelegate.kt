@@ -1,6 +1,6 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.BorderDeclaration
+import org.geepawhill.html.css.BorderProperty
 import org.geepawhill.html.css.BoxSizingDeclaration
 import org.geepawhill.html.css.ColorDeclaration
 import org.geepawhill.html.css.CssSafeProperty
@@ -9,6 +9,7 @@ import org.geepawhill.html.css.DimensionDeclaration
 import org.geepawhill.html.css.DisplayDeclaration
 import org.geepawhill.html.css.FloatDeclaration
 import org.geepawhill.html.css.FontProperty
+import org.geepawhill.html.css.FontWeightProperty
 import org.geepawhill.html.css.FourSidedDeclaration
 import org.geepawhill.html.css.PositionDeclaration
 import org.geepawhill.html.css.Rule
@@ -37,12 +38,13 @@ class RuleDelegate(
     override val color: ColorDeclaration = ColorDeclaration("color", declarations)
     override val font: FontProperty = FontProperty(declarations)
     override val font_size: DimensionDeclaration = DimensionDeclaration("font-size", declarations)
+    override val font_weight: FontWeightProperty = FontWeightProperty(declarations)
     override val width: DimensionDeclaration = DimensionDeclaration("width", declarations)
     override val background_color: ColorDeclaration = ColorDeclaration("background-color", declarations)
     override val line_height: DimensionDeclaration = DimensionDeclaration("line-height", declarations)
     override val position: PositionDeclaration = PositionDeclaration(declarations)
     override val float: FloatDeclaration = FloatDeclaration("float", declarations)
-    override val border: BorderDeclaration = BorderDeclaration(declarations)
+    override val border: BorderProperty = BorderProperty(declarations)
     override val vertical_align: VerticalAlignDeclaration = VerticalAlignDeclaration(declarations)
     override val cursor: CssSafeProperty<CursorEnum> = CssSafePropertyDelegate("cursor", declarations)
     override val align_items: CssSafeProperty<AlignItemsEnum> = CssSafePropertyDelegate("align-items", declarations)

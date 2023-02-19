@@ -24,7 +24,7 @@ interface Rule : Element {
     val line_height: DimensionDeclaration
     val position: PositionDeclaration
     val float: FloatDeclaration
-    val border: BorderDeclaration
+    val border: BorderProperty
     val vertical_align: VerticalAlignDeclaration
     val cursor: CssSafeProperty<CursorEnum>
     val align_items: CssSafeProperty<AlignItemsEnum>
@@ -46,4 +46,5 @@ interface Rule : Element {
     val Number.vmin: String get() = "${this}vmin"
     val Number.vmax: String get() = "${this}vmax"
     val Number.percent: String get() = "$this%"
+    val font_weight: FontWeightProperty
 }

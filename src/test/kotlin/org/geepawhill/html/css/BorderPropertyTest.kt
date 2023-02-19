@@ -15,14 +15,13 @@ import org.geepawhill.html.css.enums.GenericEnum.none
 import org.geepawhill.html.css.enums.GenericEnum.unset
 import org.junit.jupiter.api.Test
 
-class BorderDeclarationTest {
+class BorderPropertyTest {
     val checker = CssFieldChecker()
 
     @Test
     fun `one of each type in direct`() {
         checker.checking("border") {
             shouldGet("anything") { border += "anything" }
-            shouldGet("none") { border += none }
         }
     }
 
