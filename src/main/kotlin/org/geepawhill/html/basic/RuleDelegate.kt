@@ -14,6 +14,7 @@ import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.css.TextDecorationDeclaration
 import org.geepawhill.html.css.VerticalAlignDeclaration
+import org.geepawhill.html.css.enums.AlignItemsEnum
 import org.geepawhill.html.css.enums.CursorEnum
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
@@ -41,6 +42,7 @@ class RuleDelegate(
     override val border: BorderDeclaration = BorderDeclaration(declarations)
     override val vertical_align: VerticalAlignDeclaration = VerticalAlignDeclaration(declarations)
     override val cursor: CssSafeProperty<CursorEnum> = CssSafePropertyDelegate("cursor", declarations)
+    override val align_items: CssSafeProperty<AlignItemsEnum> = CssSafePropertyDelegate("align-items", declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)

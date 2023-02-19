@@ -1,5 +1,6 @@
 package org.geepawhill.html.css
 
+import org.geepawhill.html.css.enums.AlignItemsEnum
 import org.geepawhill.html.css.enums.CursorEnum
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.model.Element
@@ -24,6 +25,7 @@ interface Rule : Element {
     val border: BorderDeclaration
     val vertical_align: VerticalAlignDeclaration
     val cursor: CssSafeProperty<CursorEnum>
+    val align_items: CssSafeProperty<AlignItemsEnum>
 
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
