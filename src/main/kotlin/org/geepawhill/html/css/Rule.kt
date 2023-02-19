@@ -16,6 +16,8 @@ interface Rule : Element {
     val height: DimensionDeclaration
     val color: ColorDeclaration
     val font_size: DimensionDeclaration
+    val background_color: ColorDeclaration
+    val line_height: DimensionDeclaration
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
     val Number.inch: String get() = "${this}in"

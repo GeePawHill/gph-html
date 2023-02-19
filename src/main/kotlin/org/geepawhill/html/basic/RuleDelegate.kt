@@ -27,6 +27,8 @@ class RuleDelegate(
     override val color: ColorDeclaration = ColorDeclaration("color", declarations)
     override val font_size: DimensionDeclaration = DimensionDeclaration("font-size", declarations)
     override val width: DimensionDeclaration = DimensionDeclaration("width", declarations)
+    override val background_color: ColorDeclaration = ColorDeclaration("background-color", declarations)
+    override val line_height: DimensionDeclaration = DimensionDeclaration("line-height", declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
