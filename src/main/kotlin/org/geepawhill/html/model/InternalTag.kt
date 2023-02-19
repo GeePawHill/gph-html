@@ -1,11 +1,14 @@
 package org.geepawhill.html.model
 
+import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.SimpleDeclaration
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 
 typealias Details = InternalTag.() -> Unit
 
 @Suppress("TooManyFunctions")
 interface InternalTag : ContainerTag {
+    val id: SimpleDeclaration
 
     fun div(
         classes: String = NO_VALUE,
@@ -79,4 +82,8 @@ interface InternalTag : ContainerTag {
     companion object {
         val NO_DETAILS: Details = {}
     }
+
+    fun asClass(className: String, details: Selector.() -> Unit)
+    fun asId(idString: String, details: Selector.() -> Unit)
+    fun asClass(className: String)
 }

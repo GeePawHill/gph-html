@@ -1,5 +1,7 @@
 package org.geepawhill.html.basic
 
+import org.geepawhill.html.css.Selector
+import org.geepawhill.html.css.SimpleDeclaration
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
@@ -16,12 +18,28 @@ class InternalTagDelegate(
 ) :
     InternalTag, ContainerTag by delegate {
 
+    override val id: SimpleDeclaration = SimpleDeclaration(attributes, "id")
+
     init {
         this.classes += classes
     }
 
     override fun toString(): String {
         return tag
+    }
+
+    override fun asClass(className: String, details: Selector.() -> Unit) {
+        classes += className
+        selector(".$className", details)
+    }
+
+    override fun asClass(className: String) {
+        classes += className
+    }
+
+    override fun asId(idString: String, details: Selector.() -> Unit) {
+        id += idString
+        selector("#$idString", details)
     }
 
     override fun nav(classes: String, details: Details) {

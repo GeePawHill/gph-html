@@ -18,7 +18,6 @@ class ContainerTagDelegate(
     ContainerTag, AttributeOnlyTag by delegate {
 
     override val classes: SimpleDeclaration = SimpleDeclaration(map = delegate.attributes, key = "class")
-
     override val elements = mutableListOf<Element>()
 
     override operator fun Element.unaryPlus() {
