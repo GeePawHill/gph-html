@@ -29,6 +29,10 @@ class RuleDelegate(
     override val width: DimensionDeclaration = DimensionDeclaration("width", declarations)
     override val background_color: ColorDeclaration = ColorDeclaration("background-color", declarations)
     override val line_height: DimensionDeclaration = DimensionDeclaration("line-height", declarations)
+    override val left: DimensionDeclaration = DimensionDeclaration("left", declarations)
+    override val top: DimensionDeclaration = DimensionDeclaration("top", declarations)
+    override val right: DimensionDeclaration = DimensionDeclaration("right", declarations)
+    override val bottom: DimensionDeclaration = DimensionDeclaration("bottom", declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
