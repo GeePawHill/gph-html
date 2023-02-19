@@ -20,6 +20,7 @@ interface Rule : Element {
     val line_height: DimensionDeclaration
     val position: PositionDeclaration
     val float: FloatDeclaration
+    val border: BorderDeclaration
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
     val Number.inch: String get() = "${this}in"

@@ -1,7 +1,6 @@
-package org.geepawhill.html.basic
+package org.geepawhill.html.css
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.css.ColorDeclaration
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 

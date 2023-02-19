@@ -1,12 +1,11 @@
-package org.geepawhill.html.basic
+package org.geepawhill.html.css
 
-import org.geepawhill.html.css.CssFieldChecker
 import org.geepawhill.html.css.enums.DimensionEnum.auto
 import org.geepawhill.html.css.enums.GenericEnum.inherit
 import org.geepawhill.html.css.enums.GenericEnum.initial
 import org.junit.jupiter.api.Test
 
-class DimensionDeclationTest {
+class DimensionDeclarationTest {
 
     val checker = CssFieldChecker()
 
