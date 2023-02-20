@@ -1,6 +1,6 @@
 package org.geepawhill.html.css
 
-import org.geepawhill.html.css.enums.AlignmentEnum
+import org.geepawhill.html.basic.TextTransformEnum
 import org.geepawhill.html.css.enums.CursorEnum
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.model.Element
@@ -28,7 +28,7 @@ interface Rule : Element {
     val vertical_align: VerticalAlignDeclaration
     val cursor: CssSafeProperty<CursorEnum>
     val align_items: AlignItemsProperty
-    val text_align: CssSafeProperty<AlignmentEnum>
+    val text_align: TextAlignProperty
     val transition: TransitionDeclaration
 
     val Number.cm: String get() = "${this}cm"
@@ -49,4 +49,5 @@ interface Rule : Element {
     val Number.percent: String get() = "$this%"
     val font_weight: FontWeightProperty
     val justify_content: JustifyContentProperty
+    val text_transform: CssSafeProperty<TextTransformEnum>
 }

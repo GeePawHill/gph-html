@@ -16,10 +16,10 @@ import org.geepawhill.html.css.JustifyContentProperty
 import org.geepawhill.html.css.PositionDeclaration
 import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
+import org.geepawhill.html.css.TextAlignProperty
 import org.geepawhill.html.css.TextDecorationDeclaration
 import org.geepawhill.html.css.TransitionDeclaration
 import org.geepawhill.html.css.VerticalAlignDeclaration
-import org.geepawhill.html.css.enums.AlignmentEnum
 import org.geepawhill.html.css.enums.CursorEnum
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
@@ -50,10 +50,11 @@ class RuleDelegate(
     override val vertical_align: VerticalAlignDeclaration = VerticalAlignDeclaration(declarations)
     override val cursor: CssSafeProperty<CursorEnum> = CssSafePropertyDelegate("cursor", declarations)
     override val align_items: AlignItemsProperty = AlignItemsProperty(declarations)
-    override val text_align: CssSafeProperty<AlignmentEnum> =
-        CssSafePropertyDelegate<AlignmentEnum>("text-align", declarations)
+    override val text_align: TextAlignProperty = TextAlignProperty(declarations)
     override val transition: TransitionDeclaration = TransitionDeclaration(declarations)
     override val justify_content: JustifyContentProperty = JustifyContentProperty(declarations)
+    override val text_transform: CssSafeProperty<TextTransformEnum> =
+        CssSafePropertyDelegate("text-transform", declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
