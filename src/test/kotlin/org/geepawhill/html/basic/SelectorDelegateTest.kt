@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test
 
 class SelectorDelegateTest {
     val map = OrderedMapDelegate()
-    val display = DisplayProperty("display", map)
+    val display = DisplayProperty(map)
     val styles = StylesDelegate()
 
     @Test
     fun `direct setting works`() {
-        display.value = "none"
+        display += "none"
         assertThat(display.value).isEqualTo("none")
         assertThat(map["display"]).isEqualTo("none")
     }

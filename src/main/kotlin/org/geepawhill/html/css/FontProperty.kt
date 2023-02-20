@@ -6,6 +6,6 @@ class FontProperty(
     map: OrderedMap,
     delegate: ShorthandPropertyDelegate = ShorthandPropertyDelegate("font", map)
 ) : ShorthandProperty by delegate {
-    val size = DimensionDeclaration("font-size", map)
+    val size = DimensionProperty("font-size", map)
     val weight = FontWeightProperty(map)
 }

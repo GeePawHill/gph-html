@@ -14,16 +14,16 @@ interface Rule : Element {
     val text_decoration: TextDecorationProperty
     val margin: FourSidedDeclaration
     val padding: FourSidedDeclaration
-    val width: DimensionDeclaration
-    val height: DimensionDeclaration
+    val width: DimensionProperty
+    val height: DimensionProperty
     val color: ColorProperty
 
     val font: FontProperty
-    val font_size: DimensionDeclaration
+    val font_size: DimensionProperty
     val background_color: ColorProperty
-    val line_height: DimensionDeclaration
-    val position: PositionDeclaration
-    val float: FloatDeclaration
+    val line_height: DimensionProperty
+    val position: PositionProperty
+    val float: FloatProperty
     val border: BorderProperty
     val vertical_align: VerticalAlignProperty
     val cursor: TypedProperty<CursorEnum>

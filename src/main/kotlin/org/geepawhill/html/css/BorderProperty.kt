@@ -7,5 +7,5 @@ class BorderProperty(
     delegate: ShorthandPropertyDelegate = ShorthandPropertyDelegate("border", map)
 ) : ShorthandProperty by delegate {
     val style = BorderStyleProperty(map)
-    val radius = DimensionDeclaration("border-radius", map)
+    val radius = DimensionProperty("border-radius", map)
 }

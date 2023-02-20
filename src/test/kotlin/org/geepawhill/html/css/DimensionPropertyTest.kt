@@ -5,7 +5,7 @@ import org.geepawhill.html.css.enums.GenericEnum.inherit
 import org.geepawhill.html.css.enums.GenericEnum.initial
 import org.junit.jupiter.api.Test
 
-class DimensionDeclarationTest {
+class DimensionPropertyTest {
 
     val checker = CssFieldChecker()
 
