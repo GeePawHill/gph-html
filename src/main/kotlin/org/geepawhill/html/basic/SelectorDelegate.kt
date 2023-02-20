@@ -37,7 +37,7 @@ class SelectorDelegate(
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.openSelector(rule)
-        for (declaration in declarations.entries) formatter.declaration(declaration)
+        for (declaration in property.entries) formatter.declaration(declaration)
         formatter.closeSelector()
         return formatter
     }

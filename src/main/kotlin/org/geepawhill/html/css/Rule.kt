@@ -8,7 +8,7 @@ import org.geepawhill.html.model.Element
 @Suppress("VariableNaming")
 interface Rule : Element {
     val rule: String
-    val declarations: OrderedMap
+    val property: OrderedMap
     val display: DisplayProperty
     val box_sizing: BoxSizingProperty
     val text_decoration: TextDecorationProperty

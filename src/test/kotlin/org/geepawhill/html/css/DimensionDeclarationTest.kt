@@ -13,7 +13,7 @@ class DimensionDeclarationTest {
     fun `all width assignments`() {
         checker.checking("width") {
             shouldGet("hi mom!") { width += "hi mom!" }
-            shouldGet("hello mother!") { declarations["width"] = "hello mother!" }
+            shouldGet("hello mother!") { property["width"] = "hello mother!" }
 
             shouldGet("100cm") { width += 100.cm }
             shouldGet("100mm") { width += 100.mm }
@@ -42,7 +42,7 @@ class DimensionDeclarationTest {
     fun `a couple of height assignments`() {
         checker.checking("height") {
             shouldGet("hi mom!") { height += "hi mom!" }
-            shouldGet("hello mother!") { declarations["height"] = "hello mother!" }
+            shouldGet("hello mother!") { property["height"] = "hello mother!" }
             shouldGet("100px") { height += 100.px }
             shouldGet("auto") { height += auto }
         }

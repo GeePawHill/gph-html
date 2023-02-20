@@ -30,11 +30,11 @@ class SelectorDelegateTest {
     @Test
     fun `dsl works`() {
         val thing = SelectorDelegate(styles, "*")
-        thing.declarations["display"] = "anything"
+        thing.property["display"] = "anything"
         thing.apply {
             display += inline
         }
-        assertThat(thing.declarations["display"]).isEqualTo("inline")
+        assertThat(thing.property["display"]).isEqualTo("inline")
     }
 
     @Test

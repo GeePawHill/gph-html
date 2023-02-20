@@ -11,7 +11,7 @@ class CssFieldChecker {
         fun shouldGet(expected: String, running: Rule.() -> Unit) {
             with(useRule) {
                 running()
-                Assertions.assertThat(declarations[key]).isEqualTo(expected)
+                Assertions.assertThat(property[key]).isEqualTo(expected)
             }
         }
     }

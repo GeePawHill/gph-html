@@ -17,7 +17,7 @@ class RuleDelegateTest {
     @Test
     fun `direct set works`() {
         declarations.apply {
-            declarations["width"] = "10px"
+            property["width"] = "10px"
         }
         assertThat(declarations.flat).isEqualTo("* { width: 10px; }")
     }

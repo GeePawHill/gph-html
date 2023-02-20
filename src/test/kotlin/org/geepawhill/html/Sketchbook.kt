@@ -27,7 +27,7 @@ class Sketchbook {
                     }
                     nav("silly") {
                         selector(".silly") {
-                            declarations["width"] = "100px"
+                            property["width"] = "100px"
                         }
                     }
                 }
