@@ -1,14 +1,14 @@
 package org.geepawhill.html.model
 
+import org.geepawhill.html.basic.SimpleAttribute
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.SimpleDeclaration
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 
 typealias Details = InternalTag.() -> Unit
 
 @Suppress("TooManyFunctions")
 interface InternalTag : ContainerTag {
-    val id: SimpleDeclaration
+    val id: SimpleAttribute
 
     fun div(
         classes: String = NO_VALUE,

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 class CssPropertyTest {
     val map = OrderedMapDelegate()
-    val property = CssSafePropertyDelegate<CursorEnum>("cursor", map)
+    val property = TypedPropertyDelegate<CursorEnum>("cursor", map)
 
     @Test
     fun `string plusAssign`() {

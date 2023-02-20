@@ -5,10 +5,10 @@ import org.geepawhill.html.css.enums.ColorEnum.white
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.junit.jupiter.api.Test
 
-class ColorDeclarationTest {
+class ColorPropertyTest {
 
     val map = OrderedMapDelegate()
-    val color = ColorDeclaration("color", map)
+    val color = ColorProperty("color", map)
 
     @Test
     fun `formats hex`() {

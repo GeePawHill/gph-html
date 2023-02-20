@@ -3,10 +3,10 @@ package org.geepawhill.html.css
 import org.geepawhill.html.css.enums.GenericEnum
 import org.geepawhill.html.map.OrderedMap
 
-open class CssSafePropertyDelegate<TYPE>(
+class TypedPropertyDelegate<TYPE>(
     key: String,
     map: OrderedMap
-) : CssSafeProperty<TYPE> {
+) : TypedProperty<TYPE> {
     override var value by map.field(key)
 
     override operator fun plusAssign(raw: String) {

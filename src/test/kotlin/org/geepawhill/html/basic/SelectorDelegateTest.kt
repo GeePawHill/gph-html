@@ -1,7 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.css.DisplayDeclaration
+import org.geepawhill.html.css.DisplayProperty
 import org.geepawhill.html.css.enums.DisplayEnum.inline
 import org.geepawhill.html.css.enums.GenericEnum.none
 import org.geepawhill.html.map.OrderedMapDelegate
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 
 class SelectorDelegateTest {
     val map = OrderedMapDelegate()
-    val display = DisplayDeclaration("display", map)
+    val display = DisplayProperty("display", map)
     val styles = StylesDelegate()
 
     @Test

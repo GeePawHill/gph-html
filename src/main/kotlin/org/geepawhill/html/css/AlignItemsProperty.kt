@@ -7,8 +7,8 @@ import org.geepawhill.html.map.OrderedMap
 
 class AlignItemsProperty(
     map: OrderedMap,
-    delegate: CssSafeProperty<AlignItemsEnum> = CssSafePropertyDelegate("align-items", map)
-) : CssSafeProperty<AlignItemsEnum> by delegate {
+    delegate: TypedProperty<AlignItemsEnum> = TypedPropertyDelegate("align-items", map)
+) : TypedProperty<AlignItemsEnum> by delegate {
     operator fun plusAssign(safe: AlignmentEnum) {
         this += safe.toString()
     }

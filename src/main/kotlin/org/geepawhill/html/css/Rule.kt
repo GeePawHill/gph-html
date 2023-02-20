@@ -9,27 +9,27 @@ import org.geepawhill.html.model.Element
 interface Rule : Element {
     val rule: String
     val declarations: OrderedMap
-    val display: DisplayDeclaration
-    val box_sizing: BoxSizingDeclaration
-    val text_decoration: TextDecorationDeclaration
+    val display: DisplayProperty
+    val box_sizing: BoxSizingProperty
+    val text_decoration: TextDecorationProperty
     val margin: FourSidedDeclaration
     val padding: FourSidedDeclaration
     val width: DimensionDeclaration
     val height: DimensionDeclaration
-    val color: ColorDeclaration
+    val color: ColorProperty
 
     val font: FontProperty
     val font_size: DimensionDeclaration
-    val background_color: ColorDeclaration
+    val background_color: ColorProperty
     val line_height: DimensionDeclaration
     val position: PositionDeclaration
     val float: FloatDeclaration
     val border: BorderProperty
-    val vertical_align: VerticalAlignDeclaration
-    val cursor: CssSafeProperty<CursorEnum>
+    val vertical_align: VerticalAlignProperty
+    val cursor: TypedProperty<CursorEnum>
     val align_items: AlignItemsProperty
     val text_align: TextAlignProperty
-    val transition: TransitionDeclaration
+    val transition: TransitionProperty
 
     val Number.cm: String get() = "${this}cm"
     val Number.mm: String get() = "${this}mm"
@@ -49,5 +49,5 @@ interface Rule : Element {
     val Number.percent: String get() = "$this%"
     val font_weight: FontWeightProperty
     val justify_content: JustifyContentProperty
-    val text_transform: CssSafeProperty<TextTransformEnum>
+    val text_transform: TypedProperty<TextTransformEnum>
 }

@@ -1,7 +1,6 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.SimpleDeclaration
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
@@ -17,7 +16,7 @@ class ContainerTagDelegate(
 ) :
     ContainerTag, AttributeOnlyTag by delegate {
 
-    override val classes: SimpleDeclaration = SimpleDeclaration(map = delegate.attributes, key = "class")
+    override val classes: SimpleAttribute = SimpleAttribute(map = delegate.attributes, key = "class")
     override val elements = mutableListOf<Element>()
 
     override operator fun Element.unaryPlus() {

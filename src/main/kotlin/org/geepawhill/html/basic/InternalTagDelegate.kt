@@ -1,7 +1,6 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.SimpleDeclaration
 import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
@@ -18,7 +17,7 @@ class InternalTagDelegate(
 ) :
     InternalTag, ContainerTag by delegate {
 
-    override val id: SimpleDeclaration = SimpleDeclaration(attributes, "id")
+    override val id: SimpleAttribute = SimpleAttribute(attributes, "id")
 
     init {
         this.classes += classes
