@@ -48,4 +48,5 @@ interface Rule : Element {
     val Number.vmax: String get() = "${this}vmax"
     val Number.percent: String get() = "$this%"
     val font_weight: FontWeightProperty
+    val justify_content: JustifyContentProperty
 }

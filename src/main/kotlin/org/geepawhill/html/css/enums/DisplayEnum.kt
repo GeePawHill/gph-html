@@ -22,8 +22,6 @@ enum class DisplayEnum(val value: String? = null) {
     table_cell("table-cell"),
     table_column("table-column"),
     table_row("table-row"),
-    initial("initial"),
-    inherit("inherit"),
     ;
 
     override fun toString(): String = value ?: name

@@ -12,6 +12,7 @@ import org.geepawhill.html.css.FloatDeclaration
 import org.geepawhill.html.css.FontProperty
 import org.geepawhill.html.css.FontWeightProperty
 import org.geepawhill.html.css.FourSidedDeclaration
+import org.geepawhill.html.css.JustifyContentProperty
 import org.geepawhill.html.css.PositionDeclaration
 import org.geepawhill.html.css.Rule
 import org.geepawhill.html.css.Styles
@@ -52,6 +53,7 @@ class RuleDelegate(
     override val text_align: CssSafeProperty<AlignmentEnum> =
         CssSafePropertyDelegate<AlignmentEnum>("text-align", declarations)
     override val transition: TransitionDeclaration = TransitionDeclaration(declarations)
+    override val justify_content: JustifyContentProperty = JustifyContentProperty(declarations)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
