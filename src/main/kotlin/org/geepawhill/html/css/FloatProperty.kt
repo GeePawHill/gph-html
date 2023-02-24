@@ -1,6 +1,6 @@
 package org.geepawhill.html.css
 
-import org.geepawhill.html.css.enums.FloatEnum
+import org.geepawhill.html.css.enums.*
 import org.geepawhill.html.map.OrderedMap
 
 class FloatProperty(
