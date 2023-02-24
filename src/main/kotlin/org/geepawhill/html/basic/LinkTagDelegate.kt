@@ -1,27 +1,23 @@
 package org.geepawhill.html.basic
 
-import org.geepawhill.html.css.Styles
-import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
+import org.geepawhill.html.model.HtmlFactory
 import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.LinkTag
 
 class LinkTagDelegate(
-    styles: Styles,
-    classes: String = NO_VALUE,
-    href: String = NO_VALUE,
-    target: String = NO_VALUE,
-    private val delegate: InternalTag = InternalTagDelegate(styles, "a", classes),
-    details: LinkTagDelegate.() -> Unit = {}
+    classes: String,
+    href: String,
+    target: String,
+    factory: HtmlFactory
 ) : LinkTag,
-    InternalTag by delegate {
+    InternalTag by factory.internalTag("a", classes) {
 
     override var href: String by attributes.field("href")
-    var target: String by attributes.field("target")
+    override var target: String by attributes.field("target")
 
     init {
         this.classes += classes
         this.href = href
         this.target = target
-        details()
     }
 }

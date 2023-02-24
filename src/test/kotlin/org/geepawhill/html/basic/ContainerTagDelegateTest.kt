@@ -1,12 +1,13 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.css.enums.DisplayEnum.inline
+import org.geepawhill.html.css.enums.DisplayEnum.*
 import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
 class ContainerTagDelegateTest {
-    val tag = ContainerTagDelegate("tag", StylesDelegate())
+    val factory = HtmlDelegateFactory()
+    val tag = factory.containerTag("tag")
 
     @Test
     fun `formats flat correctly`() {
@@ -23,9 +24,8 @@ class ContainerTagDelegateTest {
 
     @Test
     fun `formats flat with contents`() {
-        val styles = StylesDelegate()
-        val tag = ContainerTagDelegate("tag", styles).apply {
-            +ContainerTagDelegate("child", styles)
+        val tag = factory.containerTag("tag").apply {
+            +factory.containerTag("child")
         }
         assertThat(tag.flat).isEqualTo("<tag><child></child></tag>")
     }

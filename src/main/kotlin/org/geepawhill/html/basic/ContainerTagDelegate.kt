@@ -6,17 +6,18 @@ import org.geepawhill.html.model.AttributeOnlyTag
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Element
 import org.geepawhill.html.model.EncodedTextElement
+import org.geepawhill.html.model.HtmlFactory
 import org.geepawhill.html.model.HtmlFormatter
 import org.geepawhill.html.model.TextElement
 
 class ContainerTagDelegate(
     tag: String,
-    override val styles: Styles,
-    private val delegate: AttributeOnlyTag = AttributeOnlyTagDelegate(tag)
+    override val factory: HtmlFactory,
 ) :
-    ContainerTag, AttributeOnlyTag by delegate {
+    ContainerTag, AttributeOnlyTag by factory.attributeOnlyTag(tag) {
+    override val styles: Styles = factory.styles
 
-    override val classes: SimpleAttribute = SimpleAttribute(map = delegate.attributes, key = "class")
+    override val classes: SimpleAttribute = SimpleAttribute(attributes, "class")
     override val elements = mutableListOf<Element>()
 
     override operator fun Element.unaryPlus() {

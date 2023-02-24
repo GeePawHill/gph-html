@@ -1,30 +1,25 @@
 package org.geepawhill.html.basic
 
 import org.geepawhill.html.css.Selector
-import org.geepawhill.html.css.Styles
 import org.geepawhill.html.map.OrderedMap.Companion.NO_VALUE
 import org.geepawhill.html.model.ContainerTag
 import org.geepawhill.html.model.Details
+import org.geepawhill.html.model.HtmlFactory
 import org.geepawhill.html.model.InternalTag
 import org.geepawhill.html.model.InternalTag.Companion.NO_DETAILS
 
 @Suppress("TooManyFunctions")
 class InternalTagDelegate(
-    styles: Styles,
     tag: String,
-    classes: String = NO_VALUE,
-    private val delegate: ContainerTag = ContainerTagDelegate(tag, styles)
+    classes: String,
+    override val factory: HtmlFactory,
 ) :
-    InternalTag, ContainerTag by delegate {
+    InternalTag, ContainerTag by factory.containerTag(tag) {
 
     override val id: SimpleAttribute = SimpleAttribute(attributes, "id")
 
     init {
         this.classes += classes
-    }
-
-    override fun toString(): String {
-        return tag
     }
 
     override fun asClass(className: String, details: Selector.() -> Unit) {
@@ -91,24 +86,24 @@ class InternalTagDelegate(
         target: String,
         details: Details
     ) {
-        +LinkTagDelegate(styles, classes, href, target).apply(details)
+        +factory.linkTag(classes, href, target).apply(details)
     }
 
     override fun ul(
         classes: String,
         details: InternalTag.() -> Unit
     ) {
-        +InternalTagDelegate(styles, "ul", classes).apply { details() }
+        runAndAdd("ul", classes, details)
     }
 
     override fun li(
         classes: String,
         details: InternalTag.() -> Unit
     ) {
-        +InternalTagDelegate(styles, "li", classes).apply { details() }
+        runAndAdd("li", classes, details)
     }
 
     private fun runAndAdd(tag: String, classes: String = NO_VALUE, details: Details = NO_DETAILS) {
-        +InternalTagDelegate(styles, tag, classes).apply { details() }
+        +factory.internalTag(tag, classes).apply(details)
     }
 }

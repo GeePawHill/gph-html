@@ -5,6 +5,7 @@ import org.geepawhill.html.css.Selector
 import org.geepawhill.html.css.Styles
 
 interface ContainerTag : AttributeOnlyTag {
+    val factory: HtmlFactory
     val elements: List<Element>
     val styles: Styles
     val classes: SimpleAttribute

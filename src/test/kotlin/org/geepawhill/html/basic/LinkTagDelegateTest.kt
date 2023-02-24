@@ -5,18 +5,18 @@ import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
 class LinkTagDelegateTest {
-    val styles = StylesDelegate()
+    val factory = HtmlDelegateFactory()
 
     @Test
     fun `constructor sets fields if present`() {
-        val link = LinkTagDelegate(styles, "class", "href", "target")
+        val link = factory.linkTag("class", "href", "target")
         val expected = """<a class="class" href="href" target="target"></a>"""
         assertThat(link.flat).isEqualTo(expected)
     }
 
     @Test
     fun `field overrides in details`() {
-        val link = LinkTagDelegate(styles) {
+        val link = factory.linkTag().apply {
             classes += "class"
             href = "href"
             target = "target"
@@ -27,7 +27,7 @@ class LinkTagDelegateTest {
 
     @Test
     fun `DSL function same arguments as constructor`() {
-        val container = InternalTagDelegate(styles, "div").apply {
+        val container = factory.internalTag("div").apply {
             a("class", "href", "target")
         }
         val expected = """<div><a class="class" href="href" target="target"></a></div>"""
@@ -36,7 +36,7 @@ class LinkTagDelegateTest {
 
     @Test
     fun `Adding text using plus works`() {
-        val link = LinkTagDelegate(styles).apply {
+        val link = factory.linkTag().apply {
             +"This is text."
         }
         val expected = """<a>This is text.</a>"""
@@ -45,8 +45,8 @@ class LinkTagDelegateTest {
 
     @Test
     fun `Adding tag using plus works`() {
-        val link = LinkTagDelegate(styles).apply {
-            +InternalTagDelegate(styles, "div")
+        val link = factory.linkTag().apply {
+            +factory.internalTag("div")
         }
         val expected = """<a><div></div></a>"""
         assertThat(link.flat).isEqualTo(expected)
