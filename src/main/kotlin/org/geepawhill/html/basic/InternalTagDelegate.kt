@@ -100,6 +100,14 @@ class InternalTagDelegate(
         runAndAdd("p", classes, details)
     }
 
+    override fun strong(classes: String, details: Details) {
+        runAndAdd("strong", classes, details)
+    }
+
+    override fun em(classes: String, details: Details) {
+        runAndAdd("em", classes, details)
+    }
+
     override fun a(
         classes: String,
         href: String,
