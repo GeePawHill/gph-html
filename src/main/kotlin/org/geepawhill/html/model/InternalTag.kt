@@ -35,25 +35,16 @@ interface InternalTag : ContainerTag {
         details: Details = NO_DETAILS
     )
 
-    fun h1(
-        classes: String = NO_VALUE,
-        details: Details = NO_DETAILS
-    )
+    fun h1(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun h2(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun h3(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun h4(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun h5(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun h6(classes: String = NO_VALUE, details: Details = NO_DETAILS)
 
-    fun button(
-        classes: String = NO_VALUE,
-        details: Details = NO_DETAILS
-    )
-
-    fun form(
-        classes: String = NO_VALUE,
-        details: Details = NO_DETAILS
-    )
-
-    fun p(
-        classes: String = NO_VALUE,
-        details: Details = NO_DETAILS
-    )
+    fun button(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun form(classes: String = NO_VALUE, details: Details = NO_DETAILS)
+    fun p(classes: String = NO_VALUE, details: Details = NO_DETAILS)
 
     fun span(
         classes: String = NO_VALUE,
@@ -86,9 +77,4 @@ interface InternalTag : ContainerTag {
     fun asClass(className: String, details: Selector.() -> Unit)
     fun asId(idString: String, details: Selector.() -> Unit)
     fun asClass(className: String)
-    fun h6(classes: String, details: Details)
-    fun h5(classes: String, details: Details)
-    fun h4(classes: String, details: Details)
-    fun h3(classes: String, details: Details)
-    fun h2(classes: String, details: Details)
 }
