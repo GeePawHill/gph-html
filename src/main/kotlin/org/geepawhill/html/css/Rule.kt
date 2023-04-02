@@ -1,7 +1,7 @@
 package org.geepawhill.html.css
 
 import org.geepawhill.html.basic.TextTransformEnum
-import org.geepawhill.html.css.enums.CursorEnum
+import org.geepawhill.html.css.enums.*
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.model.Element
 
@@ -50,4 +50,5 @@ interface Rule : Element {
     val font_weight: FontWeightProperty
     val justify_content: JustifyContentProperty
     val text_transform: TypedProperty<TextTransformEnum>
+    val max_width: DimensionProperty
 }

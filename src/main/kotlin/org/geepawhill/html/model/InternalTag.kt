@@ -86,4 +86,9 @@ interface InternalTag : ContainerTag {
     fun asClass(className: String, details: Selector.() -> Unit)
     fun asId(idString: String, details: Selector.() -> Unit)
     fun asClass(className: String)
+    fun h6(classes: String, details: Details)
+    fun h5(classes: String, details: Details)
+    fun h4(classes: String, details: Details)
+    fun h3(classes: String, details: Details)
+    fun h2(classes: String, details: Details)
 }

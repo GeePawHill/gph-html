@@ -60,6 +60,26 @@ class InternalTagDelegate(
         runAndAdd("h1", classes, details)
     }
 
+    override fun h2(classes: String, details: Details) {
+        runAndAdd("h2", classes, details)
+    }
+
+    override fun h3(classes: String, details: Details) {
+        runAndAdd("h3", classes, details)
+    }
+
+    override fun h4(classes: String, details: Details) {
+        runAndAdd("h4", classes, details)
+    }
+
+    override fun h5(classes: String, details: Details) {
+        runAndAdd("h5", classes, details)
+    }
+
+    override fun h6(classes: String, details: Details) {
+        runAndAdd("h6", classes, details)
+    }
+
     override fun button(classes: String, details: Details) {
         runAndAdd("button", classes, details)
     }

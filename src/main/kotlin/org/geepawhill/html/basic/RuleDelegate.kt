@@ -20,7 +20,7 @@ import org.geepawhill.html.css.TransitionProperty
 import org.geepawhill.html.css.TypedProperty
 import org.geepawhill.html.css.TypedPropertyDelegate
 import org.geepawhill.html.css.VerticalAlignProperty
-import org.geepawhill.html.css.enums.CursorEnum
+import org.geepawhill.html.css.enums.*
 import org.geepawhill.html.map.OrderedMap
 import org.geepawhill.html.map.OrderedMapDelegate
 import org.geepawhill.html.model.HtmlFormatter
@@ -55,6 +55,7 @@ class RuleDelegate(
     override val justify_content: JustifyContentProperty = JustifyContentProperty(property)
     override val text_transform: TypedProperty<TextTransformEnum> =
         TypedPropertyDelegate("text-transform", property)
+    override val max_width: DimensionProperty = DimensionProperty("max-width", property)
 
     override fun format(formatter: HtmlFormatter): HtmlFormatter {
         formatter.startRule(rule)
