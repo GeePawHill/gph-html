@@ -1,7 +1,7 @@
 package org.geepawhill.html.basic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.geepawhill.html.css.enums.DisplayEnum.*
+import org.geepawhill.html.css.enums.DisplayEnum.inline
 import org.geepawhill.html.model.Element.Companion.flat
 import org.junit.jupiter.api.Test
 
@@ -33,9 +33,9 @@ class ContainerTagDelegateTest {
     @Test
     fun `can set classes value`() {
         tag.apply {
-            classes += "something"
+            classes = "something"
         }
-        assertThat(tag.classes.value).isEqualTo("something")
+        assertThat(tag.classes).isEqualTo("something")
     }
 
     @Test
@@ -43,7 +43,7 @@ class ContainerTagDelegateTest {
         tag.apply {
             selectorAs("something")
         }
-        assertThat(tag.classes.value).isEqualTo("something")
+        assertThat(tag.classes).isEqualTo("something")
     }
 
     @Test
@@ -53,6 +53,6 @@ class ContainerTagDelegateTest {
                 display += inline
             }
         }
-        assertThat(tag.classes.value).isEqualTo("something")
+        assertThat(tag.classes).isEqualTo("something")
     }
 }

@@ -16,19 +16,19 @@ class InternalTagDelegate(
 ) :
     InternalTag, ContainerTag by factory.containerTag(tag) {
 
-    override val id: SimpleAttribute = SimpleAttribute(attributes, "id")
+    override var id: SimpleAttribute = SimpleAttribute(attributes, "id")
 
     init {
-        this.classes += classes
+        this.classes = classes
     }
 
     override fun asClass(className: String, details: Selector.() -> Unit) {
-        classes += className
+        classes = className
         selector(".$className", details)
     }
 
     override fun asClass(className: String) {
-        classes += className
+        classes = className
     }
 
     override fun asId(idString: String, details: Selector.() -> Unit) {

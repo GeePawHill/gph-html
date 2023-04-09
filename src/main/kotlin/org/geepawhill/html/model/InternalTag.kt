@@ -8,7 +8,7 @@ typealias Details = InternalTag.() -> Unit
 
 @Suppress("TooManyFunctions")
 interface InternalTag : ContainerTag {
-    val id: SimpleAttribute
+    var id: SimpleAttribute
 
     fun div(
         classes: String = NO_VALUE,

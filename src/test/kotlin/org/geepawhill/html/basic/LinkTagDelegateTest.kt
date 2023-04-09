@@ -17,7 +17,7 @@ class LinkTagDelegateTest {
     @Test
     fun `field overrides in details`() {
         val link = factory.linkTag().apply {
-            classes += "class"
+            classes = "class"
             href = "href"
             target = "target"
         }

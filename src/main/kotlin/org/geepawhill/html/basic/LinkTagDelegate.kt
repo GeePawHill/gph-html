@@ -16,7 +16,7 @@ class LinkTagDelegate(
     override var target: String by attributes.field("target")
 
     init {
-        this.classes += classes
+        this.classes = classes
         this.href = href
         this.target = target
     }

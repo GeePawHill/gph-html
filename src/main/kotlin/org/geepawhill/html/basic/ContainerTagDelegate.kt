@@ -17,7 +17,7 @@ class ContainerTagDelegate(
     ContainerTag, AttributeOnlyTag by factory.attributeOnlyTag(tag) {
     override val styles: Styles = factory.styles
 
-    override val classes: SimpleAttribute = SimpleAttribute(attributes, "class")
+    override var classes by attributes.field("class")
     override val elements = mutableListOf<Element>()
 
     override operator fun Element.unaryPlus() {
@@ -37,11 +37,11 @@ class ContainerTagDelegate(
     }
 
     override fun selectorAs(selector: String) {
-        classes += selector
+        classes = selector
     }
 
     override fun selectorAs(selector: String, details: Selector.() -> Unit) {
-        classes += selector
+        classes = selector
         selector(".$selector", details)
     }
 
