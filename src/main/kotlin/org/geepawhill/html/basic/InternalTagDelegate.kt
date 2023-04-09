@@ -16,7 +16,7 @@ class InternalTagDelegate(
 ) :
     InternalTag, ContainerTag by factory.containerTag(tag) {
 
-    override var id: SimpleAttribute = SimpleAttribute(attributes, "id")
+    override var id by attributes.field("id")
 
     init {
         this.classes = classes
@@ -32,7 +32,7 @@ class InternalTagDelegate(
     }
 
     override fun asId(idString: String, details: Selector.() -> Unit) {
-        id += idString
+        id = idString
         selector("#$idString", details)
     }
 
