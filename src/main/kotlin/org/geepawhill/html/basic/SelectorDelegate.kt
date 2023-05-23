@@ -19,19 +19,23 @@ class SelectorDelegate(
         styles.apply { +new }
     }
 
-    override fun small(details: MediaQuery.() -> Unit) {
+    override fun under600(details: MediaQuery.() -> Unit) {
+        media("only screen and (max-width: 600px)", details)
+    }
+
+    override fun over600(details: MediaQuery.() -> Unit) {
         media("only screen and (min-width: 600px)", details)
     }
 
-    override fun medium(details: MediaQuery.() -> Unit) {
+    override fun over768(details: MediaQuery.() -> Unit) {
         media("only screen and (min-width: 768px)", details)
     }
 
-    override fun large(details: MediaQuery.() -> Unit) {
+    override fun over992(details: MediaQuery.() -> Unit) {
         media("only screen and (min-width: 992px)", details)
     }
 
-    override fun huge(details: MediaQuery.() -> Unit) {
+    override fun over1200(details: MediaQuery.() -> Unit) {
         media("only screen and (min-width: 1200px)", details)
     }
 
