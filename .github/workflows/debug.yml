@@ -1,10 +1,20 @@
-name: CI
+name: Show Me the S3cr3tz
 on: [push]
+
 jobs:
-  build:
+  debug:
+    name: Debug
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up secret file
+      env:
+        DEBUG_KEY: ${{ secrets.SIGNINGKEY }}
+      run: |
+        echo $DEBUG_KEY >> secrets.txt
+
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
