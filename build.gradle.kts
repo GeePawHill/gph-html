@@ -1,20 +1,20 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version "1.8.21"
 
     // publishing
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 
     // Check for updates with ./gradlew dependencyUpdates
-    id("com.github.ben-manes.versions") version "0.44.0"
+    id("com.github.ben-manes.versions") version "0.46.0"
 
     // Formatting & Style
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
 
-    id("org.jetbrains.dokka") version "1.7.20"
+    id("org.jetbrains.dokka") version "1.8.10"
 
 }
 
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jsoup:jsoup:1.15.3")
+    implementation("org.jsoup:jsoup:1.16.1")
 
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
