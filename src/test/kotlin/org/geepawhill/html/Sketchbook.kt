@@ -1,14 +1,14 @@
 package org.geepawhill.html
 
 import org.geepawhill.html.basic.HtmlPageDelegate
-import org.geepawhill.html.css.enums.DisplayEnum.*
+import org.geepawhill.html.css.enums.DisplayEnum.block
+import org.geepawhill.html.css.enums.DisplayEnum.inline
 import org.geepawhill.html.model.Element.Companion.pretty
 import org.junit.jupiter.api.Test
 
 class Sketchbook {
     @Test
     fun `a sample page`() {
-        
         val page = HtmlPageDelegate.page {
             head {
                 stylesheet {
